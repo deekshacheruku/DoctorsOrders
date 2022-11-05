@@ -32,8 +32,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Toast.makeText(this, "Wrong", Toast.LENGTH_SHORT).show();
         }
     }
-
-//    public void openDashboard() {
-//        Intent intent = new Intent(this, New)
-//    }
 }
