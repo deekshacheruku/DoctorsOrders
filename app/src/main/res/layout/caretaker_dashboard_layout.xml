@@ -42,19 +42,20 @@
             android:layout_marginTop="40dp"
             android:text="No Patients Assigned"
             android:textSize="20dp" />
-        <ListView
-            xmlns:tools="http://schemas.android.com/tools"
-            android:id="@+id/simpleListView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:context="abhiandroid.com.listexample.MainActivity">
-        </ListView>
+
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="130dp"
             android:layout_marginTop="20dp"
             android:text="Add Patient" />
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/patientList"
+            />
     </LinearLayout>
 
 </LinearLayout>
