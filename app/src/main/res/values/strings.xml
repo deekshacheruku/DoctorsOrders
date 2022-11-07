@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Doctors Orders</string>
     <string name="caretaker_dashboard">CareTaker Dashboard</string>
+    <string name="patient_db">Patient</string>
 </resources>
