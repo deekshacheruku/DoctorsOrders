@@ -9,20 +9,14 @@ import android.widget.Button;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    private Button dashboardBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        dashboardBtn = (Button) findViewById(R.id.dashboardbtn);
-        dashboardBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, DashboardActivity.class));
-            }
-        });
+        Button dashboardBtn = findViewById(R.id.dashboardbtn);
+        dashboardBtn.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, DashboardActivity.class)));
     }
 
     public void onClick(View view) {
