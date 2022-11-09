@@ -1,5 +1,17 @@
 <resources>
+<!-- ??? Strings -->
     <string name="app_name">Doctors Orders</string>
     <string name="caretaker_dashboard">CareTaker Dashboard</string>
     <string name="patient_db">Patient</string>
+    
+<!-- LogIn strings -->
+    <string name="loading1">Checking for Account</string>
+    <string name="loading2">Verifying Account</string>
+    <string name="loading3">Welcome Back</string>
+
+    <string name="patient">Patient</string>
+    <string name="scheduler">Scheduler</string>
+    <string name="observer">Observer</string>
+
+    <string name="needAccount">Don\'t have an Account? Click here.</string>
 </resources>
