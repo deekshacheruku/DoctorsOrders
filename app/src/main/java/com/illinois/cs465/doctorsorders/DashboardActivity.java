@@ -1,6 +1,13 @@
 package com.illinois.cs465.doctorsorders;
+import static android.widget.Toast.LENGTH_SHORT;
+
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,5 +26,13 @@ public class DashboardActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.patientList);
         ProfileAdapter adapter = new ProfileAdapter(getApplicationContext(), patientName);
         listView.setAdapter(adapter);
-    }
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(DashboardActivity.this, patient_medication_schedule.class);
+                startActivity(intent);
+            }
+        });
+        Button addButton = findViewById(R.id.addPatientBtn);
+        addButton.setOnClickListener(view -> startActivity(new Intent(DashboardActivity.this, NearbyPatients.class)));    }
 }
