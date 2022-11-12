@@ -37,8 +37,10 @@ public class patient_medication_schedule extends AppCompatActivity {
         nameView.setLayoutParams(params);
         linearLayout.addView(nameView);
 
-        Button button = findViewById(R.id.back);
-        button.setOnClickListener(view -> startActivity(new Intent(patient_medication_schedule.this, DashboardActivity.class)));
+        Button backBtn = findViewById(R.id.back);
+        backBtn.setOnClickListener(view -> startActivity(new Intent(patient_medication_schedule.this, DashboardActivity.class)));
 
+        Button addBtn = findViewById(R.id.add);
+        addBtn.setOnClickListener(view -> startActivity(new Intent(patient_medication_schedule.this, set_medication_1.class)));
     }
 }

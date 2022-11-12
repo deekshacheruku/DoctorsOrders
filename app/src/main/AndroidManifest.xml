@@ -13,6 +13,13 @@
         android:theme="@style/Theme.DoctorsOrders"
         tools:targetApi="31">
         <activity
+            android:name=".set_medication_1"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".patient_medication_schedule"
             android:exported="false">
             <meta-data
