@@ -97,6 +97,7 @@
             android:layout_marginTop="100dp">
 
             <Button
+                android:id="@+id/editBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="48dp"
@@ -107,7 +108,7 @@
                 android:layout_weight="1"/>
 
             <Button
-                android:id="@+id/next_to_confirm"
+                android:id="@+id/confirm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="48dp"

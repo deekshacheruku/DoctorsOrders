@@ -38,6 +38,7 @@
                 android:textSize="20dp" />
 
             <TextView
+                android:id="@+id/daysNum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -52,12 +53,14 @@
                 android:orientation="vertical">
 
                 <ImageButton
+                    android:id="@+id/incrementBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@android:color/darker_gray"
                     android:src="@drawable/up_arrow" />
 
                 <ImageButton
+                    android:id="@+id/decrementBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"

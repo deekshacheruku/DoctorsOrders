@@ -34,8 +34,6 @@ public class DashboardActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String test = adapterView.getItemAtPosition(i).toString();
-//                Log.d("test", test);
-
                 Intent intent = new Intent(DashboardActivity.this, patient_medication_schedule.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("retrieved", test);

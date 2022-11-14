@@ -20,22 +20,42 @@ public class patient_medication_schedule extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_medication_schedule);
         Bundle bundle = getIntent().getExtras();
-        String stuff = bundle.getString("retrieved");
-        Log.d("retrieved", stuff);
 
-        LinearLayout linearLayout = (LinearLayout)findViewById(R.id.name);
+        if (bundle.getString("confirmed") != null) {
+//            String stuff = bundle.getString("retrieved");
+//            Log.d("retrieved", stuff);
 
-        TextView nameView = new TextView(this);
-        nameView.setText("Schedule For: " + stuff);
-        nameView.setTextSize(20);
+            LinearLayout linearLayout = (LinearLayout)findViewById(R.id.name);
 
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-        );
-        params.setMargins(250, -1200, 100, 20);
-        nameView.setLayoutParams(params);
-        linearLayout.addView(nameView);
+            TextView nameView = new TextView(this);
+            nameView.setText("Schedule For: Colin Zhou");
+            nameView.setTextSize(20);
+
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+            );
+            params.setMargins(250, -1200, 100, 20);
+            nameView.setLayoutParams(params);
+            linearLayout.addView(nameView);
+        } else {
+            String stuff = bundle.getString("retrieved");
+            Log.d("retrieved", stuff);
+
+            LinearLayout linearLayout = (LinearLayout)findViewById(R.id.name);
+
+            TextView nameView = new TextView(this);
+            nameView.setText("Schedule For: " + stuff);
+            nameView.setTextSize(20);
+
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+            );
+            params.setMargins(250, -1200, 100, 20);
+            nameView.setLayoutParams(params);
+            linearLayout.addView(nameView);
+        }
 
         Button backBtn = findViewById(R.id.back);
         backBtn.setOnClickListener(view -> startActivity(new Intent(patient_medication_schedule.this, DashboardActivity.class)));

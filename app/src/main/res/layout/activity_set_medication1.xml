@@ -53,6 +53,7 @@
                 android:text="Dose: "
                 android:textSize="20dp" />
             <TextView
+                android:id="@+id/doseNum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -65,12 +66,14 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <ImageButton
+                    android:id="@+id/increaseBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/up_arrow"
                     android:background="@android:color/darker_gray"
                     />
                 <ImageButton
+                    android:id="@+id/decreaseBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/down_arrow"
@@ -79,7 +82,7 @@
                     />
             </LinearLayout>
             <Spinner
-                android:id="@+id/spinner1"
+                android:id="@+id/medicationUnitSpinner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@android:drawable/btn_dropdown"
