@@ -1,5 +1,6 @@
 package com.illinois.cs465.doctorsorders;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,6 +39,7 @@ public class ProfileAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         view = inflater.inflate(R.layout.activity_custom_patient_list_view, null);
         TextView textview = (TextView) view.findViewById(R.id.patientItem);
+//        textview.setOnClickListener(view -> context.startActivity(new Intent(ProfileAdapter.this, DashboardActivity.class));
         textview.setText(names[i]);
         return view;
     }

@@ -2,7 +2,10 @@ package com.illinois.cs465.doctorsorders;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 public class NearbyPatients extends AppCompatActivity {
@@ -17,5 +20,14 @@ public class NearbyPatients extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.patientList);
         ProfileAdapter adapter = new ProfileAdapter(getApplicationContext(), patientName);
         listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Object name = adapterView.getItemAtPosition(i);
+                Intent intent = new Intent(NearbyPatients.this, DashboardActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
