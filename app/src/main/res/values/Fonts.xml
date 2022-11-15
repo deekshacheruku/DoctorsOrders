@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="Title">40dp</dimen>
+    <dimen name="Header1">30dp</dimen>
+    <dimen name="Header2">20dp</dimen>
+    <dimen name="Normal">10dp</dimen>
+
+
+
+</resources>
