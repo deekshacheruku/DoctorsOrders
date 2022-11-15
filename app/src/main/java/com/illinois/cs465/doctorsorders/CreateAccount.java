@@ -11,11 +11,15 @@ public class CreateAccount extends AppCompatActivity {
     {
 
         super.onCreate(savedInstanceState);
-        //If Patient Account,
-        setContentView(R.layout.activity_create_patient0);
-        //Else if Observer Account,
-        setContentView(R.layout.activity_create_observer);
-        //Else if Scheduler Account,
-        setContentView(R.layout.activity_create_scheduler);
+        int accType = getIntent().getIntExtra("accountType", -1);
+
+
+
+        if(accType == 0) //If Patient Account,
+            setContentView(R.layout.activity_create_patient0);
+        else if(accType == 1) //Else if Observer Account,
+            setContentView(R.layout.activity_create_observer);
+        else if(accType == 2) //Else if Scheduler Account,
+            setContentView(R.layout.activity_create_scheduler);
     }
 }

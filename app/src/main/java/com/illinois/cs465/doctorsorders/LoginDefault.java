@@ -12,6 +12,7 @@ public class LoginDefault extends AppCompatActivity implements View.OnClickListe
     private Button patButton;
     private Button obsButton;
     private Button schButton;
+    private Button createAcc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,10 +22,12 @@ public class LoginDefault extends AppCompatActivity implements View.OnClickListe
         patButton = (Button) findViewById(R.id.patientLogin);
         obsButton = (Button) findViewById(R.id.observerLogin);
         schButton = (Button) findViewById(R.id.schedulerLogin);
+        createAcc = (Button) findViewById(R.id.createGen);
 
         patButton.setOnClickListener(this);
         obsButton.setOnClickListener(this);
         schButton.setOnClickListener(this);
+        createAcc.setOnClickListener(this);
     }
 
     //Go to correct version of Credentials screen based on button pressed.
@@ -48,6 +51,12 @@ public class LoginDefault extends AppCompatActivity implements View.OnClickListe
         {
             Intent intent = new Intent(this, LoginCredentials.class);
             intent.putExtra("buttonType", 2);
+            startActivity(intent);
+        }
+        else if(v.getId() == R.id.createGen)
+        {
+            Intent intent = new Intent(this, CreateAccount.class);
+            intent.putExtra("accountType", 3);
             startActivity(intent);
         }
     }
