@@ -60,7 +60,6 @@ public class PatientDashboardActivity extends AppCompatActivity {
             smsManager.sendTextMessage(number, null, msg, null, null);
             Toast.makeText(getApplicationContext(), "Message Sent", Toast.LENGTH_LONG).show();
         } catch (Exception e) {
-            System.out.println(e);
             Toast.makeText(getApplicationContext(), "Some fields is Empty", Toast.LENGTH_LONG).show();
         }
     }
