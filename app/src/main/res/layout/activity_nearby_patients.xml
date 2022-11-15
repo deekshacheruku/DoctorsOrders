@@ -39,18 +39,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="100dp"
-            android:layout_marginTop="40dp"
-            android:text="No Patients Assigned"
-            android:textSize="20dp" />
-
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="130dp"
             android:layout_marginTop="20dp"
-            android:id="@+id/addPatientBtn"
-            android:text="Add Patient" />
+            android:layout_marginBottom="15dp"
+            android:text="Nearby Patients"
+            android:textStyle="bold"
+            android:textSize="30dp" />
         <ListView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -58,3 +51,4 @@
     </LinearLayout>
 
 </LinearLayout>
+
