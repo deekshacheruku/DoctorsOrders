@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class LoginDefault extends AppCompatActivity implements View.OnClick {
+public class LoginDefault extends AppCompatActivity implements View.OnClickListener {
 
     private Button patButton;
     private Button obsButton;
@@ -30,7 +30,7 @@ public class LoginDefault extends AppCompatActivity implements View.OnClick {
     //Go to correct version of Credentials screen based on button pressed.
     //May need to be brute-forced with 3 activities rather than changing layouts based
     //on passed-in data.
-    public void OnClick(View v)
+    public void onClick(View v)
     {
         if(v.getId() == R.id.patientLogin)
         {

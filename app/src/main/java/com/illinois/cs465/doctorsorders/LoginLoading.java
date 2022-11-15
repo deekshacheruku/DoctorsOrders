@@ -14,5 +14,6 @@ public class LoginLoading extends AppCompatActivity {
         //Check for account. If none, go to Default Log in.
         //If Account exists & is Logged in, go to correct view.
         //Patient should be next medicine, Scheduler & Observer go to dashboard.
+
     }
 }
