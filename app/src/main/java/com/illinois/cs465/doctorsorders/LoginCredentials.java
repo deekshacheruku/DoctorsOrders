@@ -9,32 +9,32 @@ import android.widget.Button;
 
 public class LoginCredentials extends AppCompatActivity implements View.OnClickListener {
 
-    private Button createPat;
-    private Button createObs;
-    private Button createSch;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        createPat = (Button) findViewById(R.id.createPat);
-        createObs = (Button) findViewById(R.id.createObs);
-        createSch = (Button) findViewById(R.id.createSch);
-
-        createPat.setOnClickListener(this);
-        createObs.setOnClickListener(this);
-        createSch.setOnClickListener(this);
 
         super.onCreate(savedInstanceState);
         int buttonPress = getIntent().getIntExtra("buttonType", -1);
 
         if (buttonPress == 0)
+        {
             setContentView(R.layout.activity_login_patient);
+            Button createPat = (Button) findViewById(R.id.createPat);
+            createPat.setOnClickListener(this);
+        }
         else if (buttonPress == 1)
+        {
             setContentView(R.layout.activity_login_observer);
+            Button createObs = (Button) findViewById(R.id.createObs);
+            createObs.setOnClickListener(this);
+        }
         else if (buttonPress == 2)
+        {
             setContentView(R.layout.activity_login_scheduler);
+            Button createSch = (Button) findViewById(R.id.createSch);
+            createSch.setOnClickListener(this);
+        }
     }
-
     public void onClick(View v) {
         if (v.getId() == R.id.createPat) {
             Intent intent = new Intent(this, CreateAccount.class);
