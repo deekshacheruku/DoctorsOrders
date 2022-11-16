@@ -12,9 +12,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 public class patient_medication_schedule extends AppCompatActivity {
-    String patientName[] = {"Colin Zhou", "Paul Kipp", "John Smith"};
-
-    ListView listview;
+    String medicationList[] = {"Medication 1        2x/day"};
+    ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,35 +27,21 @@ public class patient_medication_schedule extends AppCompatActivity {
 
             LinearLayout linearLayout = (LinearLayout)findViewById(R.id.name);
 
-            TextView nameView = new TextView(this);
+            TextView nameView = findViewById(R.id.schedule_for);
             nameView.setText("Schedule For: Colin Zhou");
-            nameView.setTextSize(20);
 
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.WRAP_CONTENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT
-            );
-            params.setMargins(250, -1200, 100, 20);
-            nameView.setLayoutParams(params);
-            linearLayout.addView(nameView);
-        } else {
+        } else { //if patientName exists and submit button has been pressed
+
             String stuff = bundle.getString("patientName");
             Log.d("patientName", stuff);
 
-            LinearLayout linearLayout = (LinearLayout)findViewById(R.id.name);
-
-            TextView nameView = new TextView(this);
-            nameView.setText("Schedule For: " + stuff);
-            nameView.setTextSize(20);
-
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.WRAP_CONTENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT
-            );
-            params.setMargins(250, -1200, 100, 20);
-            nameView.setLayoutParams(params);
-            linearLayout.addView(nameView);
+            TextView nameView = findViewById(R.id.schedule_for);
+            nameView.setText("Schedule For: Colin Zhou");
         }
+
+        listView = (ListView) findViewById(R.id.medicationList);
+        RegisteredMedicationAdapter adapter = new RegisteredMedicationAdapter(getApplicationContext(), medicationList);
+        listView.setAdapter(adapter);
 
         Button backBtn = findViewById(R.id.back);
         backBtn.setOnClickListener(view -> startActivity(new Intent(patient_medication_schedule.this, DashboardActivity.class)));
@@ -72,6 +57,5 @@ public class patient_medication_schedule extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-//        addBtn.setOnClickListener(view -> startActivity(new Intent(patient_medication_schedule.this, set_medication_1.class)));
     }
 }

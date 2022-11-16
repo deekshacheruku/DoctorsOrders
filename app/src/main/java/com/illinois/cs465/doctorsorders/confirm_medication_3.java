@@ -36,7 +36,7 @@ public class confirm_medication_3 extends AppCompatActivity {
         Bundle finalInfoBundle = new Bundle(bundleStep2);
 
         Intent intent = new Intent(confirm_medication_3.this, patient_medication_schedule.class);
-        finalInfoBundle.putString("confirmed", "test");
+        finalInfoBundle.putString("confirmed", "true");
         intent.putExtras(finalInfoBundle);
         confirm.setOnClickListener(view -> startActivity(intent));
     }

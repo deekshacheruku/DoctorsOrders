@@ -27,9 +27,11 @@ public class DashboardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.caretaker_dashboard_layout);
+
         listView = (ListView) findViewById(R.id.patientList);
         ProfileAdapter adapter = new ProfileAdapter(getApplicationContext(), patientName);
         listView.setAdapter(adapter);
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -41,6 +43,7 @@ public class DashboardActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         Button addButton = findViewById(R.id.addPatientBtn);
         addButton.setOnClickListener(view -> startActivity(new Intent(DashboardActivity.this, NearbyPatients.class)));    }
 }

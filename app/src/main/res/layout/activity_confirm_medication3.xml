@@ -32,13 +32,6 @@
                 android:text="Name"
                 android:textSize="18dp"
                 />
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Colin Zhou"-->
-<!--                android:layout_marginLeft="10dp"-->
-<!--                android:textSize="18dp"-->
-<!--                />-->
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -77,14 +70,6 @@
                 android:textSize="18dp"
                 android:gravity="center"
                 />
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="10mg"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                android:layout_marginLeft="100dp"-->
-<!--                android:textSize="18dp"-->
-<!--                />-->
         </LinearLayout>
         <TextView
             android:id="@+id/confirm_date"
