@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -42,6 +43,18 @@ public class patient_medication_schedule extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.medicationList);
         RegisteredMedicationAdapter adapter = new RegisteredMedicationAdapter(getApplicationContext(), medicationList);
         listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Object medName = adapterView.getItemAtPosition(i);
+                Bundle bundleForMedicineInfo = new Bundle();
+                bundleForMedicineInfo.putString("medicine name", medName.toString());
+                Intent intent = new Intent(patient_medication_schedule.this, medicine_info.class);
+                intent.putExtras(bundleForMedicineInfo);
+                startActivity(intent);
+            }
+        });
 
         Button backBtn = findViewById(R.id.back);
         backBtn.setOnClickListener(view -> startActivity(new Intent(patient_medication_schedule.this, DashboardActivity.class)));
