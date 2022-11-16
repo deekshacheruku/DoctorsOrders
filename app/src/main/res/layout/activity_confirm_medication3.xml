@@ -8,7 +8,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -24,19 +25,20 @@
             android:orientation="horizontal"
             >
             <TextView
+                android:id="@+id/confirm_patient_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="100dp"
                 android:text="Name"
                 android:textSize="18dp"
                 />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Colin Zhou"
-                android:layout_marginLeft="10dp"
-                android:textSize="18dp"
-                />
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Colin Zhou"-->
+<!--                android:layout_marginLeft="10dp"-->
+<!--                android:textSize="18dp"-->
+<!--                />-->
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -45,18 +47,19 @@
             android:layout_marginTop="20dp"
             >
             <TextView
+                android:id="@+id/confirm_dose"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="100dp"
                 android:text="Dose"
                 android:textSize="18dp"
                 />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="10mg"
-                android:layout_marginLeft="10dp"
-                android:textSize="18dp"/>
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="10mg"-->
+<!--                android:layout_marginLeft="10dp"-->
+<!--                android:textSize="18dp"/>-->
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -66,6 +69,7 @@
             android:gravity="center_vertical"
             >
             <TextView
+                android:id="@+id/confirm_instructions"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="100dp"
@@ -73,16 +77,17 @@
                 android:textSize="18dp"
                 android:gravity="center"
                 />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="10mg"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="100dp"
-                android:textSize="18dp"
-                />
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="10mg"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:layout_marginLeft="100dp"-->
+<!--                android:textSize="18dp"-->
+<!--                />-->
         </LinearLayout>
         <TextView
+            android:id="@+id/confirm_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Every 10 days at HH::MM"
@@ -111,6 +116,8 @@
                 android:id="@+id/confirm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="30dp"
                 android:layout_marginBottom="48dp"
                 android:text="Submit"
                 app:layout_constraintBottom_toBottomOf="parent"

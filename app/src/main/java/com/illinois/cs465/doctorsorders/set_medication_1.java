@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -20,9 +22,6 @@ public class set_medication_1 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_medication1);
-
-        Button button = (Button) findViewById(R.id.next_to_schedule);
-        button.setOnClickListener(view -> startActivity(new Intent(set_medication_1.this, set_schedule2.class)));
 
         TextView textView = (TextView) findViewById(R.id.doseNum);
 
@@ -45,14 +44,12 @@ public class set_medication_1 extends AppCompatActivity {
         });
 
         Spinner spinner = (Spinner) findViewById(R.id.medicationUnitSpinner);
-//        spinner.setOnItemClickListener(this);
 
         List<String> options = new ArrayList<String>();
         options.add("mg");
         options.add("liter");
         options.add("oz");
         options.add("tbsp");
-
 
         // Creating adapter for spinner
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, options);
@@ -62,6 +59,26 @@ public class set_medication_1 extends AppCompatActivity {
 
         // attaching data adapter to spinner
         spinner.setAdapter(dataAdapter);
+
+        EditText text = findViewById(R.id.instructions);
+
+        Button button = (Button) findViewById(R.id.next_to_schedule);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle dashboardBundle = getIntent().getExtras();
+
+                Bundle bundle = new Bundle();
+                bundle.putString("patientName", dashboardBundle.getString("patientName"));
+                bundle.putString("doseNumber", textView.getText().toString());
+                bundle.putString("unit", spinner.getSelectedItem().toString());
+                bundle.putString("instructions", text.getText().toString());
+                Intent intent = new Intent(set_medication_1.this, set_schedule2.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
 
     }
 }

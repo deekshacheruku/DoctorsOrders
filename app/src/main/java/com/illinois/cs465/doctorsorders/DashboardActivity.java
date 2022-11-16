@@ -33,10 +33,10 @@ public class DashboardActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String test = adapterView.getItemAtPosition(i).toString();
+                String name = adapterView.getItemAtPosition(i).toString();
                 Intent intent = new Intent(DashboardActivity.this, patient_medication_schedule.class);
                 Bundle bundle = new Bundle();
-                bundle.putString("retrieved", test);
+                bundle.putString("patientName", name);
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
