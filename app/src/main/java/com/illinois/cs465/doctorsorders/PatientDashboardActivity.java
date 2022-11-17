@@ -6,10 +6,8 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.telephony.SmsManager;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
@@ -51,19 +49,6 @@ public class PatientDashboardActivity extends AppCompatActivity {
         }
 
         createNotification(randomMedicine);
-        sendSMS();
-    }
-
-    private void sendSMS() {
-        String number = "4479021076";
-        String msg = "Your GrandParent has taken the medicine!";
-        try {
-            SmsManager smsManager = SmsManager.getDefault();
-            smsManager.sendTextMessage(number, null, msg, null, null);
-            Toast.makeText(getApplicationContext(), "Message Sent", Toast.LENGTH_LONG).show();
-        } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "Some fields is Empty", Toast.LENGTH_LONG).show();
-        }
     }
 
     private void createNotification(int randomMedicine) {

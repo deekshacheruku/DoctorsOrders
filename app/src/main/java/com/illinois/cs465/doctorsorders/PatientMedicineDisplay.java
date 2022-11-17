@@ -3,16 +3,18 @@ package com.illinois.cs465.doctorsorders;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.telephony.SmsManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.concurrent.TimeUnit;
 
-public class PatientMedicineDisplay extends AppCompatActivity {
+public class PatientMedicineDisplay extends AppCompatActivity implements View.OnClickListener {
     int[] images = {R.drawable.atorvastatin, R.drawable.metformin, R.drawable.simvastatin,
             R.drawable.omeprazole, R.drawable.amlodipine};
     final String FORMAT = "%02d : %02d";
@@ -44,6 +46,9 @@ public class PatientMedicineDisplay extends AppCompatActivity {
 
         TextView time = findViewById(R.id.time);
         setCountDownOneMinute(time, yes_button, no_button, text);
+
+        yes_button.setOnClickListener(this);
+        no_button.setOnClickListener(this);
     }
 
     private void setCountDownOneMinute(TextView time, Button yes_button, Button no_button, TextView text) {
@@ -83,5 +88,28 @@ public class PatientMedicineDisplay extends AppCompatActivity {
                 time.setText("");
             }
         }.start();
+    }
+
+    @Override
+    public void onClick(View view) {
+        String display = "We informed your family!";
+        if (view.getId() == R.id.yes_button) {
+            String msg = "Your GrandParent has taken the medicine!";
+            sendSMS(msg, display);
+        } else {
+            String msg = "Your GrandParent has NOT taken the medicine!";
+            sendSMS(msg, display);
+        }
+    }
+
+    private void sendSMS(String msg, String display) {
+        String number = "4479021076";
+        try {
+            SmsManager smsManager = SmsManager.getDefault();
+            smsManager.sendTextMessage(number, null, msg, null, null);
+            Toast.makeText(getApplicationContext(), display, Toast.LENGTH_LONG).show();
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "Some fields is Empty", Toast.LENGTH_LONG).show();
+        }
     }
 }
