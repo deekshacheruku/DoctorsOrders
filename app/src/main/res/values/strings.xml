@@ -28,4 +28,6 @@
     <string name="no">NO</string>
     <string name="next">NEXT</string>
     <string name="back">BACK</string>
+    <string name="description">Medicine Image</string>
+    <string name="patient_medicine_instructions">Take it with lunch</string>
 </resources>
