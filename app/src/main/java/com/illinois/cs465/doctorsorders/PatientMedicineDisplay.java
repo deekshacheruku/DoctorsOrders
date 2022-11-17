@@ -100,6 +100,7 @@ public class PatientMedicineDisplay extends AppCompatActivity implements View.On
             String msg = "Your GrandParent has NOT taken the medicine!";
             sendSMS(msg, display);
         }
+        startActivity(new Intent(this, PatientDashboardActivity.class));
     }
 
     private void sendSMS(String msg, String display) {
