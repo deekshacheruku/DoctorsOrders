@@ -36,6 +36,7 @@
     <string name="displayFinalText">Did you take your Medicine?</string>
     <string name="displayMedicine">Time to take %s</string>
     <string name="displayText">%s</string>
+    <string name="wait">%s</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
 </resources>
