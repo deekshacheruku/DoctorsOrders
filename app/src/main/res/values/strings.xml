@@ -32,4 +32,10 @@
     <string name="patient_medicine_instructions">Take it with lunch</string>
     <string name="channel_name">Time to take Medicine!</string>
     <string name="channel_description">Description</string>
+    <string name="displayInitialText">Time to take your Medicine!</string>
+    <string name="displayFinalText">Did you take your Medicine?</string>
+    <string name="displayMedicine">Time to take %s</string>
+    <string name="displayText">%s</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>

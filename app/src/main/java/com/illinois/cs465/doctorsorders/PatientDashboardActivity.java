@@ -2,6 +2,8 @@ package com.illinois.cs465.doctorsorders;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.telephony.SmsManager;
@@ -66,9 +68,15 @@ public class PatientDashboardActivity extends AppCompatActivity {
 
     private void createNotification(int randomMedicine) {
 
-//        Intent intent = new Intent(this, AlertDetails.class);
-//        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
+        Intent intent = new Intent(this, PatientMedicineDisplay.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
+                Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("medicine", medicines[randomMedicine]);
+        intent.putExtra("index", randomMedicine);
+        intent.setAction(medicines[randomMedicine]);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent,
+                PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT);
+
 
         CharSequence name = getString(R.string.channel_name);
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
@@ -86,7 +94,7 @@ public class PatientDashboardActivity extends AppCompatActivity {
                         .bigText(medicines[randomMedicine]))
                 .setPriority(NotificationCompat.PRIORITY_MAX)
                 .setSmallIcon(R.drawable.amlodipine)
-//                .setContentIntent(pendingIntent)
+                .setContentIntent(pendingIntent)
                 .setAutoCancel(true);
 
         int notificationId = new Random().nextInt();
