@@ -4,6 +4,11 @@
     <string name="caretaker_dashboard">CareTaker Dashboard</string>
     <string name="patient_db">Patient</string>
 
+    <!-- Patient's strings -->
+    <string name="patient_initial_message">Your next Medicine: </string>
+    <string name="patient_medicine" formatted="true">Medicine: %s</string>
+    <string name="patient_medicine_time" formatted="true">Time: %s</string>
+
     <!-- LogIn strings -->
     <string name="loading1">Checking for Account</string>
     <string name="loading2">Verifying Account</string>

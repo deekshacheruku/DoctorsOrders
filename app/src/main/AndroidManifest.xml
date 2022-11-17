@@ -124,6 +124,7 @@
                 android:value="" />
         </activity>
         <activity android:name=".DashboardActivity" />
+        <activity android:name=".PatientDashboardActivity"/>
     </application>
 
 </manifest>
