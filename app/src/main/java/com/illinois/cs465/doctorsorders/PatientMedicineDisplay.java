@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.concurrent.TimeUnit;
@@ -96,11 +97,18 @@ public class PatientMedicineDisplay extends AppCompatActivity implements View.On
         if (view.getId() == R.id.yes_button) {
             String msg = "Your GrandParent has taken the medicine!";
             sendSMS(msg, display);
+            startActivity(new Intent(this, PatientDashboardActivity.class));
         } else {
-            String msg = "Your GrandParent has NOT taken the medicine!";
-            sendSMS(msg, display);
+            new AlertDialog.Builder(this)
+                    .setMessage("Have you not taken the medicine?")
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .setPositiveButton(R.string.yes, (dialog, whichButton) -> {
+                        String msg = "Your GrandParent has NOT taken the medicine!";
+                        sendSMS(msg, display);
+                        startActivity(new Intent(this, PatientDashboardActivity.class));
+                    })
+                    .setNegativeButton(R.string.no, null).show();
         }
-        startActivity(new Intent(this, PatientDashboardActivity.class));
     }
 
     private void sendSMS(String msg, String display) {
