@@ -13,7 +13,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 public class patient_medication_schedule extends AppCompatActivity {
-    String medicationList[] = {"Medication 1        2x/day"};
+    String medicationList[] = {"Metformin        2x/day"};
     ListView listView;
 
     @Override

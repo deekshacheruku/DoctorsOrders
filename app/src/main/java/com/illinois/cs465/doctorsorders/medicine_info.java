@@ -17,6 +17,10 @@ public class medicine_info extends AppCompatActivity {
         Button backBtn = findViewById(R.id.back);
         backBtn.setOnClickListener(view -> startActivity(new Intent(medicine_info.this, patient_medication_schedule.class)));
 
+        Button editBtn = findViewById(R.id.edit);
+        editBtn.setOnClickListener(view -> startActivity(new Intent(medicine_info.this, set_medication_1.class)));
+
+
 
 //        Bundle from_medication_schedule_bundle = getIntent().getExtras();
 //        TextView textView = findViewById(R.id.medicine_for);
