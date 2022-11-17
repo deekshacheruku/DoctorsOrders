@@ -21,32 +21,40 @@ public class LoginCredentials extends AppCompatActivity implements View.OnClickL
             setContentView(R.layout.activity_login_patient);
             Button createPat = (Button) findViewById(R.id.createPat);
             createPat.setOnClickListener(this);
-        }
-        else if (buttonPress == 1)
-        {
-            setContentView(R.layout.activity_login_observer);
-            Button createObs = (Button) findViewById(R.id.createObs);
-            createObs.setOnClickListener(this);
+            Button loginPat = (Button) findViewById(R.id.loginPat);
+            loginPat.setOnClickListener(this);
         }
         else if (buttonPress == 2)
         {
             setContentView(R.layout.activity_login_scheduler);
             Button createSch = (Button) findViewById(R.id.createSch);
             createSch.setOnClickListener(this);
+            Button loginSch = (Button) findViewById(R.id.loginSch);
+            loginSch.setOnClickListener(this);
         }
     }
     public void onClick(View v) {
-        if (v.getId() == R.id.createPat) {
-            Intent intent = new Intent(this, CreateAccount.class);
+        if (v.getId() == R.id.createPat)
+        {
+            Intent intent = new Intent(this, CreateAccount0.class);
             intent.putExtra("accountType", 0);
             startActivity(intent);
-        } else if (v.getId() == R.id.createObs) {
-            Intent intent = new Intent(this, CreateAccount.class);
-            intent.putExtra("accountType", 1);
+        }
+        else if(v.getId() == R.id.loginPat)
+        {
+            finish();
+            Intent intent = new Intent(this, medicine_info.class);
             startActivity(intent);
-        } else if (v.getId() == R.id.createSch) {
-            Intent intent = new Intent(this, CreateAccount.class);
+        }
+        else if (v.getId() == R.id.createSch) {
+            Intent intent = new Intent(this, CreateAccount0.class);
             intent.putExtra("accountType", 2);
+            startActivity(intent);
+        }
+        else if(v.getId() == R.id.loginSch)
+        {
+            finish();
+            Intent intent = new Intent(this, DashboardActivity.class);
             startActivity(intent);
         }
     }

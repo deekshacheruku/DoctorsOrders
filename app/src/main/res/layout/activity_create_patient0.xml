@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
+        <!--Header-->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -58,7 +58,6 @@
                 android:layout_row="2"
                 android:inputType="numberPassword"/>
 
-            <!-- Names -->
             <TextView
                 android:layout_column="0"
                 android:layout_row="3"
@@ -71,7 +70,7 @@
                 android:inputType="numberPassword"/>
 
         </GridLayout>
-
+        <!--Doctor Header-->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -133,73 +132,14 @@
                 />
         </GridLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Friends/Family"
-            android:textSize="@dimen/Header2">
-        </TextView>
-
-        <!--Doctor Information-->
-        <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:columnCount="2"
-            android:rowCount="3">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Name"
-                android:layout_column="0"
-                android:layout_row="0"
-                />
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="1"
-                android:layout_row="0"
-                android:layout_columnWeight="1"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Relation"
-                android:layout_column="0"
-                android:layout_row="1"
-                />
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="1"
-                android:layout_row="1"
-                android:layout_columnWeight="1"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Phone Number"
-                android:layout_column="0"
-                android:layout_row="2"
-                />
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="1"
-                android:layout_row="2"
-                android:layout_columnWeight="1"
-                />
-        </GridLayout>
 
         <Button
+            android:id="@+id/nextCreate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:backgroundTint="#FFAA0000"
-            android:text="NEXT">
+            android:text="@string/next">
         </Button>
     </LinearLayout>
 

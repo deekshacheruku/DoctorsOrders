@@ -13,6 +13,20 @@
         android:theme="@style/Theme.DoctorsOrders"
         tools:targetApi="31">
         <activity
+            android:name=".CreateAccount2"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".CreateAccount1"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".medicine_info"
             android:exported="false">
             <meta-data
@@ -34,7 +48,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".CreateAccount"
+            android:name=".CreateAccount0"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:gravity="top">
+        android:gravity="top|center">
 
         <!-- Logo/App Name. Should scale to the screen's size. -->
         <TextView
@@ -44,7 +44,8 @@
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="10">
+                android:layout_weight="10"
+                android:inputType="textPersonName">
             </EditText>
 
         </LinearLayout>
@@ -65,10 +66,19 @@
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="10">
+                android:layout_weight="10"
+                android:inputType="textPassword">
             </EditText>
 
         </LinearLayout>
+
+        <Button
+            android:id="@+id/loginSch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LOGIN"
+            android:backgroundTint="#FF0000AA">
+        </Button>
 
         <LinearLayout
             android:layout_width="match_parent"

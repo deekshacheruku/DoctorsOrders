@@ -21,6 +21,6 @@ public class MainActivity extends AppCompatActivity {
         patientBtn.setOnClickListener(view -> Toast.makeText(getApplicationContext(), "Patient", Toast.LENGTH_LONG).show());
 
         Button loginBtn = findViewById(R.id.loginBtn);
-        loginBtn.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, LoginDefault.class)));
+        loginBtn.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, LoginLoading.class)));
     }
 }

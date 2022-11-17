@@ -26,14 +26,6 @@
         </Button>
 
         <Button
-            android:id="@+id/createObs"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#FF00AA00"
-            android:text="@string/observer">
-        </Button>
-
-        <Button
             android:id="@+id/createSch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

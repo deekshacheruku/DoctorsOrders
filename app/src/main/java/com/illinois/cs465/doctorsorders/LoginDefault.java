@@ -10,7 +10,6 @@ import android.widget.Button;
 public class LoginDefault extends AppCompatActivity implements View.OnClickListener {
 
     private Button patButton;
-    private Button obsButton;
     private Button schButton;
     private Button createAcc;
 
@@ -20,12 +19,10 @@ public class LoginDefault extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_login_default);
 
         patButton = (Button) findViewById(R.id.patientLogin);
-        obsButton = (Button) findViewById(R.id.observerLogin);
         schButton = (Button) findViewById(R.id.schedulerLogin);
         createAcc = (Button) findViewById(R.id.createGen);
 
         patButton.setOnClickListener(this);
-        obsButton.setOnClickListener(this);
         schButton.setOnClickListener(this);
         createAcc.setOnClickListener(this);
     }
@@ -41,12 +38,6 @@ public class LoginDefault extends AppCompatActivity implements View.OnClickListe
             intent.putExtra("buttonType", 0);
             startActivity(intent);
         }
-        else if(v.getId() == R.id.observerLogin)
-        {
-            Intent intent = new Intent(this, LoginCredentials.class);
-            intent.putExtra("buttonType", 1);
-            startActivity(intent);
-        }
         else if(v.getId() == R.id.schedulerLogin)
         {
             Intent intent = new Intent(this, LoginCredentials.class);
@@ -55,7 +46,7 @@ public class LoginDefault extends AppCompatActivity implements View.OnClickListe
         }
         else if(v.getId() == R.id.createGen)
         {
-            Intent intent = new Intent(this, CreateAccount.class);
+            Intent intent = new Intent(this, CreateAccount0.class);
             intent.putExtra("accountType", 3);
             startActivity(intent);
         }

@@ -18,4 +18,9 @@
     <string name="accessQ1">asdf</string>
     <string name="accessQ2">asdfasdf</string>
     <string name="accessQ3">asdfasdfasdf</string>
+
+    <string name="yes">YES</string>
+    <string name="no">NO</string>
+    <string name="next">NEXT</string>
+    <string name="back">BACK</string>
 </resources>

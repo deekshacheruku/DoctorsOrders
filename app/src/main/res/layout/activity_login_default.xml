@@ -36,16 +36,7 @@
                 android:layout_weight="1">
             </Button>
 
-            <Button
-                android:id="@+id/observerLogin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#FF00AA00"
-                android:text="@string/observer"
-                android:layout_weight="1">
-            </Button>
-
-            <Button
+           <Button
                 android:id="@+id/schedulerLogin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
