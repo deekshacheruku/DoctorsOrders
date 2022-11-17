@@ -58,7 +58,6 @@
                 android:layout_weight="10"
                 android:id="@+id/add"/>
         </LinearLayout>
-
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

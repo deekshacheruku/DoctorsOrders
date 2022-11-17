@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
         android:layout_marginTop="40dp"
-        android:text="Scheduler John Smith"
+        android:text="Scheduler David Smith"
         android:textSize="30dp" />
     <View
         android:layout_marginTop="10dp"
@@ -33,24 +33,18 @@
             android:drawableLeft="@drawable/ic_action_name"
             android:gravity="left" >
         </EditText>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="130dp"
-            android:layout_marginTop="20dp"
-            android:id="@+id/addPatientBtn"
-            android:text="Add Patient" />
         <ListView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/patientList" />
         <Button
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="500dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/add"
-            />
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginLeft="230dp"
+            android:layout_marginTop="20dp"
+            android:id="@+id/addPatientBtn"
+            android:text="+"
+            android:textSize="20dp"/>
     </LinearLayout>
 
 
