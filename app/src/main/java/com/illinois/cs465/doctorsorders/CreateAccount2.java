@@ -32,7 +32,7 @@ public class CreateAccount2 extends AppCompatActivity implements View.OnClickLis
         }
         else if(v.getId() == R.id.finCreatePat)
         {
-            Intent intent = new Intent(this, medicine_info.class);
+            Intent intent = new Intent(this, PatientDashboardActivity.class);
             startActivity(intent);
         }
     }
