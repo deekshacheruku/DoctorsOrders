@@ -43,7 +43,7 @@ public class LoginCredentials extends AppCompatActivity implements View.OnClickL
         else if(v.getId() == R.id.loginPat)
         {
             finish();
-            Intent intent = new Intent(this, medicine_info.class);
+            Intent intent = new Intent(this, PatientDashboardActivity.class);
             startActivity(intent);
         }
         else if (v.getId() == R.id.createSch) {
