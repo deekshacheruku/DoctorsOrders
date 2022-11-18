@@ -10,7 +10,7 @@
     <string name="patient_medicine_time" formatted="true">When: %s</string>
     <string name="patient_dosage">Dosage: %s</string>
     <string name="description">Medicine Image</string>
-    <string name="patient_medicine_instructions">Take it with lunch</string>
+    <string name="patient_medicine_instructions">Take it with Breakfast</string>
     <string name="channel_name">Time to take Medicine!</string>
     <string name="channel_description">Description</string>
     <string name="displayInitialText">Time to take your Medicine!</string>
