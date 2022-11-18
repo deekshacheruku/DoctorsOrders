@@ -17,42 +17,42 @@
             android:layout_marginLeft="60dp"
             android:layout_marginTop="30dp"
             android:textSize="23dp"
-            android:text="Colin Zhou: Medication 1"/>
+            android:text="Colin Zhou: Metformin"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
             android:layout_marginLeft="60dp"
             android:textSize="23dp"
-            android:text="Medicine Name: Medication 1" />
+            android:text="Medicine Name: Metformin" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="100dp"
             android:textSize="23dp"
-            android:text="Dose: 10mg" />
+            android:text="Dose: 5oz" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="100dp"
             android:textSize="23dp"
-            android:text="Instructions: This is the assigned medication" />
+            android:text="Instructions: take during breakfast" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="100dp"
             android:textSize="23dp"
-            android:text="Every 10 days" />
+            android:text="Every 4 days at Breakfast" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="100dp"
             android:textSize="23dp"
-            android:text="Time of Day: 10AM" />
+            android:text="When: Breakfast" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
