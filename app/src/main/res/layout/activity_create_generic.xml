@@ -7,13 +7,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center"
+        android:layout_margin="20dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Which Account are you Making?"
+            android:text="Which account are you making?"
             android:textSize="@dimen/Header1">
         </TextView>
 
@@ -21,17 +22,20 @@
             android:id="@+id/createPat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="#FFAA0000"
-            android:text="@string/patient">
+            android:text="@string/patient"
+            android:textSize="@dimen/Header2">
+            <!--android:backgroundTint="#FFAA0000"-->
         </Button>
 
         <Button
             android:id="@+id/createSch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="#FF0000AA"
-            android:text="@string/scheduler">
+            android:text="@string/scheduler"
+            android:textSize="@dimen/Header2">
+            <!--android:backgroundTint="#FF0000AA"-->
         </Button>
+
 
 
     </LinearLayout>

@@ -7,7 +7,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:gravity="top|center">
+        android:gravity="top|center"
+        android:layout_margin="20dp">
 
         <!-- Logo/App Name. Should scale to the screen's size. -->
         <TextView
@@ -24,8 +25,8 @@
             android:layout_height="wrap_content"
             android:gravity="left|top"
             android:text="@string/scheduler"
-            android:textColor="#0000AA"
             android:textSize="20dp">
+            <!--android:textColor="#0000AA"-->
         </TextView>
 
         <!-- Username Text Field -->
@@ -76,8 +77,8 @@
             android:id="@+id/loginSch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="LOGIN"
-            android:backgroundTint="#FF0000AA">
+            android:text="LOGIN">
+<!--            android:backgroundTint="#FF0000AA"-->
         </Button>
 
         <LinearLayout
@@ -92,15 +93,16 @@
                 android:layout_height="wrap_content"
                 android:gravity="center|top"
                 android:textSize="@dimen/Header2"
-                android:text="@string/needAccount">
+                android:text="@string/needAccount"
+                android:paddingRight="20dp">
             </TextView>
 
             <Button
                 android:id="@+id/createSch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#FF0000AA"
                 android:text="Click here">
+                <!--android:backgroundTint="#FF0000AA"-->
             </Button>
 
         </LinearLayout>

@@ -7,7 +7,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:gravity="top">
+        android:gravity="top"
+        android:layout_margin="20dp">
 
         <!-- Logo/App Name. Should scale to the screen's size. -->
         <TextView
@@ -29,20 +30,20 @@
 
             <Button
                 android:id="@+id/patientLogin"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#FFAA0000"
                 android:text="@string/patient"
-                android:layout_weight="1">
+                android:textSize="@dimen/Header1">
+                <!--android:backgroundTint="#FFAA0000"-->
             </Button>
 
            <Button
                 android:id="@+id/schedulerLogin"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#FF0000AA"
                 android:text="@string/scheduler"
-                android:layout_weight="1">
+               android:textSize="@dimen/Header1">
+               <!--android:backgroundTint="#FF0000AA"-->
             </Button>
 
         </LinearLayout>
@@ -59,15 +60,16 @@
                     android:layout_height="wrap_content"
                     android:gravity="center|top"
                     android:textSize="@dimen/Header2"
-                    android:text="@string/needAccount">
+                    android:text="@string/needAccount"
+                    android:paddingRight="20dp">
                 </TextView>
 
                 <Button
                     android:id="@+id/createGen"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="#FF000000"
                     android:text="Click here">
+                    <!--android:backgroundTint="#FF000000"-->
                 </Button>
 
         </LinearLayout>

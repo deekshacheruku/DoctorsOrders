@@ -5,6 +5,6 @@
     <dimen name="Header2">20dp</dimen>
     <dimen name="Normal">10dp</dimen>
 
-
+    <color name="MainColor">#B100FF</color>
 
 </resources>

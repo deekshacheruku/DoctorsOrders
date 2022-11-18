@@ -6,15 +6,16 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_margin="20dp">
         <!--Header-->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="left"
             android:text="Create Account: Patient"
-            android:textColor="#FFAA0000"
             android:textSize="@dimen/Title">
+            <!--android:textColor="#FFAA0000"-->
         </TextView>
 
         <GridLayout
@@ -138,8 +139,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:backgroundTint="#FFAA0000"
             android:text="@string/next">
+            <!--android:backgroundTint="#FFAA0000"-->
         </Button>
     </LinearLayout>
 
