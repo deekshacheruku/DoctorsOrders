@@ -6,8 +6,9 @@
     <!-- Patient's strings -->
     <string name="patient_db">Patient</string>
     <string name="patient_initial_message">Your next Medicine: </string>
-    <string name="patient_medicine" formatted="true">Medicine: %s</string>
-    <string name="patient_medicine_time" formatted="true">Time: %s</string>
+    <string name="patient_medicine" formatted="true">Name: %s</string>
+    <string name="patient_medicine_time" formatted="true">When: %s</string>
+    <string name="patient_dosage">Dosage: %s</string>
     <string name="description">Medicine Image</string>
     <string name="patient_medicine_instructions">Take it with lunch</string>
     <string name="channel_name">Time to take Medicine!</string>

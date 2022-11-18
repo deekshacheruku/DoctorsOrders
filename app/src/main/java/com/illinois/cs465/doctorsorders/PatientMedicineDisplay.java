@@ -26,6 +26,7 @@ public class PatientMedicineDisplay extends AppCompatActivity implements View.On
 
         Intent intent = getIntent();
         String medicine = intent.getStringExtra("medicine");
+        String dosage = intent.getStringExtra("dosage");
         int index = intent.getIntExtra("index", 0);
 
         setContentView(R.layout.activity_patient_medicine_display_layout);
@@ -35,6 +36,9 @@ public class PatientMedicineDisplay extends AppCompatActivity implements View.On
 
         TextView text = findViewById(R.id.display_text);
         text.setText(R.string.displayInitialText);
+
+        TextView dosageView = findViewById(R.id.patient_dosage);
+        dosageView.setText(getString(R.string.patient_dosage, dosage));
 
         yes_button.setVisibility(View.INVISIBLE);
         no_button.setVisibility(View.INVISIBLE);

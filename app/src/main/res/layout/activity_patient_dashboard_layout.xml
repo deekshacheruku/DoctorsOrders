@@ -29,6 +29,15 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/patient_dosage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/patient_dosage"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <TextView
             android:id="@+id/patient_medicine_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -51,7 +60,7 @@
             android:layout_marginTop="10dp"
             android:text="@string/patient_medicine_instructions"
             android:textSize="30sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
