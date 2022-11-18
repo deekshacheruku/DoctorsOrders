@@ -9,7 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 public class NearbyPatients extends AppCompatActivity {
-    String patientName[] = {"Colin Zhou", "Paul Kipp", "John Smith"};
+    String patientName[] = {"Dave Woods", "Cathie Hodges", "Jim Frost"};
     int profilePic[] = {R.drawable.profile_pic};
 
     ListView listView;

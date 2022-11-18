@@ -10,7 +10,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="top">
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -18,7 +17,6 @@
             android:layout_marginTop="10dp"
             android:text="Set Medication For Colin Zhou"
             android:textSize="20dp" />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -106,12 +104,13 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <EditText
-                android:hint="Instructions"
+                android:hint="Type Instructions..."
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:id="@+id/instructions"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@null"
+                android:background="@drawable/edit_text_border"
+                android:backgroundTint="#1a1515"
                 android:gravity="top"
                 android:inputType="textMultiLine"
                 android:overScrollMode="always"

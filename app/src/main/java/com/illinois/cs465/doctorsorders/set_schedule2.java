@@ -7,6 +7,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -14,6 +15,7 @@ import android.widget.TimePicker;
 
 public class set_schedule2 extends AppCompatActivity {
     private int dose = 0;
+    private String output = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +42,7 @@ public class set_schedule2 extends AppCompatActivity {
             }
         });
 
-        TimePicker datePicker = findViewById(R.id.timePicker);
+//        TimePicker datePicker = findViewById(R.id.timePicker);
 
         Button button = (Button) findViewById(R.id.next_to_confirm);
         button.setOnClickListener(new View.OnClickListener() {
@@ -53,8 +55,9 @@ public class set_schedule2 extends AppCompatActivity {
                 bundleStep2.putString("unit", bundleFromStep1.getString("unit"));
                 bundleStep2.putString("instructions", bundleFromStep1.getString("instructions"));
                 bundleStep2.putString("days", textView.getText().toString());
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    bundleStep2.putString("timeOfDay", "" + datePicker.getHour() + ":" + datePicker.getMinute());
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && output != "") {
+                    bundleStep2.putString("timeOfDay", output);
+//                    bundleStep2.putString("timeOfDay", "" + datePicker.getHour() + ":" + datePicker.getMinute());
                 }
 
                 Intent intentTo3 = new Intent(set_schedule2.this, confirm_medication_3.class);
@@ -62,7 +65,29 @@ public class set_schedule2 extends AppCompatActivity {
                 startActivity(intentTo3);
             }
         });
+    }
 
+    public String onCheckboxClicked(View view) {
+//        String output = "";
+        // Is the view now checked?
+        boolean checked = ((CheckBox) view).isChecked();
 
+        // Check which checkbox was clicked
+        switch(view.getId()) {
+            case R.id.breakfast:
+                if (checked)
+                    output += "Breakfast";
+                // Put some meat on the sandwich
+                break;
+            case R.id.lunch:
+                if (checked)
+                    output += "Lunch";
+                // Cheese me
+            else
+                output += "Dinner";
+                break;
+        }
+
+        return output;
     }
 }
