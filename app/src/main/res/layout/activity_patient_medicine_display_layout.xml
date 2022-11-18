@@ -44,6 +44,16 @@
             android:textAlignment="center"
             android:textSize="30sp" />
 
+        <TextView
+            android:id="@+id/patient_dosage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="@string/patient_dosage"
+            android:textAlignment="center"
+            android:textSize="30sp" />
+
         <ImageView
             android:id="@+id/medicine_image"
             android:layout_width="wrap_content"
