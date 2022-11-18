@@ -6,8 +6,9 @@
     <!-- Patient's strings -->
     <string name="patient_db">Patient</string>
     <string name="patient_initial_message">Your next Medicine: </string>
-    <string name="patient_medicine" formatted="true">Medicine: %s</string>
-    <string name="patient_medicine_time" formatted="true">Time: %s</string>
+    <string name="patient_medicine" formatted="true">Name: %s</string>
+    <string name="patient_medicine_time" formatted="true">When: %s</string>
+    <string name="patient_dosage">Dosage: %s</string>
     <string name="description">Medicine Image</string>
     <string name="patient_medicine_instructions">Take it with lunch</string>
     <string name="channel_name">Time to take Medicine!</string>
@@ -29,9 +30,9 @@
 
     <string name="needAccount">Don\'t have an Account?</string>
 
-    <string name="accessQ1">asdf</string>
-    <string name="accessQ2">asdfasdf</string>
-    <string name="accessQ3">asdfasdfasdf</string>
+    <string name="accessQ1">Do you have problems with reading text on a phone screen?</string>
+    <string name="accessQ2">Do you have problems hearing conversations</string>
+    <string name="accessQ3">Would you like larger text sizes anyway?</string>
 
     <string name="yes">YES</string>
     <string name="no">NO</string>

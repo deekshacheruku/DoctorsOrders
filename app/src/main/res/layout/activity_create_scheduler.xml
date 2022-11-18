@@ -6,15 +6,16 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_margin="20dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="left"
             android:text="Create Account: Scheduler"
-            android:textColor="#FF0000AA"
             android:textSize="@dimen/Title">
+            <!--android:textColor="#FF0000AA"-->
         </TextView>
 
         <GridLayout
@@ -85,8 +86,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:backgroundTint="#FF0000AA"
             android:text="Create Account">
+            <!--android:backgroundTint="#FF0000AA"-->
         </Button>
     </LinearLayout>
 

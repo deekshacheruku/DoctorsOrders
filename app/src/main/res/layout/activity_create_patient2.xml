@@ -7,7 +7,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center|top"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_margin="20dp">
 
 
         <TextView
@@ -101,9 +102,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:backgroundTint="#FFAA0000"
                 android:text="@string/back"
                 android:layout_marginRight="20dp">
+                <!--android:backgroundTint="#FFAA0000"-->
             </Button>
 
             <Button
@@ -111,9 +112,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:backgroundTint="#FFAA0000"
                 android:text="Create Account"
                 android:layout_marginLeft="20dp">
+                <!--android:backgroundTint="#FFAA0000"-->
             </Button>
 
         </LinearLayout>

@@ -6,6 +6,7 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,7 +22,8 @@ public class PatientDashboardActivity extends AppCompatActivity {
     int[] images = {R.drawable.atorvastatin, R.drawable.metformin, R.drawable.simvastatin,
             R.drawable.omeprazole, R.drawable.amlodipine};
     String CHANNEL_ID = "123";
-    String timeForMedicine = "";
+    String timeForMedicine = "Breakfast";
+    String dosageString = "5 oz";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,15 +31,14 @@ public class PatientDashboardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_patient_dashboard_layout);
         int randomMedicine = new Random().nextInt(medicines.length);
 
-        TextView tv = (TextView) findViewById(R.id.patient_medicine);
+        TextView tv = findViewById(R.id.patient_medicine);
         tv.setText(getString(R.string.patient_medicine, medicines[randomMedicine]));
 
         TextView time = findViewById(R.id.patient_medicine_time);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            timeForMedicine = String.valueOf(LocalTime.now().getHour());
-            timeForMedicine += ":" + LocalTime.now().plusMinutes(1).getMinute();
-            time.setText(getString(R.string.patient_medicine_time, timeForMedicine));
-        }
+        time.setText(getString(R.string.patient_medicine_time, timeForMedicine));
+
+        TextView dosage = findViewById(R.id.patient_dosage);
+        dosage.setText(getString(R.string.patient_dosage, dosageString));
 
         ImageView image = findViewById(R.id.patient_medicine_image);
         image.setImageResource(images[randomMedicine]);
@@ -58,6 +59,7 @@ public class PatientDashboardActivity extends AppCompatActivity {
                 Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.putExtra("medicine", medicines[randomMedicine]);
         intent.putExtra("index", randomMedicine);
+        intent.putExtra("dosage", dosageString);
         intent.setAction(medicines[randomMedicine]);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent,
                 PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT);
