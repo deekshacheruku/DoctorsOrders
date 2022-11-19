@@ -81,16 +81,46 @@
             android:id="@+id/confirm_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Every 10 days at HH::MM"
+            android:text="Every 10 days at"
             android:layout_marginTop="60dp"
             android:layout_marginLeft="100dp"
             android:textSize="18dp"
             />
         <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="100dp">
+            <CheckBox
+                android:id="@+id/breakfast"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Breakfast"
+                android:clickable="false"
+                />
+
+            <CheckBox
+                android:id="@+id/lunch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lunch"
+                android:clickable="false"
+                />
+
+            <CheckBox
+                android:id="@+id/dinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dinner"
+                android:clickable="false"
+                />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="100dp">
+            android:layout_marginTop="60dp">
 
             <Button
                 android:id="@+id/editBtn"

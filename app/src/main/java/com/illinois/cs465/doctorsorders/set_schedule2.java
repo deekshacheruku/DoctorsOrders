@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -15,12 +16,14 @@ import android.widget.TimePicker;
 
 public class set_schedule2 extends AppCompatActivity {
     private int dose = 0;
-    private String output = "";
+    private String checkedBreakfast = "";
+    private String checkedLunch = "";
+    private String checkedDinner = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_schedule2);
-//        button.setOnClickListener(view -> startActivity(new Intent(set_schedule2.this, confirm_medication_3.class)));
 
         TextView textView = (TextView) findViewById(R.id.daysNum);
 
@@ -42,8 +45,6 @@ public class set_schedule2 extends AppCompatActivity {
             }
         });
 
-//        TimePicker datePicker = findViewById(R.id.timePicker);
-
         Button button = (Button) findViewById(R.id.next_to_confirm);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,10 +56,10 @@ public class set_schedule2 extends AppCompatActivity {
                 bundleStep2.putString("unit", bundleFromStep1.getString("unit"));
                 bundleStep2.putString("instructions", bundleFromStep1.getString("instructions"));
                 bundleStep2.putString("days", textView.getText().toString());
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && output != "") {
-                    bundleStep2.putString("timeOfDay", output);
-//                    bundleStep2.putString("timeOfDay", "" + datePicker.getHour() + ":" + datePicker.getMinute());
-                }
+
+                bundleStep2.putString("breakfast", checkedBreakfast);
+                bundleStep2.putString("lunch", checkedLunch);
+                bundleStep2.putString("dinner", checkedDinner);
 
                 Intent intentTo3 = new Intent(set_schedule2.this, confirm_medication_3.class);
                 intentTo3.putExtras(bundleStep2);
@@ -67,8 +68,7 @@ public class set_schedule2 extends AppCompatActivity {
         });
     }
 
-    public String onCheckboxClicked(View view) {
-//        String output = "";
+    public void onCheckboxClicked(View view) {
         // Is the view now checked?
         boolean checked = ((CheckBox) view).isChecked();
 
@@ -76,18 +76,17 @@ public class set_schedule2 extends AppCompatActivity {
         switch(view.getId()) {
             case R.id.breakfast:
                 if (checked)
-                    output += "Breakfast";
-                // Put some meat on the sandwich
+                    checkedBreakfast += "true";
                 break;
             case R.id.lunch:
                 if (checked)
-                    output += "Lunch";
-                // Cheese me
-            else
-                output += "Dinner";
+                    checkedLunch += "true";
+                break;
+            case R.id.dinner:
+                if (checked)
+                    checkedDinner += "true";
                 break;
         }
 
-        return output;
     }
 }
