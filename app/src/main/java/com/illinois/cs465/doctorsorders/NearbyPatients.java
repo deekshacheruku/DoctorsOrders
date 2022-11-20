@@ -9,6 +9,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class NearbyPatients extends AppCompatActivity {
     String patientName[] = {"Dave Woods", "Cathie Hodges", "Jim Frost"};
     int profilePic[] = {R.drawable.profile_pic};
@@ -22,7 +25,7 @@ public class NearbyPatients extends AppCompatActivity {
 
         setContentView(R.layout.activity_nearby_patients);
         listView = (ListView) findViewById(R.id.patientList);
-        ProfileAdapter adapter = new ProfileAdapter(getApplicationContext(), patientName);
+        ProfileAdapter adapter = new ProfileAdapter(getApplicationContext(), new ArrayList<>(Arrays.asList(patientName)));
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

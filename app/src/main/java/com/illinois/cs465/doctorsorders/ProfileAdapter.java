@@ -9,25 +9,33 @@ import android.content.Context;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class ProfileAdapter extends BaseAdapter {
     Context context;
-    String names[];
+    ArrayList<String> nameList;
     LayoutInflater inflater;
 
-    public ProfileAdapter(Context ctx, String[] nameList) {
+    public ProfileAdapter(Context ctx, ArrayList<String> nameList) {
         this.context = ctx;
-        this.names = nameList;
+        this.nameList = nameList;
         inflater = LayoutInflater.from(ctx);
     }
 
+//    public ProfileAdapter(Context ctx, ArrayList<String> nameList) {
+//        this.context = ctx;
+//        this.nameList = nameList;
+//        inflater = LayoutInflater.from(ctx);
+//    }
+
     @Override
     public int getCount() {
-        return names.length;
+        return nameList.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return names[i];
+        return nameList.get(i);
     }
 
     @Override
@@ -40,7 +48,7 @@ public class ProfileAdapter extends BaseAdapter {
         view = inflater.inflate(R.layout.activity_custom_patient_list_view, null);
         TextView textview = (TextView) view.findViewById(R.id.patientItem);
 //        textview.setOnClickListener(view -> context.startActivity(new Intent(ProfileAdapter.this, DashboardActivity.class));
-        textview.setText(names[i]);
+        textview.setText(nameList.get(i));
         return view;
     }
 }

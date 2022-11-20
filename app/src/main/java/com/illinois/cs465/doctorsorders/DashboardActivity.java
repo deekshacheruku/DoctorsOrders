@@ -2,6 +2,7 @@ package com.illinois.cs465.doctorsorders;
 import static android.widget.Toast.LENGTH_SHORT;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,21 +16,27 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DashboardActivity extends AppCompatActivity {
-    String patientName[] = {"Colin Zhou", "Paul Kipp", "John Smith"};
+//    String patientName[] = {"Colin Zhou", "Paul Kipp", "John Smith"};
+    ArrayList<String> patientList;
     int profilePic[] = {R.drawable.profile_pic};
-
+    DatabaseHelper databaseHelper;
     ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.caretaker_dashboard_layout);
+        databaseHelper = new DatabaseHelper(this);
 
         listView = (ListView) findViewById(R.id.patientList);
-        ProfileAdapter adapter = new ProfileAdapter(getApplicationContext(), patientName);
+
+        populatePatientsList();
+
+        ProfileAdapter adapter = new ProfileAdapter(getApplicationContext(), patientList);
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -45,5 +52,19 @@ public class DashboardActivity extends AppCompatActivity {
         });
 
         Button addButton = findViewById(R.id.addPatientBtn);
-        addButton.setOnClickListener(view -> startActivity(new Intent(DashboardActivity.this, NearbyPatients.class)));    }
+        addButton.setOnClickListener(view -> startActivity(new Intent(DashboardActivity.this, NearbyPatients.class)));
+    }
+
+    private void populatePatientsList() {
+        Log.d("populating: ", "true");
+        ArrayList<String> patients = new ArrayList<>();
+        Cursor data = databaseHelper.getAllAssignedPatients();
+        while (data.moveToNext()) {
+            String firstName = data.getString(2);
+            String lastName = data.getString(3);
+            String fullName = "" + firstName + " " + lastName;
+            patients.add(fullName);
+        }
+        patientList = patients;
+    }
 }

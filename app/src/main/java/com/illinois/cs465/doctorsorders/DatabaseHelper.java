@@ -2,6 +2,7 @@ package com.illinois.cs465.doctorsorders;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
@@ -48,5 +49,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             Log.d("1", "this is true");
             return true;
         }
+    }
+
+    public Cursor getAllAssignedPatients() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE_NAME;
+        Cursor data = db.rawQuery(query, null);
+        return data;
     }
 }
