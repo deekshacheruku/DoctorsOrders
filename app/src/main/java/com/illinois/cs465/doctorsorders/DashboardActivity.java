@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,12 +20,13 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DashboardActivity extends AppCompatActivity {
-//    String patientName[] = {"Colin Zhou", "Paul Kipp", "John Smith"};
+public class DashboardActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
     ArrayList<String> patientList;
     int profilePic[] = {R.drawable.profile_pic};
     DatabaseHelper databaseHelper;
+    ProfileAdapter adapter;
     ListView listView;
+    SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +38,11 @@ public class DashboardActivity extends AppCompatActivity {
 
         populatePatientsList();
 
-        ProfileAdapter adapter = new ProfileAdapter(getApplicationContext(), patientList);
+        adapter = new ProfileAdapter(getApplicationContext(), patientList);
         listView.setAdapter(adapter);
+
+        searchView = (SearchView) findViewById(R.id.search_view);
+        searchView.setOnQueryTextListener(this);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -66,5 +71,17 @@ public class DashboardActivity extends AppCompatActivity {
             patients.add(fullName);
         }
         patientList = patients;
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String s) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String s) {
+        String query = s;
+        adapter.filterPatientsByQuery(query);
+        return false;
     }
 }
