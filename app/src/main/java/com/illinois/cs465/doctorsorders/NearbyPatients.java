@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class NearbyPatients extends AppCompatActivity {
-    String patientName[] = {"Dave Woods", "Cathie Hodges", "Jim Frost"};
+    String patientName[] = {"Dave Woods", "Cathie Hodges", "Jim Frost", "Timothy Smith"};
     int profilePic[] = {R.drawable.profile_pic};
     DatabaseHelper databaseHelper;
 

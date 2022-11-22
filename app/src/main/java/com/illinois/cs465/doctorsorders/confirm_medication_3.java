@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
@@ -13,10 +14,14 @@ import org.w3c.dom.Text;
 
 public class confirm_medication_3 extends AppCompatActivity {
 
+    DatabaseHelper databaseHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm_medication3);
+
+        databaseHelper = new DatabaseHelper(this);
 
         Button editBtn = (Button) findViewById(R.id.editBtn);
         editBtn.setOnClickListener(view -> startActivity(new Intent(confirm_medication_3.this, set_medication_1.class)));
@@ -47,15 +52,22 @@ public class confirm_medication_3 extends AppCompatActivity {
         TextView instrucView = findViewById(R.id.confirm_instructions);
 
         nameView.setText("Name: " + bundleStep2.getString("patientName"));
-        doseView.setText("Dose: " + bundleStep2.getString("doseNumber") + " " + bundleStep2.getString("unit"));
+        doseView.setText("Pill Number: " + bundleStep2.getString("pillNumber"));
         instrucView.setText("Instructions: \n" + bundleStep2.getString("instructions").toString());
 
         Bundle finalInfoBundle = new Bundle(bundleStep2);
 
         Intent intent = new Intent(confirm_medication_3.this, patient_medication_schedule.class);
-        finalInfoBundle.putString("confirmed", "true");
+//        finalInfoBundle.putString("confirmed", "true");
         intent.putExtras(finalInfoBundle);
-        confirm.setOnClickListener(view -> startActivity(intent));
+
+        confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                databaseHelper.addNewSchedule(finalInfoBundle);
+                startActivity(intent);
+            }
+        });
     }
 }
 

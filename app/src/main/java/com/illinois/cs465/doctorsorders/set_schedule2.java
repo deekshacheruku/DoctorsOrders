@@ -52,8 +52,7 @@ public class set_schedule2 extends AppCompatActivity {
                 Bundle bundleFromStep1 = getIntent().getExtras();
                 Bundle bundleStep2 = new Bundle();
                 bundleStep2.putString("patientName", bundleFromStep1.getString("patientName"));
-                bundleStep2.putString("doseNumber", bundleFromStep1.getString("doseNumber"));
-                bundleStep2.putString("unit", bundleFromStep1.getString("unit"));
+                bundleStep2.putString("pillNumber", bundleFromStep1.getString("pillNumber"));
                 bundleStep2.putString("instructions", bundleFromStep1.getString("instructions"));
                 bundleStep2.putString("days", textView.getText().toString());
 
