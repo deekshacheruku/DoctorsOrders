@@ -12,20 +12,30 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class confirm_medication_3 extends AppCompatActivity {
 
     DatabaseHelper databaseHelper;
+    List<String> specific_times = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm_medication3);
 
+        CheckBox breakfastCheckBox = (CheckBox) findViewById(R.id.breakfast);
+        CheckBox lunchCheckBox = (CheckBox) findViewById(R.id.lunch);
+        CheckBox dinnerCheckBox = (CheckBox) findViewById(R.id.dinner);
+
+        breakfastCheckBox.setChecked(false);
+        lunchCheckBox.setChecked(false);
+        dinnerCheckBox.setChecked(false);
+
         databaseHelper = new DatabaseHelper(this);
 
         Button editBtn = (Button) findViewById(R.id.editBtn);
-        editBtn.setOnClickListener(view -> startActivity(new Intent(confirm_medication_3.this, set_medication_1.class)));
-
         Button confirm = (Button) findViewById(R.id.confirm);
 
         Bundle bundleStep2 = getIntent().getExtras(); // bundle from step 2
@@ -36,30 +46,43 @@ public class confirm_medication_3 extends AppCompatActivity {
 
         if (bundleStep2.getString("breakfast").contains("true")) {
             breakfastCheck.setChecked(true);
+            specific_times.add("breakfast");
         }
 
         if (bundleStep2.getString("lunch").contains("true")) {
             Log.d("Lunch", bundleStep2.getString("lunch"));
             lunchCheck.setChecked(true);
+            specific_times.add("lunch");
         }
 
         if (bundleStep2.getString("dinner").contains("true")) {
             dinnerCheck.setChecked(true);
+            specific_times.add("dinner");
         }
 
         TextView nameView = findViewById(R.id.confirm_patient_name);
         TextView doseView = findViewById(R.id.confirm_dose);
         TextView instrucView = findViewById(R.id.confirm_instructions);
+        TextView confirm_date_view = findViewById(R.id.confirm_date);
 
         nameView.setText("Name: " + bundleStep2.getString("patientName"));
         doseView.setText("Pill Number: " + bundleStep2.getString("pillNumber"));
         instrucView.setText("Instructions: \n" + bundleStep2.getString("instructions").toString());
+        confirm_date_view.setText("Every " + bundleStep2.getString("days") + " days at");
 
         Bundle finalInfoBundle = new Bundle(bundleStep2);
 
+        String store_specific_time_string = String.join(", ", specific_times);
+        finalInfoBundle.putString("specific_time", store_specific_time_string);
+
         Intent intent = new Intent(confirm_medication_3.this, patient_medication_schedule.class);
-//        finalInfoBundle.putString("confirmed", "true");
         intent.putExtras(finalInfoBundle);
+
+        Bundle editInfoBundle = new Bundle();
+        editInfoBundle.putString("patientName", bundleStep2.getString("patientName"));
+
+        Intent editIntent = new Intent(confirm_medication_3.this, set_medication_1.class);
+        editIntent.putExtras(editInfoBundle);
 
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,7 +91,12 @@ public class confirm_medication_3 extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        editBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(editIntent);
+            }
+        });
     }
 }
-
-//final bundle is submitted to backend after submit is clicked

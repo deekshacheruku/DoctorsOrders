@@ -63,6 +63,7 @@ public class set_schedule2 extends AppCompatActivity {
                 Intent intentTo3 = new Intent(set_schedule2.this, confirm_medication_3.class);
                 intentTo3.putExtras(bundleStep2);
                 startActivity(intentTo3);
+
             }
         });
     }

@@ -47,18 +47,21 @@ public class set_medication_1 extends AppCompatActivity {
 
         Button button = (Button) findViewById(R.id.next_to_schedule);
 
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Bundle dashboardBundle = getIntent().getExtras();
+                Bundle step_one_received_bundle = getIntent().getExtras();
 
                 Bundle bundle = new Bundle();
-                bundle.putString("patientName", dashboardBundle.getString("patientName"));
+
+                bundle.putString("patientName", step_one_received_bundle.getString("patientName"));
                 bundle.putString("pillNumber", textView.getText().toString());
-//                bundle.putString("unit", spinner.getSelectedItem().toString());
                 bundle.putString("instructions", text.getText().toString());
+
                 Intent intent = new Intent(set_medication_1.this, set_schedule2.class);
                 intent.putExtras(bundle);
+
                 startActivity(intent);
             }
         });

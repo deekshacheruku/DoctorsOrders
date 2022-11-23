@@ -12,7 +12,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     String[] medicines = {"Atorvastatin", "Metformin", "Simvastatin", "Omeprazole", "Amlodipine"};
 
     // If you change the database schema, you must increment the database version.
-    public static final int DATABASE_VERSION = 1;
+    public static final int DATABASE_VERSION = 2;
     public static final String DATABASE_NAME = "DoctorsOrders.db";
 
     private static final String SCHEDULER_PATIENTS_TABLE = "Scheduler_Patients_List";
@@ -45,7 +45,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 MEDICINES_TABLE_MED_NAME + " TEXT, " + MEDICINES_TABLE_MED_PICTURE + " BLOB)";
 
         String createScheduleTable = "CREATE TABLE " + SCHEDULES_TABLE + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                SCHEDULES_TABLE_MED_NAME + " TEXT, " + SCHEDULES_TABLE_NUMBER_PILLS + " INTEGER, " +
+                SCHEDULES_TABLE_MED_NAME + " TEXT, " + SCHEDULES_TABLE_NUMBER_PILLS + " TEXT, " +
                 SCHEDULES_TABLE_INSTRUCTIONS + " TEXT, " + SCHEDULES_TABLE_DAY_FREQUENCY + " INTEGER, " + SCHEDULES_TABLE_SPECIFIC_TIME + " TEXT)";
 
         db.execSQL(createPatientsListTable);
@@ -76,7 +76,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     /**
-     * Add new schedule is in progress.
+     * THE MEDICINE NAME IS HARDCODED RIGHT NOW!
      * @param bundle
      * @return
      */
@@ -84,6 +84,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public boolean addNewSchedule(Bundle bundle) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
+        contentValues.put(SCHEDULES_TABLE_MED_NAME, "MedFormin");
+        contentValues.put(SCHEDULES_TABLE_INSTRUCTIONS, bundle.getString("instructions"));
+        contentValues.put(SCHEDULES_TABLE_DAY_FREQUENCY, bundle.getString("days"));
+        contentValues.put(SCHEDULES_TABLE_NUMBER_PILLS, bundle.getString("pillNumber"));
+        contentValues.put(SCHEDULES_TABLE_SPECIFIC_TIME, bundle.getString("specific_time"));
 
 //        contentValues.put(SCHEDULES_TABLE_MED_NAME, bundle.getString());
         long result = db.insert(SCHEDULES_TABLE, null, contentValues);
@@ -91,9 +96,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (result == -1) {
             return false;
         } else {
+            Log.d("1", "New Schedule inserted!");
             return true;
         }
-
     }
 
     public boolean addNearbyPatient(Bundle bundle) {
