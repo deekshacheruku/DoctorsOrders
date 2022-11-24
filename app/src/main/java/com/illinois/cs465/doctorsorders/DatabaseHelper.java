@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteTransactionListener;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -12,7 +13,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     String[] medicines = {"Atorvastatin", "Metformin", "Simvastatin", "Omeprazole", "Amlodipine"};
 
     // If you change the database schema, you must increment the database version.
-    public static final int DATABASE_VERSION = 2;
+    public static final int DATABASE_VERSION = 3;
     public static final String DATABASE_NAME = "DoctorsOrders.db";
 
     private static final String SCHEDULER_PATIENTS_TABLE = "Scheduler_Patients_List";
@@ -20,7 +21,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String SCHEDULER_PATIENTS_TABLE_PATIENT_FIRST_NAME = "Patient_First_Name";
     private static final String SCHEDULER_PATIENTS_TABLE_PATIENT_LAST_NAME = "Patient_Last_Name";
 
+
     private static final String SCHEDULES_TABLE = "Registered_Schedules";
+    private static final String SCHEDULES_TABLE_PATIENT_NAME = "Patient_Name";
     private static final String SCHEDULES_TABLE_MED_NAME = "Medicine_Name";
     private static final String SCHEDULES_TABLE_NUMBER_PILLS = "Number_Pills";
     private static final String SCHEDULES_TABLE_INSTRUCTIONS = "Instructions";
@@ -44,7 +47,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String createMedicineTable = "CREATE TABLE " + MEDICINES_TABLE + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 MEDICINES_TABLE_MED_NAME + " TEXT, " + MEDICINES_TABLE_MED_PICTURE + " BLOB)";
 
-        String createScheduleTable = "CREATE TABLE " + SCHEDULES_TABLE + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
+        String createScheduleTable = "CREATE TABLE " + SCHEDULES_TABLE + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " + SCHEDULES_TABLE_PATIENT_NAME + " TEXT, " +
                 SCHEDULES_TABLE_MED_NAME + " TEXT, " + SCHEDULES_TABLE_NUMBER_PILLS + " TEXT, " +
                 SCHEDULES_TABLE_INSTRUCTIONS + " TEXT, " + SCHEDULES_TABLE_DAY_FREQUENCY + " INTEGER, " + SCHEDULES_TABLE_SPECIFIC_TIME + " TEXT)";
 
@@ -54,6 +57,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + SCHEDULER_PATIENTS_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + SCHEDULES_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + MEDICINES_TABLE);
+
         onCreate(db);
     }
 
@@ -63,7 +69,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         for (String med : medicines) {
             contentValues.put(MEDICINES_TABLE, med);
-//            contentValues.put();, image would be put here
         }
 
         long result = db.insert(MEDICINES_TABLE, null, contentValues);
@@ -84,6 +89,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public boolean addNewSchedule(Bundle bundle) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
+        contentValues.put(SCHEDULES_TABLE_PATIENT_NAME, bundle.getString("patientName"));
         contentValues.put(SCHEDULES_TABLE_MED_NAME, "MedFormin");
         contentValues.put(SCHEDULES_TABLE_INSTRUCTIONS, bundle.getString("instructions"));
         contentValues.put(SCHEDULES_TABLE_DAY_FREQUENCY, bundle.getString("days"));
@@ -125,4 +131,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor data = db.rawQuery(query, null);
         return data;
     }
+
+    public Cursor getAllMedNameFrequencySchedules(String patientName) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT " + SCHEDULES_TABLE_MED_NAME + ", " + SCHEDULES_TABLE_DAY_FREQUENCY + " FROM " + SCHEDULES_TABLE + " WHERE " + SCHEDULES_TABLE_PATIENT_NAME + " = \"" + patientName + "\"";
+        Cursor data = db.rawQuery(query, null);
+        return data;
+    }
+
+//    public Cursor getAllMedScheduleInformation(String patientName) {
+//        SQLiteDatabase db = this.getWritableDatabase();
+////        String query = "SELECT * FROM " + SCHEDULES_TABLE + " WHERE " + SCHEDULES_TABLE_PATIENT_NAME + " = \"" + patientName + "\" AND ";
+//        Cursor data = db.rawQuery(query, null);
+//        return data;
+//    }
+
 }

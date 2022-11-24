@@ -70,7 +70,9 @@ public class confirm_medication_3 extends AppCompatActivity {
         instrucView.setText("Instructions: \n" + bundleStep2.getString("instructions").toString());
         confirm_date_view.setText("Every " + bundleStep2.getString("days") + " days at");
 
-        Bundle finalInfoBundle = new Bundle(bundleStep2);
+        Bundle finalInfoBundle = new Bundle(bundleStep2); //bundle with information to be submitted to db
+
+        Log.d("Schedule", bundleStep2.getString("patientName"));
 
         String store_specific_time_string = String.join(", ", specific_times);
         finalInfoBundle.putString("specific_time", store_specific_time_string);
@@ -78,7 +80,7 @@ public class confirm_medication_3 extends AppCompatActivity {
         Intent intent = new Intent(confirm_medication_3.this, patient_medication_schedule.class);
         intent.putExtras(finalInfoBundle);
 
-        Bundle editInfoBundle = new Bundle();
+        Bundle editInfoBundle = new Bundle(); //bundle with info for edit stage
         editInfoBundle.putString("patientName", bundleStep2.getString("patientName"));
 
         Intent editIntent = new Intent(confirm_medication_3.this, set_medication_1.class);
