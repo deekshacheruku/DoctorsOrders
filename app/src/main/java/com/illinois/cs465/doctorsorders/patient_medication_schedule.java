@@ -16,7 +16,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class patient_medication_schedule extends AppCompatActivity {
-//    String medicationList[] = {"Metformin        2x/day"};
     ArrayList<String> schedulesList;
     ListView listView;
     DatabaseHelper databaseHelper;
@@ -30,21 +29,11 @@ public class patient_medication_schedule extends AppCompatActivity {
 
         bundle = getIntent().getExtras();
 
-        if (bundle.getString("confirmed") != null) {
+        String stuff = bundle.getString("patientName");
+        Log.d("patientName schedule is", stuff);
 
-//            LinearLayout linearLayout = (LinearLayout)findViewById(R.id.name);
-
-            TextView nameView = findViewById(R.id.schedule_for);
-            nameView.setText("Schedule For: Colin Zhou");
-
-        } else { //if patientName exists and submit button has been pressed
-
-            String stuff = bundle.getString("patientName");
-            Log.d("patientName schedule is", stuff);
-
-            TextView nameView = findViewById(R.id.schedule_for);
-            nameView.setText("Schedule For: " + stuff);
-        }
+        TextView nameView = findViewById(R.id.schedule_for);
+        nameView.setText("Schedule For: " + stuff);
 
         listView = (ListView) findViewById(R.id.medicationList);
 
@@ -60,9 +49,12 @@ public class patient_medication_schedule extends AppCompatActivity {
                 Log.d("clicked item info", medName.toString());
 
                 Bundle bundleForMedicineInfo = new Bundle();
-                bundleForMedicineInfo.putString("medicine name", medName.toString());
+                bundleForMedicineInfo.putString("medicineName", medName.toString());
+                bundleForMedicineInfo.putString("patientName", bundle.getString("patientName"));
+
                 Intent intent = new Intent(patient_medication_schedule.this, medicine_info.class);
                 intent.putExtras(bundleForMedicineInfo);
+
                 startActivity(intent);
             }
         });

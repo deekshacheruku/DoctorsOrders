@@ -139,7 +139,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return data;
     }
 
-//    public Cursor getAllMedScheduleInformation(String patientName) {
+//    public Cursor getAllMedScheduleInformation(String patientName, String med_name, String frequency) {
 //        SQLiteDatabase db = this.getWritableDatabase();
 ////        String query = "SELECT * FROM " + SCHEDULES_TABLE + " WHERE " + SCHEDULES_TABLE_PATIENT_NAME + " = \"" + patientName + "\" AND ";
 //        Cursor data = db.rawQuery(query, null);
