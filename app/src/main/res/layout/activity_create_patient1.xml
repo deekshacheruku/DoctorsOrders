@@ -1,99 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_margin="20dp"
         android:orientation="vertical"
-        android:layout_margin="20dp">
+        tools:layout_editor_absoluteX="42dp"
+        tools:layout_editor_absoluteY="16dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <!--Friends/Family Header-->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Friends/Family"
-                android:textSize="@dimen/Header1"
                 android:layout_gravity="left"
-                android:layout_weight="1">
-            </TextView>
+                android:layout_weight="1"
+                android:text="Friends/Family"
+                android:textSize="@dimen/Header1"></TextView>
 
             <Button
+                android:id="@+id/addFamFriend"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ADD +"
                 android:layout_gravity="right"
-                android:id="@+id/addFamFriend">
-            </Button>
+                android:text="ADD +"></Button>
 
         </LinearLayout>
 
-    <!--Friends/Family Information-->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/famFriendList">
-
-        <GridLayout
+        <!--Friends/Family Information-->
+        <LinearLayout
+            android:id="@+id/famFriendList"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:columnCount="2"
-            android:rowCount="3">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Name"
-                android:layout_column="0"
-                android:layout_row="0"
-                />
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="1"
-                android:layout_row="0"
-                android:layout_columnWeight="1"
-                />
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:columnCount="2"
+                android:rowCount="3">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Relation"
-                android:layout_column="0"
-                android:layout_row="1"
-                />
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="1"
-                android:layout_row="1"
-                android:layout_columnWeight="1"
-                />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="0"
+                    android:layout_column="0"
+                    android:text="Name" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Phone Number"
-                android:layout_column="0"
-                android:layout_row="2"
-                />
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="0"
+                    android:layout_column="1"
+                    android:layout_columnWeight="1" />
 
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="1"
-                android:layout_row="2"
-                android:layout_columnWeight="1"
-                />
-        </GridLayout>
-    </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="1"
+                    android:layout_column="0"
+                    android:text="Relation" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="1"
+                    android:layout_column="1"
+                    android:layout_columnWeight="1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="2"
+                    android:layout_column="0"
+                    android:text="Phone Number" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="2"
+                    android:layout_column="1"
+                    android:layout_columnWeight="1" />
+            </GridLayout>
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -106,8 +104,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/back"
-                android:layout_marginRight="20dp">
+                android:layout_marginRight="20dp"
+                android:text="@string/back">
                 <!--android:backgroundTint="#FFAA0000"-->
             </Button>
 
@@ -117,9 +115,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
 
-                android:text="@string/next"
-                android:layout_marginLeft="20dp">
-            <!--android:backgroundTint="#FFAA0000"-->
+                android:layout_marginLeft="20dp"
+                android:text="@string/next">
+                <!--android:backgroundTint="#FFAA0000"-->
             </Button>
 
         </LinearLayout>
