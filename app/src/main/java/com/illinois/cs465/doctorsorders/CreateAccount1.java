@@ -22,9 +22,11 @@ public class CreateAccount1 extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_create_patient1);
         Button nextBtn = (Button) findViewById(R.id.nextCreate);
         Button backBtn = (Button) findViewById(R.id.backCreate);
+        Button addBtn = (Button) findViewById(R.id.addFamFriend);
 
         nextBtn.setOnClickListener(this);
         backBtn.setOnClickListener(this);
+        addBtn.setOnClickListener(this);
 
         famFriendList = (LinearLayout) findViewById(R.id.famFriendList);
     }
@@ -46,8 +48,8 @@ public class CreateAccount1 extends AppCompatActivity implements View.OnClickLis
         else if(v.getId() == R.id.addFamFriend)
         {
             LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View entry = inflater.inflate(R.layout.fam_friend_entry,null);
-            famFriendList.addView(entry, -1);
+            final View entry = inflater.inflate(R.layout.fam_friend_entry,null);
+            famFriendList.addView(entry);
         }
     }
 }
