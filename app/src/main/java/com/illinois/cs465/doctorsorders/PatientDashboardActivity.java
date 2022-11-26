@@ -80,6 +80,7 @@ public class PatientDashboardActivity extends AppCompatActivity {
         intent.putExtra("medicine", medName);
         intent.putExtra("pills", pills);
         intent.putExtra("instructions", instructions);
+        intent.putExtra("patientName", patient);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent,
                 PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT);
 
