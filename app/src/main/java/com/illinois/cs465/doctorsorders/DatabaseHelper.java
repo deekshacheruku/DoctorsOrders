@@ -134,16 +134,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public Cursor getAllMedNameFrequencySchedules(String patientName) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT " + SCHEDULES_TABLE_MED_NAME + ", " + SCHEDULES_TABLE_DAY_FREQUENCY + " FROM " + SCHEDULES_TABLE + " WHERE " + SCHEDULES_TABLE_PATIENT_NAME + " = \"" + patientName + "\"";
+        String query = "SELECT ID, " + SCHEDULES_TABLE_MED_NAME + ", " + SCHEDULES_TABLE_DAY_FREQUENCY + " FROM " + SCHEDULES_TABLE + " WHERE " + SCHEDULES_TABLE_PATIENT_NAME + " = \"" + patientName + "\"";
         Cursor data = db.rawQuery(query, null);
         return data;
     }
 
-//    public Cursor getAllMedScheduleInformation(String patientName, String med_name, String frequency) {
-//        SQLiteDatabase db = this.getWritableDatabase();
-////        String query = "SELECT * FROM " + SCHEDULES_TABLE + " WHERE " + SCHEDULES_TABLE_PATIENT_NAME + " = \"" + patientName + "\" AND ";
-//        Cursor data = db.rawQuery(query, null);
-//        return data;
-//    }
-
+    public Cursor getAllMedScheduleInformation(Long recordId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM " + SCHEDULES_TABLE + " WHERE ID = " + recordId;
+        Cursor data = db.rawQuery(query, null);
+        return data;
+    }
 }

@@ -19,6 +19,7 @@
             android:textSize="23dp"
             android:text="Colin Zhou: Metformin"/>
         <TextView
+            android:id="@+id/medName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
@@ -26,6 +27,7 @@
             android:textSize="23dp"
             android:text="Medicine Name: Metformin" />
         <TextView
+            android:id="@+id/pillNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -33,6 +35,7 @@
             android:textSize="23dp"
             android:text="Dose: 5oz" />
         <TextView
+            android:id="@+id/instructions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -40,6 +43,7 @@
             android:textSize="23dp"
             android:text="Instructions: take during breakfast" />
         <TextView
+            android:id="@+id/dayFrequency"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -47,6 +51,7 @@
             android:textSize="23dp"
             android:text="Every 4 days at Breakfast" />
         <TextView
+            android:id="@+id/specificTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"

@@ -32,7 +32,7 @@ public class RegisteredSchedulesAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int i) {
-        return 0;
+        return (long) Integer.parseInt("" + registered_schedules.get(i).charAt(0));
     }
 
     //using the patient list view to fill out the list for registered schedules
@@ -40,7 +40,7 @@ public class RegisteredSchedulesAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         view = inflater.inflate(R.layout.activity_custom_patient_list_view, null);
         TextView textview = (TextView) view.findViewById(R.id.patientItem);
-        textview.setText(registered_schedules.get(i));
+        textview.setText(registered_schedules.get(i).substring(1));
         return view;
     }
 }

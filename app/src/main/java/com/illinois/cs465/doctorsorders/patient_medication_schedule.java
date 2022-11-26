@@ -46,11 +46,14 @@ public class patient_medication_schedule extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Object medName = adapterView.getItemAtPosition(i);
+                Log.d("entry id", "" + adapter.getItemId(i));
+
                 Log.d("clicked item info", medName.toString());
 
                 Bundle bundleForMedicineInfo = new Bundle();
                 bundleForMedicineInfo.putString("medicineName", medName.toString());
                 bundleForMedicineInfo.putString("patientName", bundle.getString("patientName"));
+                bundleForMedicineInfo.putLong("recordId", adapter.getItemId(i));
 
                 Intent intent = new Intent(patient_medication_schedule.this, medicine_info.class);
                 intent.putExtras(bundleForMedicineInfo);
@@ -79,9 +82,11 @@ public class patient_medication_schedule extends AppCompatActivity {
         ArrayList<String> schedules = new ArrayList<>();
         Cursor data = databaseHelper.getAllMedNameFrequencySchedules(bundle.getString("patientName"));
         while (data.moveToNext()) {
-            String medName = data.getString(0);
-            String frequency = "" + data.getString(1) + " times per day" ;
-            String finalInfo = "" + medName + "       " + frequency;
+            Integer recordID = data.getInt(0);
+            Log.d("id: ", recordID.toString());
+            String medName = data.getString(1);
+            String frequency = "" + data.getString(2) + " times per day" ;
+            String finalInfo = "" + recordID.toString() + "" + medName + "       " + frequency;
 
             Log.d("final schedule str ", finalInfo);
 
