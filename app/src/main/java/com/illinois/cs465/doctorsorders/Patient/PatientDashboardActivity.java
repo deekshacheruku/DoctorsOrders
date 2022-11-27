@@ -1,5 +1,6 @@
 package com.illinois.cs465.doctorsorders.Patient;
 
+import android.app.AlarmManager;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -13,13 +14,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
 
 import com.illinois.cs465.doctorsorders.DatabaseHelper;
 import com.illinois.cs465.doctorsorders.R;
 
-import java.util.Random;
+import java.util.ArrayList;
 
 public class PatientDashboardActivity extends AppCompatActivity {
     DatabaseHelper databaseHelper;
@@ -51,7 +50,8 @@ public class PatientDashboardActivity extends AppCompatActivity {
         }
 
         setTextViews();
-        createNotification();
+        createNotificationChannel();
+        createNotificationReminder();
     }
 
     private void setTextViews() {
@@ -76,18 +76,7 @@ public class PatientDashboardActivity extends AppCompatActivity {
         }
     }
 
-    private void createNotification() {
-        Intent intent = new Intent(this, PatientMedicineDisplay.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
-                Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.putExtra("medicine", medName);
-        intent.putExtra("pills", pills);
-        intent.putExtra("instructions", instructions);
-        intent.putExtra("patientName", patient);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent,
-                PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT);
-
-
+    private void createNotificationChannel() {
         CharSequence name = getString(R.string.channel_name);
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             int importance = NotificationManager.IMPORTANCE_DEFAULT;
@@ -96,18 +85,45 @@ public class PatientDashboardActivity extends AppCompatActivity {
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
         }
+    }
 
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
-                .setContentTitle("Time to take Medicine!")
-                .setContentText(medName)
-                .setStyle(new NotificationCompat.BigTextStyle().bigText(medName))
-                .setPriority(NotificationCompat.PRIORITY_MAX)
-                .setSmallIcon(R.drawable.amlodipine)
-                .setContentIntent(pendingIntent)
-                .setAutoCancel(true);
+    private void createNotificationReminder() {
+        Intent intent = new Intent(this, ReminderBroadcast.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("medicine", medName);
+        intent.putExtra("pills", pills);
+        intent.putExtra("instructions", instructions);
+        intent.putExtra("patientName", patient);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent,
+                PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT);
 
-        int notificationId = new Random().nextInt();
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-        notificationManager.notify(notificationId, builder.build());
+        AlarmManager alarmService = (AlarmManager) getSystemService(ALARM_SERVICE);
+
+        ArrayList<Long> time = getTime();
+        for (Long t : time) {
+            Log.d("time", String.valueOf(t));
+            alarmService.set(AlarmManager.RTC_WAKEUP, t, pendingIntent);
+        }
+    }
+
+    private ArrayList<Long> getTime() {
+        String[] time = timeForMedicine.split(", ");
+        ArrayList<Long> times = new ArrayList<>();
+        for (String t : time) {
+            Log.d("t", t);
+            switch (t) {
+                case "breakfast":
+                    times.add(System.currentTimeMillis() + (1000));
+                    break;
+                case "lunch":
+                    times.add(System.currentTimeMillis() + (1000 * 5));
+                    break;
+                case "dinner":
+                    times.add(System.currentTimeMillis() + (1000 * 10));
+                    break;
+            }
+        }
+        times.add(System.currentTimeMillis() + (1000 * 15));
+        return times;
     }
 }

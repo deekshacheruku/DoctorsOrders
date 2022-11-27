@@ -129,6 +129,8 @@
         <activity android:name=".Scheduler.DashboardActivity" />
         <activity android:name=".Patient.PatientDashboardActivity" />
         <activity android:name=".Patient.PatientMedicineDisplay"/>
+
+        <receiver android:name=".Patient.ReminderBroadcast"/>
     </application>
 
 </manifest>
