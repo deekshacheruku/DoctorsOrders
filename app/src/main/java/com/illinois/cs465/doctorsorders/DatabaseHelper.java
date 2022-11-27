@@ -125,24 +125,45 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public Cursor getAllAssignedPatients() {
+    public Cursor getAllAssignedPatients() { //will be used to populate patients list for a specific scheduler
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM " + SCHEDULER_PATIENTS_TABLE;
         Cursor data = db.rawQuery(query, null);
         return data;
     }
 
-    public Cursor getAllMedNameFrequencySchedules(String patientName) {
+    public Cursor getAllMedNameFrequencySchedules(String patientName) { // retrieve info that will be used in patient_medication_schedule page
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT ID, " + SCHEDULES_TABLE_MED_NAME + ", " + SCHEDULES_TABLE_DAY_FREQUENCY + " FROM " + SCHEDULES_TABLE + " WHERE " + SCHEDULES_TABLE_PATIENT_NAME + " = \"" + patientName + "\"";
         Cursor data = db.rawQuery(query, null);
         return data;
     }
 
-    public Cursor getAllMedScheduleInformation(Long recordId) {
+    public Cursor getAllMedScheduleInformation(Long recordId) { //will be used on medicine_info page to fill out detailed view of schedule
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM " + SCHEDULES_TABLE + " WHERE ID = " + recordId;
         Cursor data = db.rawQuery(query, null);
         return data;
+    }
+
+    public boolean updateMedScheduleInformation(Bundle bundle) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(SCHEDULES_TABLE_PATIENT_NAME, bundle.getString("patientName"));
+        contentValues.put(SCHEDULES_TABLE_MED_NAME, "MedFormin");
+        contentValues.put(SCHEDULES_TABLE_INSTRUCTIONS, bundle.getString("instructions"));
+        contentValues.put(SCHEDULES_TABLE_DAY_FREQUENCY, bundle.getString("days"));
+        contentValues.put(SCHEDULES_TABLE_NUMBER_PILLS, bundle.getString("pillNumber"));
+        contentValues.put(SCHEDULES_TABLE_SPECIFIC_TIME, bundle.getString("specific_time"));
+
+        long result = db.update(SCHEDULES_TABLE, contentValues, "ID = " + bundle.getLong("recordIdToUpdate"), null);
+
+        if (result == -1) {
+            Log.d("-1", "update record failed");
+            return false;
+        } else {
+            Log.d("1", "update record succeeded");
+            return true;
+        }
     }
 }

@@ -19,6 +19,7 @@ public class medicine_info extends AppCompatActivity {
     String instructions;
     int dayFrequency;
     String specificTime;
+    long recordId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,15 +64,24 @@ public class medicine_info extends AppCompatActivity {
         });
 
         Button editBtn = findViewById(R.id.edit);
-        editBtn.setOnClickListener(view -> startActivity(new Intent(medicine_info.this, set_medication_1.class)));
+        editBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle recordToUpdateBundle = new Bundle();
+                recordToUpdateBundle.putLong("recordIdToUpdate", recordId);
+                recordToUpdateBundle.putString("patientName", patientName);
 
-//        Bundle from_medication_schedule_bundle = getIntent().getExtras();
-//        TextView textView = findViewById(R.id.medicine_for);
-//        textView.setText("Colin's " + from_medication_schedule_bundle.getString("medicine name"));
+                Intent intent = new Intent(medicine_info.this, set_medication_1.class);
+                intent.putExtras(recordToUpdateBundle);
+
+                startActivity(intent);
+            }
+        });
 
     }
 
     public void populateScheduleInformation() {
+        recordId = bundle.getLong("recordId");
         Cursor data = databaseHelper.getAllMedScheduleInformation(bundle.getLong("recordId"));
         while (data.moveToNext()) {
             patientName = data.getString(1);
@@ -80,7 +90,6 @@ public class medicine_info extends AppCompatActivity {
             instructions = data.getString(4);
             dayFrequency = data.getInt(5);
             specificTime = data.getString(6);
-//            Log.d("data: ", data.toString());
         }
     }
 }

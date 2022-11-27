@@ -46,9 +46,9 @@ public class patient_medication_schedule extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Object medName = adapterView.getItemAtPosition(i);
-                Log.d("entry id", "" + adapter.getItemId(i));
+//                Log.d("entry id", "" + adapter.getItemId(i));
 
-                Log.d("clicked item info", medName.toString());
+//                Log.d("clicked item info", medName.toString());
 
                 Bundle bundleForMedicineInfo = new Bundle();
                 bundleForMedicineInfo.putString("medicineName", medName.toString());
@@ -68,6 +68,7 @@ public class patient_medication_schedule extends AppCompatActivity {
         Button addBtn = findViewById(R.id.add);
 
         Intent intent = new Intent(patient_medication_schedule.this, set_medication_1.class);
+
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -88,7 +89,7 @@ public class patient_medication_schedule extends AppCompatActivity {
             String frequency = "" + data.getString(2) + " times per day" ;
             String finalInfo = "" + recordID.toString() + "" + medName + "       " + frequency;
 
-            Log.d("final schedule str ", finalInfo);
+//            Log.d("final schedule str ", finalInfo);
 
             schedules.add(finalInfo);
         }

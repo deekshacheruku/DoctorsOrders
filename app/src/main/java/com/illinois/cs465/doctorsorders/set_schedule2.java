@@ -51,6 +51,12 @@ public class set_schedule2 extends AppCompatActivity {
             public void onClick(View view) {
                 Bundle bundleFromStep1 = getIntent().getExtras();
                 Bundle bundleStep2 = new Bundle();
+
+                if (bundleFromStep1.getLong("recordIdToUpdate") != 0L) {
+//                    Log.d("id: ", "received");
+                    bundleStep2.putLong("recordIdToUpdate", bundleFromStep1.getLong("recordIdToUpdate"));
+                }
+
                 bundleStep2.putString("patientName", bundleFromStep1.getString("patientName"));
                 bundleStep2.putString("pillNumber", bundleFromStep1.getString("pillNumber"));
                 bundleStep2.putString("instructions", bundleFromStep1.getString("instructions"));

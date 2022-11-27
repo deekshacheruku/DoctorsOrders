@@ -72,7 +72,7 @@ public class confirm_medication_3 extends AppCompatActivity {
 
         Bundle finalInfoBundle = new Bundle(bundleStep2); //bundle with information to be submitted to db
 
-        Log.d("Schedule", bundleStep2.getString("patientName"));
+//        Log.d("patient name", bundleStep2.getString("patientName"));
 
         String store_specific_time_string = String.join(", ", specific_times);
         finalInfoBundle.putString("specific_time", store_specific_time_string);
@@ -89,8 +89,16 @@ public class confirm_medication_3 extends AppCompatActivity {
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                databaseHelper.addNewSchedule(finalInfoBundle);
-                startActivity(intent);
+                if (bundleStep2.getLong("recordIdToUpdate") != 0L) {
+//                    Log.d("id: ", "received");
+                    finalInfoBundle.putLong("recordIdToUpdate", bundleStep2.getLong("recordIdToUpdate"));
+                    databaseHelper.updateMedScheduleInformation(finalInfoBundle);
+                    startActivity(intent);
+
+                } else {
+                    databaseHelper.addNewSchedule(finalInfoBundle);
+                    startActivity(intent);
+                }
             }
         });
 
