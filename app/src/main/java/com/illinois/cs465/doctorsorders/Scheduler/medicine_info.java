@@ -1,14 +1,16 @@
-package com.illinois.cs465.doctorsorders;
+package com.illinois.cs465.doctorsorders.Scheduler;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.illinois.cs465.doctorsorders.DatabaseHelper;
+import com.illinois.cs465.doctorsorders.R;
 
 public class medicine_info extends AppCompatActivity {
     DatabaseHelper databaseHelper;

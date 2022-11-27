@@ -1,10 +1,12 @@
-package com.illinois.cs465.doctorsorders;
+package com.illinois.cs465.doctorsorders.Login;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+
+import com.illinois.cs465.doctorsorders.R;
 
 public class FamFriendAdapter extends BaseAdapter
 {

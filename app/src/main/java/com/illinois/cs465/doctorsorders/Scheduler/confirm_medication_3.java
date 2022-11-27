@@ -1,4 +1,4 @@
-package com.illinois.cs465.doctorsorders;
+package com.illinois.cs465.doctorsorders.Scheduler;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,7 +10,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import com.illinois.cs465.doctorsorders.DatabaseHelper;
+import com.illinois.cs465.doctorsorders.R;
 
 import java.util.ArrayList;
 import java.util.List;

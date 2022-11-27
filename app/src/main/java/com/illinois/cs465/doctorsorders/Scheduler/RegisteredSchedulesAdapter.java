@@ -1,4 +1,4 @@
-package com.illinois.cs465.doctorsorders;
+package com.illinois.cs465.doctorsorders.Scheduler;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -6,6 +6,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.content.Context;
 import android.widget.TextView;
+
+import com.illinois.cs465.doctorsorders.R;
 
 import java.util.ArrayList;
 

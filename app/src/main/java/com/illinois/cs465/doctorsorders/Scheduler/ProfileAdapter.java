@@ -1,15 +1,14 @@
-package com.illinois.cs465.doctorsorders;
+package com.illinois.cs465.doctorsorders.Scheduler;
 
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.content.Context;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.lang.reflect.Array;
+import com.illinois.cs465.doctorsorders.R;
+
 import java.util.ArrayList;
 
 public class ProfileAdapter extends BaseAdapter {

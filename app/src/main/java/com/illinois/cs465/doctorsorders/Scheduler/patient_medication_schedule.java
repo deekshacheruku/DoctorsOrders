@@ -1,4 +1,4 @@
-package com.illinois.cs465.doctorsorders;
+package com.illinois.cs465.doctorsorders.Scheduler;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,9 +9,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.illinois.cs465.doctorsorders.DatabaseHelper;
+import com.illinois.cs465.doctorsorders.R;
 
 import java.util.ArrayList;
 

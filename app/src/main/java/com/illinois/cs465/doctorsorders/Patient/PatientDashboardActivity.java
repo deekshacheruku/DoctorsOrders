@@ -1,4 +1,4 @@
-package com.illinois.cs465.doctorsorders;
+package com.illinois.cs465.doctorsorders.Patient;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -15,6 +15,9 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
+
+import com.illinois.cs465.doctorsorders.DatabaseHelper;
+import com.illinois.cs465.doctorsorders.R;
 
 import java.util.Random;
 

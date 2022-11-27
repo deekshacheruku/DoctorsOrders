@@ -1,4 +1,4 @@
-package com.illinois.cs465.doctorsorders;
+package com.illinois.cs465.doctorsorders.Scheduler;
 
 import static android.widget.Toast.LENGTH_SHORT;
 
@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.illinois.cs465.doctorsorders.R;
 
 public class CustomPatientListView extends AppCompatActivity {
 

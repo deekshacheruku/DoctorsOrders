@@ -1,4 +1,4 @@
-package com.illinois.cs465.doctorsorders;
+package com.illinois.cs465.doctorsorders.Patient;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -15,6 +15,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.illinois.cs465.doctorsorders.DatabaseHelper;
+import com.illinois.cs465.doctorsorders.R;
 
 import java.time.LocalTime;
 import java.util.concurrent.TimeUnit;
@@ -127,7 +130,7 @@ public class PatientMedicineDisplay extends AppCompatActivity implements View.On
             String sms = patientName + " has taken the " + medicine + " at " + timeNow + "!";
             confirmResponse("Have you taken the medicine?", sms);
         } else {
-            String sms = patientName + " has NOT taken the " + medicine + " at " + timeNow + "!";
+            String sms = patientName + " has NOT taken the " + medicine + "! Response captured at " + timeNow + ".";
             confirmResponse("Have you not taken the medicine?", sms);
         }
     }

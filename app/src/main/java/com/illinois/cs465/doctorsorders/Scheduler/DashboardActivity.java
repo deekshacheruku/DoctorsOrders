@@ -1,5 +1,4 @@
-package com.illinois.cs465.doctorsorders;
-import static android.widget.Toast.LENGTH_SHORT;
+package com.illinois.cs465.doctorsorders.Scheduler;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -10,15 +9,13 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SearchView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import org.w3c.dom.Text;
+import com.illinois.cs465.doctorsorders.DatabaseHelper;
+import com.illinois.cs465.doctorsorders.R;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class DashboardActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
     ArrayList<String> patientList;

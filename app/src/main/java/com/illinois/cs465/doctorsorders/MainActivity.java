@@ -12,6 +12,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 
+import com.illinois.cs465.doctorsorders.Login.LoginLoading;
+import com.illinois.cs465.doctorsorders.Patient.PatientDashboardActivity;
+import com.illinois.cs465.doctorsorders.Scheduler.DashboardActivity;
+
 import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
 
@@ -41,8 +45,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        addImages();
-
         Button loginBtn = findViewById(R.id.loginBtn);
         loginBtn.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, LoginLoading.class)));
     }
@@ -53,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
         images.put("simvastatin", R.drawable.simvastatin);
         images.put("omeprazole", R.drawable.omeprazole);
         images.put("amlodipine", R.drawable.amlodipine);
+
+        addImages();
     }
 
     private void addImages() {
