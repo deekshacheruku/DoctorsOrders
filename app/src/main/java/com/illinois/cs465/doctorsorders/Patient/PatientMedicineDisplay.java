@@ -26,6 +26,7 @@ public class PatientMedicineDisplay extends AppCompatActivity implements View.On
     DatabaseHelper databaseHelper;
     String patientName;
     String medicine;
+    String timeNow = null;
     final String FORMAT = "%02d : %02d";
 
     @Override
@@ -39,6 +40,11 @@ public class PatientMedicineDisplay extends AppCompatActivity implements View.On
         medicine = intent.getStringExtra("medicine");
         String pills = intent.getStringExtra("pills");
         String instructions = intent.getStringExtra("instructions");
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            timeNow = String.valueOf(LocalTime.now().getHour());
+            timeNow += ":" + LocalTime.now().getMinute();
+        }
 
         setTextViews(pills, instructions);
         setYesOrNoButtons();
@@ -114,18 +120,15 @@ public class PatientMedicineDisplay extends AppCompatActivity implements View.On
 
             public void onFinish() {
                 time.setText("");
+                String sms = patientName + " has NOT responded if he or hadn't taken the " + medicine + "! Response captured at " + timeNow + ".";
+                sendSMS(sms, "We haven't received any response! Your Family has been notified!");
+                startActivity(new Intent(getApplicationContext(), PatientDashboardActivity.class));
             }
         }.start();
     }
 
     @Override
     public void onClick(View view) {
-        String timeNow = null;
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            timeNow = String.valueOf(LocalTime.now().getHour());
-            timeNow += ":" + LocalTime.now().getMinute();
-        }
-
         if (view.getId() == R.id.yes_button) {
             String sms = patientName + " has taken the " + medicine + " at " + timeNow + "!";
             confirmResponse("Have you taken the medicine?", sms);

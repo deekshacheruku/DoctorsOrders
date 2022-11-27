@@ -101,7 +101,6 @@ public class PatientDashboardActivity extends AppCompatActivity {
 
         ArrayList<Long> time = getTime();
         for (Long t : time) {
-            Log.d("time", String.valueOf(t));
             alarmService.set(AlarmManager.RTC_WAKEUP, t, pendingIntent);
         }
     }
@@ -110,7 +109,6 @@ public class PatientDashboardActivity extends AppCompatActivity {
         String[] time = timeForMedicine.split(", ");
         ArrayList<Long> times = new ArrayList<>();
         for (String t : time) {
-            Log.d("t", t);
             switch (t) {
                 case "breakfast":
                     times.add(System.currentTimeMillis() + (1000));
