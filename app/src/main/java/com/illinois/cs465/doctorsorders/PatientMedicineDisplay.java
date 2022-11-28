@@ -1,6 +1,9 @@
 package com.illinois.cs465.doctorsorders;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.telephony.SmsManager;
@@ -16,18 +19,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.concurrent.TimeUnit;
 
 public class PatientMedicineDisplay extends AppCompatActivity implements View.OnClickListener {
-    int[] images = {R.drawable.atorvastatin, R.drawable.metformin, R.drawable.simvastatin,
-            R.drawable.omeprazole, R.drawable.amlodipine};
+    DatabaseHelper databaseHelper;
     final String FORMAT = "%02d : %02d";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        databaseHelper = new DatabaseHelper(this);
 
         Intent intent = getIntent();
         String medicine = intent.getStringExtra("medicine");
-        String dosage = intent.getStringExtra("dosage");
-        int index = intent.getIntExtra("index", 0);
+        String pills = intent.getStringExtra("pills");
+        String instructions = intent.getStringExtra("instructions");
 
         setContentView(R.layout.activity_patient_medicine_display_layout);
 
@@ -38,7 +41,7 @@ public class PatientMedicineDisplay extends AppCompatActivity implements View.On
         text.setText(R.string.displayInitialText);
 
         TextView pillsView = findViewById(R.id.patient_pills);
-        pillsView.setText(getString(R.string.patient_pills, dosage));
+        pillsView.setText(getString(R.string.patient_pills, pills));
 
         yes_button.setVisibility(View.INVISIBLE);
         no_button.setVisibility(View.INVISIBLE);
@@ -47,7 +50,15 @@ public class PatientMedicineDisplay extends AppCompatActivity implements View.On
         tv.setText(getString(R.string.patient_medicine, medicine));
 
         ImageView image = findViewById(R.id.medicine_image);
-        image.setImageResource(images[index]);
+        Cursor img = databaseHelper.getMedicineImage(medicine.toLowerCase());
+        while (img.moveToNext()) {
+            byte[] imgBlob = img.getBlob(2);
+            Bitmap imgBitmap = BitmapFactory.decodeByteArray(imgBlob, 0, imgBlob.length);
+            image.setImageBitmap(imgBitmap);
+        }
+
+        TextView instruction = findViewById(R.id.instructions);
+        instruction.setText(instructions);
 
         TextView time = findViewById(R.id.time);
         setCountDownOneMinute(time, yes_button, no_button, text);

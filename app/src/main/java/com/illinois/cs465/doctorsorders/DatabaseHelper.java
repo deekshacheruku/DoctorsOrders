@@ -9,8 +9,6 @@ import android.os.Bundle;
 import android.util.Log;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
-    String[] medicines = {"Atorvastatin", "Metformin", "Simvastatin", "Omeprazole", "Amlodipine"};
-
     // If you change the database schema, you must increment the database version.
     public static final int DATABASE_VERSION = 3;
     public static final String DATABASE_NAME = "DoctorsOrders.db";
@@ -65,22 +63,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean addDefaultMedications() { // this function would be called to add the default medications
-        ContentValues contentValues = new ContentValues();
-
-        for (String med : medicines) {
-            contentValues.put(MEDICINES_TABLE, med);
-        }
-
-        long result = db.insert(MEDICINES_TABLE, null, contentValues);
-
-        if (result == -1) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-
     /**
      * THE MEDICINE NAME IS HARDCODED RIGHT NOW!
      * @param bundle
@@ -90,7 +72,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public boolean addNewSchedule(Bundle bundle) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(SCHEDULES_TABLE_PATIENT_NAME, bundle.getString("patientName"));
-        contentValues.put(SCHEDULES_TABLE_MED_NAME, "MedFormin");
+        contentValues.put(SCHEDULES_TABLE_MED_NAME, "MetFormin");
         contentValues.put(SCHEDULES_TABLE_INSTRUCTIONS, bundle.getString("instructions"));
         contentValues.put(SCHEDULES_TABLE_DAY_FREQUENCY, bundle.getString("days"));
         contentValues.put(SCHEDULES_TABLE_NUMBER_PILLS, bundle.getString("pillNumber"));
@@ -141,6 +123,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public Cursor getAllMedScheduleInformation(Long recordId) {
         String query = "SELECT * FROM " + SCHEDULES_TABLE + " WHERE ID = " + recordId;
+        return db.rawQuery(query, null);
+    }
+
+    public void addMedicineImages(String name, byte[] image) {
+        ContentValues cv = new ContentValues();
+        cv.put(MEDICINES_TABLE_MED_NAME, name);
+        cv.put(MEDICINES_TABLE_MED_PICTURE, image);
+        db.insert(MEDICINES_TABLE, null, cv);
+    }
+
+    public Cursor getMedicineImage(String name) {
+        String query = "SELECT * FROM " + MEDICINES_TABLE + " WHERE " + MEDICINES_TABLE_MED_NAME + " = \"" + name + "\"";
         return db.rawQuery(query, null);
     }
 

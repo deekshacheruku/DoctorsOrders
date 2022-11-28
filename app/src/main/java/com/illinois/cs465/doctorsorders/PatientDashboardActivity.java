@@ -5,6 +5,8 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
@@ -17,13 +19,9 @@ import androidx.core.app.NotificationManagerCompat;
 import java.util.Random;
 
 public class PatientDashboardActivity extends AppCompatActivity {
-    String[] medicines = {"Atorvastatin", "Metformin", "Simvastatin", "Omeprazole", "Amlodipine"};
-    int[] images = {R.drawable.atorvastatin, R.drawable.metformin, R.drawable.simvastatin,
-            R.drawable.omeprazole, R.drawable.amlodipine};
-    String CHANNEL_ID = "123";
-
     DatabaseHelper databaseHelper;
 
+    String CHANNEL_ID = "123";
     String timeForMedicine = "";
     String pills = "";
     String medName = "";
@@ -49,14 +47,11 @@ public class PatientDashboardActivity extends AppCompatActivity {
             timeForMedicine = schedule.getString(6);
         }
 
-        int randomMedicine = new Random().nextInt(medicines.length);
-
-        setTextViews(randomMedicine);
-
-        createNotification(randomMedicine);
+        setTextViews();
+        createNotification();
     }
 
-    private void setTextViews(int randomMedicine) {
+    private void setTextViews() {
         TextView tv = findViewById(R.id.patient_medicine);
         tv.setText(getString(R.string.patient_medicine, medName));
 
@@ -70,18 +65,21 @@ public class PatientDashboardActivity extends AppCompatActivity {
         instruction.setText(getString(R.string.patient_medicine_instructions, instructions));
 
         ImageView image = findViewById(R.id.patient_medicine_image);
-        image.setImageResource(images[randomMedicine]);
+        Cursor img = databaseHelper.getMedicineImage(medName.toLowerCase());
+        while (img.moveToNext()) {
+            byte[] imgBlob = img.getBlob(2);
+            Bitmap imgBitmap = BitmapFactory.decodeByteArray(imgBlob, 0, imgBlob.length);
+            image.setImageBitmap(imgBitmap);
+        }
     }
 
-    private void createNotification(int randomMedicine) {
-
+    private void createNotification() {
         Intent intent = new Intent(this, PatientMedicineDisplay.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
                 Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.putExtra("medicine", medName);
-        intent.putExtra("index", randomMedicine);
-        intent.putExtra("dosage", pills);
-        intent.setAction(medicines[randomMedicine]);
+        intent.putExtra("pills", pills);
+        intent.putExtra("instructions", instructions);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent,
                 PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT);
 
@@ -97,9 +95,8 @@ public class PatientDashboardActivity extends AppCompatActivity {
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setContentTitle("Time to take Medicine!")
-                .setContentText(medicines[randomMedicine])
-                .setStyle(new NotificationCompat.BigTextStyle()
-                        .bigText(medicines[randomMedicine]))
+                .setContentText(medName)
+                .setStyle(new NotificationCompat.BigTextStyle().bigText(medName))
                 .setPriority(NotificationCompat.PRIORITY_MAX)
                 .setSmallIcon(R.drawable.amlodipine)
                 .setContentIntent(pendingIntent)

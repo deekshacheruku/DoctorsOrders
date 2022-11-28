@@ -5,16 +5,27 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 
+import java.io.ByteArrayOutputStream;
+import java.util.HashMap;
+
 public class MainActivity extends AppCompatActivity {
+
+    HashMap<String, Integer> images = new HashMap<>();
+    DatabaseHelper databaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        databaseHelper = new DatabaseHelper(this);
+        insertImages();
 
         Button dashboardBtn = findViewById(R.id.dashboardbtn);
         dashboardBtn.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, DashboardActivity.class)));
@@ -30,7 +41,28 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+        addImages();
+
         Button loginBtn = findViewById(R.id.loginBtn);
         loginBtn.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, LoginLoading.class)));
+    }
+
+    private void insertImages() {
+        images.put("atorvastatin", R.drawable.atorvastatin);
+        images.put("metformin", R.drawable.metformin);
+        images.put("simvastatin", R.drawable.simvastatin);
+        images.put("omeprazole", R.drawable.omeprazole);
+        images.put("amlodipine", R.drawable.amlodipine);
+    }
+
+    private void addImages() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            images.forEach((name, image) -> {
+                ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                Bitmap bitmap = BitmapFactory.decodeResource(getResources(), image);
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, bos);
+                databaseHelper.addMedicineImages(name, bos.toByteArray());
+            });
+        }
     }
 }
