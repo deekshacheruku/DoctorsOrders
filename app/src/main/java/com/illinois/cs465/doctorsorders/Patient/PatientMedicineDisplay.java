@@ -1,6 +1,9 @@
-package com.illinois.cs465.doctorsorders;
+package com.illinois.cs465.doctorsorders.Patient;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.telephony.SmsManager;
@@ -13,41 +16,67 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.illinois.cs465.doctorsorders.DatabaseHelper;
+import com.illinois.cs465.doctorsorders.R;
+
+import java.time.LocalTime;
 import java.util.concurrent.TimeUnit;
 
 public class PatientMedicineDisplay extends AppCompatActivity implements View.OnClickListener {
-    int[] images = {R.drawable.atorvastatin, R.drawable.metformin, R.drawable.simvastatin,
-            R.drawable.omeprazole, R.drawable.amlodipine};
+    DatabaseHelper databaseHelper;
+    String patientName;
+    String medicine;
+    String timeNow = null;
     final String FORMAT = "%02d : %02d";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_patient_medicine_display_layout);
+        databaseHelper = new DatabaseHelper(this);
 
         Intent intent = getIntent();
-        String medicine = intent.getStringExtra("medicine");
-        String dosage = intent.getStringExtra("dosage");
-        int index = intent.getIntExtra("index", 0);
+        patientName = intent.getStringExtra("patientName");
+        medicine = intent.getStringExtra("medicine");
+        String pills = intent.getStringExtra("pills");
+        String instructions = intent.getStringExtra("instructions");
 
-        setContentView(R.layout.activity_patient_medicine_display_layout);
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            timeNow = String.valueOf(LocalTime.now().getHour());
+            timeNow += ":" + LocalTime.now().getMinute();
+        }
 
-        Button yes_button = findViewById(R.id.yes_button);
-        Button no_button = findViewById(R.id.no_button);
+        setTextViews(pills, instructions);
+        setYesOrNoButtons();
+    }
 
-        TextView text = findViewById(R.id.display_text);
-        text.setText(R.string.displayInitialText);
-
-        TextView dosageView = findViewById(R.id.patient_dosage);
-        dosageView.setText(getString(R.string.patient_dosage, dosage));
-
-        yes_button.setVisibility(View.INVISIBLE);
-        no_button.setVisibility(View.INVISIBLE);
+    private void setTextViews(String pills, String instructions) {
+        TextView pillsView = findViewById(R.id.patient_pills);
+        pillsView.setText(getString(R.string.patient_pills, pills));
 
         TextView tv = findViewById(R.id.display_medicine);
         tv.setText(getString(R.string.patient_medicine, medicine));
 
         ImageView image = findViewById(R.id.medicine_image);
-        image.setImageResource(images[index]);
+        Cursor img = databaseHelper.getMedicineImage(medicine.toLowerCase());
+        while (img.moveToNext()) {
+            byte[] imgBlob = img.getBlob(2);
+            Bitmap imgBitmap = BitmapFactory.decodeByteArray(imgBlob, 0, imgBlob.length);
+            image.setImageBitmap(imgBitmap);
+        }
+
+        TextView instruction = findViewById(R.id.instructions);
+        instruction.setText(instructions);
+    }
+
+    private void setYesOrNoButtons() {
+        Button yes_button = findViewById(R.id.yes_button);
+        Button no_button = findViewById(R.id.no_button);
+        TextView text = findViewById(R.id.display_text);
+        text.setText(R.string.displayInitialText);
+
+        yes_button.setVisibility(View.INVISIBLE);
+        no_button.setVisibility(View.INVISIBLE);
 
         TextView time = findViewById(R.id.time);
         setCountDownOneMinute(time, yes_button, no_button, text);
@@ -91,28 +120,35 @@ public class PatientMedicineDisplay extends AppCompatActivity implements View.On
 
             public void onFinish() {
                 time.setText("");
+                String sms = patientName + " has NOT responded if he or hadn't taken the " + medicine + "! Response captured at " + timeNow + ".";
+                sendSMS(sms, "We haven't received any response! Your Family has been notified!");
+                startActivity(new Intent(getApplicationContext(), PatientDashboardActivity.class));
             }
         }.start();
     }
 
     @Override
     public void onClick(View view) {
-        String display = "We informed your family!";
         if (view.getId() == R.id.yes_button) {
-            String msg = "Your GrandParent has taken the medicine!";
-            sendSMS(msg, display);
-            startActivity(new Intent(this, PatientDashboardActivity.class));
+            String sms = patientName + " has taken the " + medicine + " at " + timeNow + "!";
+            confirmResponse("Have you taken the medicine?", sms);
         } else {
-            new AlertDialog.Builder(this)
-                    .setMessage("Have you not taken the medicine?")
-                    .setIcon(android.R.drawable.ic_dialog_alert)
-                    .setPositiveButton(R.string.yes, (dialog, whichButton) -> {
-                        String msg = "Your GrandParent has NOT taken the medicine!";
-                        sendSMS(msg, display);
-                        startActivity(new Intent(this, PatientDashboardActivity.class));
-                    })
-                    .setNegativeButton(R.string.no, null).show();
+            String sms = patientName + " has NOT taken the " + medicine + "! Response captured at " + timeNow + ".";
+            confirmResponse("Have you not taken the medicine?", sms);
         }
+    }
+
+    private void confirmResponse(String displayMessage, String smsMessage) {
+        String display = "We informed your family!";
+
+        new AlertDialog.Builder(this)
+                .setMessage(displayMessage)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setPositiveButton(R.string.yes, (dialog, whichButton) -> {
+                    sendSMS(smsMessage, display);
+                    startActivity(new Intent(this, PatientDashboardActivity.class));
+                })
+                .setNegativeButton(R.string.no, null).show();
     }
 
     private void sendSMS(String msg, String display) {

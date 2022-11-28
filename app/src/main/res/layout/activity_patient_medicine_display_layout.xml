@@ -45,12 +45,12 @@
             android:textSize="30sp" />
 
         <TextView
-            android:id="@+id/patient_dosage"
+            android:id="@+id/patient_pills"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:gravity="center"
-            android:text="@string/patient_dosage"
+            android:text="@string/patient_pills"
             android:textAlignment="center"
             android:textSize="30sp" />
 

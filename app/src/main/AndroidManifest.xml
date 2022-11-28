@@ -16,98 +16,98 @@
         android:theme="@style/Theme.DoctorsOrders"
         tools:targetApi="31">
         <activity
-            android:name=".CreateAccount2"
+            android:name=".Login.CreateAccount2"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".CreateAccount1"
+            android:name=".Login.CreateAccount1"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".medicine_info"
+            android:name=".Scheduler.medicine_info"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".registered_medications"
+            android:name=".Scheduler.registered_medications"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".confirm_medication_3"
+            android:name=".Scheduler.confirm_medication_3"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".CreateAccount0"
+            android:name=".Login.CreateAccount0"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".LoginCredentials"
+            android:name=".Login.LoginCredentials"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".LoginDefault"
+            android:name=".Login.LoginDefault"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".LoginLoading"
+            android:name=".Login.LoginLoading"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".set_schedule2"
+            android:name=".Scheduler.set_schedule2"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".set_medication_1"
+            android:name=".Scheduler.set_medication_1"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".patient_medication_schedule"
+            android:name=".Scheduler.patient_medication_schedule"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".NearbyPatients"
+            android:name=".Scheduler.NearbyPatients"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".CustomPatientListView"
+            android:name=".Scheduler.CustomPatientListView"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -126,9 +126,11 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity android:name=".DashboardActivity" />
-        <activity android:name=".PatientDashboardActivity" />
-        <activity android:name=".PatientMedicineDisplay"/>
+        <activity android:name=".Scheduler.DashboardActivity" />
+        <activity android:name=".Patient.PatientDashboardActivity" />
+        <activity android:name=".Patient.PatientMedicineDisplay"/>
+
+        <receiver android:name=".Patient.ReminderBroadcast"/>
     </application>
 
 </manifest>
