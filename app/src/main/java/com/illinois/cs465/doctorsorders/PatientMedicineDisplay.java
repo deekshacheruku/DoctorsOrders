@@ -37,8 +37,8 @@ public class PatientMedicineDisplay extends AppCompatActivity implements View.On
         TextView text = findViewById(R.id.display_text);
         text.setText(R.string.displayInitialText);
 
-        TextView dosageView = findViewById(R.id.patient_dosage);
-        dosageView.setText(getString(R.string.patient_dosage, dosage));
+        TextView pillsView = findViewById(R.id.patient_pills);
+        pillsView.setText(getString(R.string.patient_pills, dosage));
 
         yes_button.setVisibility(View.INVISIBLE);
         no_button.setVisibility(View.INVISIBLE);

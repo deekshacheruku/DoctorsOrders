@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.database.sqlite.SQLiteTransactionListener;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -34,6 +33,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String MEDICINES_TABLE_MED_NAME = "Medicine_Name";
     private static final String MEDICINES_TABLE_MED_PICTURE = "Medicine_Picture";
 
+    SQLiteDatabase db = this.getWritableDatabase();
+
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -55,6 +56,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(createMedicineTable);
         db.execSQL(createScheduleTable);
     }
+
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + SCHEDULER_PATIENTS_TABLE);
         db.execSQL("DROP TABLE IF EXISTS " + SCHEDULES_TABLE);
@@ -64,7 +66,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public boolean addDefaultMedications() { // this function would be called to add the default medications
-        SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
         for (String med : medicines) {
@@ -87,7 +88,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      */
 
     public boolean addNewSchedule(Bundle bundle) {
-        SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(SCHEDULES_TABLE_PATIENT_NAME, bundle.getString("patientName"));
         contentValues.put(SCHEDULES_TABLE_MED_NAME, "MedFormin");
@@ -108,7 +108,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public boolean addNearbyPatient(Bundle bundle) {
-        SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(SCHEDULER_PATIENTS_TABLE_SCHEDULER_NAME, bundle.getString("scheduler_name"));
         contentValues.put(SCHEDULER_PATIENTS_TABLE_PATIENT_FIRST_NAME, bundle.getString("patient_first_name"));
@@ -125,25 +124,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public Cursor getAllAssignedPatients() { //will be used to populate patients list for a specific scheduler
-        SQLiteDatabase db = this.getWritableDatabase();
+    public Cursor getAllAssignedPatients() {
         String query = "SELECT * FROM " + SCHEDULER_PATIENTS_TABLE;
-        Cursor data = db.rawQuery(query, null);
-        return data;
+        return db.rawQuery(query, null);
     }
 
-    public Cursor getAllMedNameFrequencySchedules(String patientName) { // retrieve info that will be used in patient_medication_schedule page
-        SQLiteDatabase db = this.getWritableDatabase();
+    public Cursor getAllMedNameFrequencySchedules(String patientName) {
         String query = "SELECT ID, " + SCHEDULES_TABLE_MED_NAME + ", " + SCHEDULES_TABLE_DAY_FREQUENCY + " FROM " + SCHEDULES_TABLE + " WHERE " + SCHEDULES_TABLE_PATIENT_NAME + " = \"" + patientName + "\"";
-        Cursor data = db.rawQuery(query, null);
-        return data;
+        return db.rawQuery(query, null);
     }
 
-    public Cursor getAllMedScheduleInformation(Long recordId) { //will be used on medicine_info page to fill out detailed view of schedule
-        SQLiteDatabase db = this.getWritableDatabase();
+    public Cursor getSchedule(String patientName) {
+        String query = "SELECT * FROM " + SCHEDULES_TABLE + " WHERE " + SCHEDULES_TABLE_PATIENT_NAME + " = \"" + patientName + "\"";
+        return db.rawQuery(query, null);
+    }
+
+    public Cursor getAllMedScheduleInformation(Long recordId) {
         String query = "SELECT * FROM " + SCHEDULES_TABLE + " WHERE ID = " + recordId;
-        Cursor data = db.rawQuery(query, null);
-        return data;
+        return db.rawQuery(query, null);
     }
 
     public boolean updateMedScheduleInformation(Bundle bundle) {
