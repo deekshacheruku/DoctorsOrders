@@ -4,9 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.media.Image;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.illinois.cs465.doctorsorders.DatabaseHelper;
@@ -30,6 +33,8 @@ public class medicine_info extends AppCompatActivity {
 
         bundle = getIntent().getExtras();
 
+        ImageView image = (ImageView) findViewById(R.id.med_image);
+
         databaseHelper = new DatabaseHelper(this);
         populateScheduleInformation();
 
@@ -38,6 +43,18 @@ public class medicine_info extends AppCompatActivity {
 
         TextView medicineNameView = findViewById(R.id.medName);
         medicineNameView.setText("Medicine Name: " + medName);
+
+        if (medName.contains("omeprazole")) {
+            image.setImageResource(R.drawable.omeprazole);
+        } else if (medName.contains("metformin")) {
+            image.setImageResource(R.drawable.metformin);
+        } else if (medName.contains("simvastatin")) {
+            image.setImageResource(R.drawable.simvastatin);
+        } else if (medName.contains("amlodipine")) {
+            image.setImageResource(R.drawable.amlodipine);
+        } else if (medName.contains("atorvastatin")) {
+            image.setImageResource(R.drawable.atorvastatin);
+        }
 
         TextView pillNumView = findViewById(R.id.pillNumber);
         pillNumView.setText("Number of Pills: " + numPills);
