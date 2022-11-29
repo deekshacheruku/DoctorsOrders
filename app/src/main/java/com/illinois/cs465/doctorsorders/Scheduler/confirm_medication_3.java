@@ -13,6 +13,8 @@ import android.widget.TextView;
 import com.illinois.cs465.doctorsorders.DatabaseHelper;
 import com.illinois.cs465.doctorsorders.R;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,11 +64,13 @@ public class confirm_medication_3 extends AppCompatActivity {
         }
 
         TextView nameView = findViewById(R.id.confirm_patient_name);
+        TextView medicationNameView = findViewById(R.id.medication_name);
         TextView doseView = findViewById(R.id.confirm_dose);
         TextView instrucView = findViewById(R.id.confirm_instructions);
         TextView confirm_date_view = findViewById(R.id.confirm_date);
 
         nameView.setText("Name: " + bundleStep2.getString("patientName"));
+        medicationNameView.setText("Medication Name: " + bundleStep2.getString("medicationName"));
         doseView.setText("Pill Number: " + bundleStep2.getString("pillNumber"));
         instrucView.setText("Instructions: \n" + bundleStep2.getString("instructions").toString());
         confirm_date_view.setText("Every " + bundleStep2.getString("days") + " days at");

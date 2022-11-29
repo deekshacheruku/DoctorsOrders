@@ -22,6 +22,7 @@ public class patient_medication_schedule extends AppCompatActivity {
     ListView listView;
     DatabaseHelper databaseHelper;
     Bundle bundle;
+    TextView last_update_view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,9 +49,6 @@ public class patient_medication_schedule extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Object medName = adapterView.getItemAtPosition(i);
-//                Log.d("entry id", "" + adapter.getItemId(i));
-
-//                Log.d("clicked item info", medName.toString());
 
                 Bundle bundleForMedicineInfo = new Bundle();
                 bundleForMedicineInfo.putString("medicineName", medName.toString());
@@ -96,5 +94,7 @@ public class patient_medication_schedule extends AppCompatActivity {
             schedules.add(finalInfo);
         }
         schedulesList = schedules;
+        last_update_view = findViewById(R.id.med_last_update);
+//        last_update_view.setText(schedules.get(schedules.size() - 1));
     }
 }

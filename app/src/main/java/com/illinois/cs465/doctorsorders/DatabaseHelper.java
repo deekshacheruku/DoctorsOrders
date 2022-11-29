@@ -72,7 +72,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public boolean addNewSchedule(Bundle bundle) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(SCHEDULES_TABLE_PATIENT_NAME, bundle.getString("patientName"));
-        contentValues.put(SCHEDULES_TABLE_MED_NAME, "MetFormin");
+        contentValues.put(SCHEDULES_TABLE_MED_NAME, bundle.getString("medicationName"));
         contentValues.put(SCHEDULES_TABLE_INSTRUCTIONS, bundle.getString("instructions"));
         contentValues.put(SCHEDULES_TABLE_DAY_FREQUENCY, bundle.getString("days"));
         contentValues.put(SCHEDULES_TABLE_NUMBER_PILLS, bundle.getString("pillNumber"));
@@ -142,7 +142,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(SCHEDULES_TABLE_PATIENT_NAME, bundle.getString("patientName"));
-        contentValues.put(SCHEDULES_TABLE_MED_NAME, "MedFormin");
+        contentValues.put(SCHEDULES_TABLE_MED_NAME, bundle.getString("medicationName"));
         contentValues.put(SCHEDULES_TABLE_INSTRUCTIONS, bundle.getString("instructions"));
         contentValues.put(SCHEDULES_TABLE_DAY_FREQUENCY, bundle.getString("days"));
         contentValues.put(SCHEDULES_TABLE_NUMBER_PILLS, bundle.getString("pillNumber"));
