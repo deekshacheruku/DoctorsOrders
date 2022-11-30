@@ -43,8 +43,10 @@ public class set_medication_1 extends AppCompatActivity {
         decrementButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dose--;
-                textView.setText("" + dose);
+                if (dose > 0) {
+                    dose--;
+                    textView.setText("" + dose);
+                }
             }
         });
 

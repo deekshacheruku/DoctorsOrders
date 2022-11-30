@@ -22,10 +22,19 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="50dp"
+                android:textSize="20dp"
+                android:text="Choose Medicine:" />
             <Spinner
                 android:id="@+id/search_view_med"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="30dp"
                 android:background="@android:drawable/btn_dropdown"
                 android:spinnerMode="dropdown"/>
         </LinearLayout>
