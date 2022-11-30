@@ -23,12 +23,15 @@ public class patient_medication_schedule extends AppCompatActivity {
     DatabaseHelper databaseHelper;
     Bundle bundle;
     TextView last_update_view;
+    String mostRecent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_medication_schedule);
         databaseHelper = new DatabaseHelper(this);
+
+        getMostRecent();
 
         bundle = getIntent().getExtras();
 
@@ -37,9 +40,6 @@ public class patient_medication_schedule extends AppCompatActivity {
 
         TextView nameView = findViewById(R.id.schedule_for);
         nameView.setText("Schedule For: " + stuff);
-
-        TextView med_last_update = findViewById(R.id.med_last_update);
-        med_last_update.setText("Last Update: " + bundle.getString("medicationName"));
 
         listView = (ListView) findViewById(R.id.medicationList);
 
@@ -95,6 +95,16 @@ public class patient_medication_schedule extends AppCompatActivity {
             schedules.add(finalInfo);
         }
         schedulesList = schedules;
+    }
+
+    private void getMostRecent() {
+        Cursor data = databaseHelper.getMostRecentUpdatedSchedule();
+        while (data.moveToNext()) {
+            mostRecent = data.getString(0);
+            Log.d("med name: ", data.getString(0));
+        }
         last_update_view = findViewById(R.id.med_last_update);
+        last_update_view.setText("Last Update: " + mostRecent);
+
     }
 }

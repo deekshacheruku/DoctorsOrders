@@ -79,8 +79,6 @@ public class confirm_medication_3 extends AppCompatActivity {
 
         Bundle finalInfoBundle = new Bundle(bundleStep2); //bundle with information to be submitted to db
 
-//        Log.d("patient name", bundleStep2.getString("patientName"));
-
         String store_specific_time_string = String.join(", ", specific_times);
         finalInfoBundle.putString("specific_time", store_specific_time_string);
 
@@ -89,7 +87,6 @@ public class confirm_medication_3 extends AppCompatActivity {
 
         Bundle editInfoBundle = new Bundle(); //bundle with info for edit stage
         editInfoBundle.putString("patientName", bundleStep2.getString("patientName"));
-        editInfoBundle.putString("medicationName", bundleStep2.getString("medicationName"));
 
         Intent editIntent = new Intent(confirm_medication_3.this, set_medication_1.class);
         editIntent.putExtras(editInfoBundle);
@@ -106,7 +103,6 @@ public class confirm_medication_3 extends AppCompatActivity {
                     startActivity(intent);
 
                 } else { //if this is not an edit and a first time insert
-                    finalInfoBundle.putString("dateTime", Instant.now().toString());
                     databaseHelper.addNewSchedule(finalInfoBundle);
                     startActivity(intent);
                 }

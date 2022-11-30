@@ -8,9 +8,13 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.util.Log;
 
+import java.sql.Date;
+import java.time.LocalDateTime;
+import java.util.Calendar;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
     // If you change the database schema, you must increment the database version.
-    public static final int DATABASE_VERSION = 4;
+    public static final int DATABASE_VERSION = 5;
     public static final String DATABASE_NAME = "DoctorsOrders.db";
 
     private static final String SCHEDULER_PATIENTS_TABLE = "Scheduler_Patients_List";
@@ -26,6 +30,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String SCHEDULES_TABLE_INSTRUCTIONS = "Instructions";
     private static final String SCHEDULES_TABLE_DAY_FREQUENCY = "Medicine_Day_Frequency";
     private static final String SCHEDULES_TABLE_SPECIFIC_TIME = "Medicine_Day_Specific_Time";
+    private static final String SCHEDULES_TABLE_TIMESTAMP = "Timestamp";
 
     private static final String MEDICINES_TABLE = "Registered_Medicines";
     private static final String MEDICINES_TABLE_MED_NAME = "Medicine_Name";
@@ -48,7 +53,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         String createScheduleTable = "CREATE TABLE " + SCHEDULES_TABLE + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " + SCHEDULES_TABLE_PATIENT_NAME + " TEXT, " +
                 SCHEDULES_TABLE_MED_NAME + " TEXT, " + SCHEDULES_TABLE_NUMBER_PILLS + " TEXT, " +
-                SCHEDULES_TABLE_INSTRUCTIONS + " TEXT, " + SCHEDULES_TABLE_DAY_FREQUENCY + " INTEGER, " + SCHEDULES_TABLE_SPECIFIC_TIME + " TEXT)";
+                SCHEDULES_TABLE_INSTRUCTIONS + " TEXT, " + SCHEDULES_TABLE_DAY_FREQUENCY + " INTEGER, " + SCHEDULES_TABLE_SPECIFIC_TIME + " TEXT, " + SCHEDULES_TABLE_TIMESTAMP
+                + " TEXT)";
+
 
         db.execSQL(createPatientsListTable);
         db.execSQL(createMedicineTable);
@@ -70,6 +77,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      */
 
     public boolean addNewSchedule(Bundle bundle) {
+        String currentTime = Calendar.getInstance().getTime().toString();
+
         ContentValues contentValues = new ContentValues();
         contentValues.put(SCHEDULES_TABLE_PATIENT_NAME, bundle.getString("patientName"));
         contentValues.put(SCHEDULES_TABLE_MED_NAME, bundle.getString("medicationName"));
@@ -77,6 +86,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(SCHEDULES_TABLE_DAY_FREQUENCY, bundle.getString("days"));
         contentValues.put(SCHEDULES_TABLE_NUMBER_PILLS, bundle.getString("pillNumber"));
         contentValues.put(SCHEDULES_TABLE_SPECIFIC_TIME, bundle.getString("specific_time"));
+        contentValues.put(SCHEDULES_TABLE_TIMESTAMP, currentTime);
 
 //        contentValues.put(SCHEDULES_TABLE_MED_NAME, bundle.getString());
         long result = db.insert(SCHEDULES_TABLE, null, contentValues);
@@ -139,7 +149,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public boolean updateMedScheduleInformation(Bundle bundle) {
-        SQLiteDatabase db = this.getWritableDatabase();
+
+        String currentTime = Calendar.getInstance().getTime().toString();
         ContentValues contentValues = new ContentValues();
         contentValues.put(SCHEDULES_TABLE_PATIENT_NAME, bundle.getString("patientName"));
         contentValues.put(SCHEDULES_TABLE_MED_NAME, bundle.getString("medicationName"));
@@ -147,6 +158,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(SCHEDULES_TABLE_DAY_FREQUENCY, bundle.getString("days"));
         contentValues.put(SCHEDULES_TABLE_NUMBER_PILLS, bundle.getString("pillNumber"));
         contentValues.put(SCHEDULES_TABLE_SPECIFIC_TIME, bundle.getString("specific_time"));
+        contentValues.put(SCHEDULES_TABLE_TIMESTAMP, currentTime);
 
         long result = db.update(SCHEDULES_TABLE, contentValues, "ID = " + bundle.getLong("recordIdToUpdate"), null);
 
@@ -157,5 +169,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             Log.d("1", "update record succeeded");
             return true;
         }
+    }
+
+    public Cursor getMostRecentUpdatedSchedule() {
+        String query = "SELECT " + SCHEDULES_TABLE_MED_NAME + " From " + SCHEDULES_TABLE + " ORDER BY " + SCHEDULES_TABLE_TIMESTAMP + " DESC LIMIT 1";
+        return db.rawQuery(query, null);
     }
 }
