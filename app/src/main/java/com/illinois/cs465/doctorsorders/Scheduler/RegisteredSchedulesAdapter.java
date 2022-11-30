@@ -1,5 +1,6 @@
 package com.illinois.cs465.doctorsorders.Scheduler;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +43,7 @@ public class RegisteredSchedulesAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         view = inflater.inflate(R.layout.activity_custom_patient_list_view, null);
         TextView textview = (TextView) view.findViewById(R.id.patientItem);
+        Log.d("regadapter", registered_schedules.get(i).substring(1));
         textview.setText(registered_schedules.get(i).substring(1));
         return view;
     }

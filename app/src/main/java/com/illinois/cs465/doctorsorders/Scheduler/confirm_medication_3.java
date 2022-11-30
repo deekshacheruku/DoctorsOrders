@@ -15,7 +15,9 @@ import com.illinois.cs465.doctorsorders.R;
 
 import org.w3c.dom.Text;
 
+import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class confirm_medication_3 extends AppCompatActivity {
@@ -87,20 +89,24 @@ public class confirm_medication_3 extends AppCompatActivity {
 
         Bundle editInfoBundle = new Bundle(); //bundle with info for edit stage
         editInfoBundle.putString("patientName", bundleStep2.getString("patientName"));
+        editInfoBundle.putString("medicationName", bundleStep2.getString("medicationName"));
 
         Intent editIntent = new Intent(confirm_medication_3.this, set_medication_1.class);
         editIntent.putExtras(editInfoBundle);
 
+        Log.d("time", Instant.now().toString());
+
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (bundleStep2.getLong("recordIdToUpdate") != 0L) {
+                if (bundleStep2.getLong("recordIdToUpdate") != 0L) { //if this originated from edit page
 //                    Log.d("id: ", "received");
                     finalInfoBundle.putLong("recordIdToUpdate", bundleStep2.getLong("recordIdToUpdate"));
                     databaseHelper.updateMedScheduleInformation(finalInfoBundle);
                     startActivity(intent);
 
-                } else {
+                } else { //if this is not an edit and a first time insert
+                    finalInfoBundle.putString("dateTime", Instant.now().toString());
                     databaseHelper.addNewSchedule(finalInfoBundle);
                     startActivity(intent);
                 }

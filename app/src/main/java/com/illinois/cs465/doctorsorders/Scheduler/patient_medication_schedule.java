@@ -38,6 +38,9 @@ public class patient_medication_schedule extends AppCompatActivity {
         TextView nameView = findViewById(R.id.schedule_for);
         nameView.setText("Schedule For: " + stuff);
 
+        TextView med_last_update = findViewById(R.id.med_last_update);
+        med_last_update.setText("Last Update: " + bundle.getString("medicationName"));
+
         listView = (ListView) findViewById(R.id.medicationList);
 
         populateAssignedSchedules();
@@ -88,13 +91,10 @@ public class patient_medication_schedule extends AppCompatActivity {
             String medName = data.getString(1);
             String frequency = "" + data.getString(2) + " times per day" ;
             String finalInfo = "" + recordID.toString() + "" + medName + "       " + frequency;
-
-//            Log.d("final schedule str ", finalInfo);
-
+            Log.d("finalInfo", finalInfo);
             schedules.add(finalInfo);
         }
         schedulesList = schedules;
         last_update_view = findViewById(R.id.med_last_update);
-//        last_update_view.setText(schedules.get(schedules.size() - 1));
     }
 }
