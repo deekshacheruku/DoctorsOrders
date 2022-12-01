@@ -67,6 +67,7 @@
                         android:textSize="@dimen/Normal"/>
 
                     <EditText
+                        android:id="@+id/friendName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_row="0"
@@ -83,6 +84,7 @@
                         android:textSize="@dimen/Normal"/>
 
                     <EditText
+                        android:id="@+id/relation"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_row="1"
@@ -99,6 +101,7 @@
                         android:textSize="@dimen/Normal"/>
 
                     <EditText
+                        android:id="@+id/phone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_row="2"
