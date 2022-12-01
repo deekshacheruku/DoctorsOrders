@@ -39,7 +39,7 @@ public class patient_medication_schedule extends AppCompatActivity {
         Log.d("patientName schedule is", stuff);
 
         TextView nameView = findViewById(R.id.schedule_for);
-        nameView.setText("Schedule For: " + stuff);
+        nameView.setText("Schedule For:\n" + stuff);
 
         listView = (ListView) findViewById(R.id.medicationList);
 
