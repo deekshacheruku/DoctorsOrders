@@ -16,8 +16,9 @@
             android:id="@+id/schedule_for"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="70dp"
             android:layout_marginTop="30dp"
+            android:layout_gravity="center"
+            android:textAlignment="center"
             android:textSize="@dimen/Header2"/>
         <ListView
             android:layout_width="match_parent"
