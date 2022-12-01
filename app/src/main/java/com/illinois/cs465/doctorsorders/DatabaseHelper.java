@@ -8,8 +8,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.util.Log;
 
-import java.sql.Date;
-import java.time.LocalDateTime;
 import java.util.Calendar;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
@@ -100,6 +98,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public boolean addNewPatients(Bundle bundle) { //for adding new registered patients
         ContentValues contentValues = new ContentValues();
+
         contentValues.put(REGISTERED_PATIENTS_LASTNAME, bundle.getString("lname"));
         contentValues.put(REGISTERED_PATIENTS_FIRSTNAME, bundle.getString("fname"));
         contentValues.put(REGISTERED_PATIENTS_PIN, bundle.getString("pin"));
@@ -123,6 +122,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public boolean addNewScheduler(Bundle bundle) {
         ContentValues contentValues = new ContentValues();
+
+        contentValues.put(REGISTERED_SCHEDULER_LASTNAME, bundle.getString("lastName"));
+        contentValues.put(REGISTERED_SCHEDULER_FIRSTNAME, bundle.getString("firstName"));
+        contentValues.put(REGISTERED_SCHEDULER_USERNAME, bundle.getString("username"));
+        contentValues.put(REGISTERED_SCHEDULER_PASSWORD, bundle.getString("password"));
 
         long result = db.insert(REGISTERED_SCHEDULER_TABLE, null, contentValues);
 
@@ -236,6 +240,4 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String query = "SELECT " + SCHEDULES_TABLE_MED_NAME + " From " + SCHEDULES_TABLE + " ORDER BY " + SCHEDULES_TABLE_TIMESTAMP + " DESC LIMIT 1";
         return db.rawQuery(query, null);
     }
-
-
 }

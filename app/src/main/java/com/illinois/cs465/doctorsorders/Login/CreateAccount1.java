@@ -13,7 +13,7 @@ import android.widget.LinearLayout;
 
 import com.illinois.cs465.doctorsorders.R;
 
-public class CreateAccount1 extends AppCompatActivity implements View.OnClickListener{
+public class CreateAccount1 extends AppCompatActivity implements View.OnClickListener {
 
     LinearLayout famFriendList;
     EditText text1;
@@ -21,35 +21,28 @@ public class CreateAccount1 extends AppCompatActivity implements View.OnClickLis
     EditText text3;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_patient1);
-
-        Bundle fromStep0 = getIntent().getExtras();
-
-//        Log.d("name", fromStep0.getString("lname"));
 
         text1 = findViewById(R.id.friendName);
         text2 = findViewById(R.id.relation);
         text3 = findViewById(R.id.phone);
 
-        Button nextBtn = (Button) findViewById(R.id.nextCreate);
-        Button backBtn = (Button) findViewById(R.id.backCreate);
-        Button addBtn = (Button) findViewById(R.id.addFamFriend);
+        Button nextBtn = findViewById(R.id.nextCreate);
+        Button backBtn = findViewById(R.id.backCreate);
+        Button addBtn = findViewById(R.id.addFamFriend);
 
         nextBtn.setOnClickListener(this);
         backBtn.setOnClickListener(this);
         addBtn.setOnClickListener(this);
 
-        famFriendList = (LinearLayout) findViewById(R.id.famFriendList);
+        famFriendList = findViewById(R.id.famFriendList);
     }
 
     @Override
-    public void onClick(View v)
-    {
-        if(v.getId() == R.id.nextCreate)
-        {
+    public void onClick(View v) {
+        if (v.getId() == R.id.nextCreate) {
             Bundle fromStep0 = getIntent().getExtras();
 
             Bundle forStep2 = new Bundle(fromStep0);
@@ -62,17 +55,13 @@ public class CreateAccount1 extends AppCompatActivity implements View.OnClickLis
             intent.putExtras(forStep2);
 
             startActivity(intent);
-        }
-        else if(v.getId() == R.id.backCreate)
-        {
+        } else if (v.getId() == R.id.backCreate) {
             Intent intent = new Intent(this, CreateAccount0.class);
             intent.putExtra("accountType", 0);
             startActivity(intent);
-        }
-        else if(v.getId() == R.id.addFamFriend)
-        {
+        } else if (v.getId() == R.id.addFamFriend) {
             LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            final View entry = inflater.inflate(R.layout.fam_friend_entry,null);
+            final View entry = inflater.inflate(R.layout.fam_friend_entry, null);
             famFriendList.addView(entry);
         }
     }
