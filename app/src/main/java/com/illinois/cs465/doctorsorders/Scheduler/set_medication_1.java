@@ -21,7 +21,6 @@ public class set_medication_1 extends AppCompatActivity {
     private int dose = 0;
     TextView medTextView;
     String[] medications = {"atorvastatin", "metformin", "simvastatin", "omeprazole", "amlodipine"};
-    String selectedMedication;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,10 +77,14 @@ public class set_medication_1 extends AppCompatActivity {
 
         Button button = (Button) findViewById(R.id.next_to_schedule);
 
+        Bundle step_one_received_bundle = getIntent().getExtras();
+
+        TextView nameView = findViewById(R.id.patient_name);
+        nameView.setText("Set Medication For " + step_one_received_bundle.getString("patientName"));
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Bundle step_one_received_bundle = getIntent().getExtras();
 
                 if (step_one_received_bundle.getLong("recordIdToUpdate") != 0L) {
                     bundle.putLong("recordIdToUpdate", step_one_received_bundle.getLong("recordIdToUpdate"));

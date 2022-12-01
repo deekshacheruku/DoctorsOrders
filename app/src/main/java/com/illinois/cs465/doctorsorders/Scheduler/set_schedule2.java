@@ -44,12 +44,15 @@ public class set_schedule2 extends AppCompatActivity {
                 }
             }
         });
+        Bundle bundleFromStep1 = getIntent().getExtras();
+        TextView nameView = findViewById(R.id.patient_name);
+        nameView.setText("Set Medication For " + bundleFromStep1.getString("patientName"));
+
 
         Button button = (Button) findViewById(R.id.next_to_confirm);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Bundle bundleFromStep1 = getIntent().getExtras();
                 Bundle bundleStep2 = new Bundle();
 
                 if (bundleFromStep1.getLong("recordIdToUpdate") != 0L) {

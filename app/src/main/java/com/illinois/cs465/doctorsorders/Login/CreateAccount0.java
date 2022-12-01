@@ -34,7 +34,6 @@ public class CreateAccount0 extends AppCompatActivity implements View.OnClickLis
         else if(accType == 0) //If Patient Account,
         {
             setContentView(R.layout.activity_create_patient0);
-            Log.d("adsfasdf","asdfasdfasdf");
             EditText text1 = findViewById(R.id.lname);
             EditText text2 = findViewById(R.id.fname);
             EditText text3 = findViewById(R.id.pin);
