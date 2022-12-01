@@ -1,48 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/backgroundTintSecondary">
-    <TextView
-        android:id="@+id/text_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textAlignment="center"
-        android:layout_marginTop="40dp"
-        android:text="Scheduler\nDavid Smith"
-        android:textSize="@dimen/Header2" />
-    <View
-        android:layout_marginTop="10dp"
-        android:layout_width="900dp"
-        android:layout_height="1dp"
-        android:background="@color/colorPrimaryVariant" />
-
-    <LinearLayout
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_margin="20dp">
+        <TextView
+            android:id="@+id/text_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:layout_marginTop="40dp"
+            android:text="Scheduler\nDavid Smith"
+            android:textSize="@dimen/Header2" />
+        <View
+            android:layout_marginTop="10dp"
+            android:layout_width="900dp"
+            android:layout_height="1dp"
+            android:background="@color/colorPrimaryVariant" />
 
-        <android.widget.SearchView
-            android:id="@+id/search_view"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:iconifiedByDefault="false"
-            android:queryHint="Search Patient" />
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/patientList" />
-        <Button
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:layout_marginLeft="230dp"
-            android:layout_marginTop="20dp"
-            android:id="@+id/addPatientBtn"
-            android:text="+"
-            android:textSize="@dimen/Normal"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <android.widget.SearchView
+                android:id="@+id/search_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:iconifiedByDefault="false"
+                android:queryHint="Search Patient" />
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/patientList" />
+            <Button
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_gravity="right"
+                android:layout_marginTop="20dp"
+                android:id="@+id/addPatientBtn"
+                android:text="+"
+                android:textSize="@dimen/Normal"/>
+        </LinearLayout>
     </LinearLayout>
-
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
