@@ -14,7 +14,7 @@ import java.util.Calendar;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     // If you change the database schema, you must increment the database version.
-    public static final int DATABASE_VERSION = 6;
+    public static final int DATABASE_VERSION = 7;
     public static final String DATABASE_NAME = "DoctorsOrders.db";
 
     private static final String SCHEDULER_PATIENTS_TABLE = "Scheduler_Patients_List";
@@ -41,6 +41,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String REGISTERED_PATIENTS_PIN = "Pin_Num";
     private static final String REGISTERED_PATIENTS_DOCTOR_NAME = "Doctor_Name";
     private static final String REGISTERED_PATIENTS_CLINIC_NAME = "Clinic_Name";
+    private static final String REGISTERED_PATIENTS_DOCTOR_OFFICE_NUMBER = "Doctor_Office_Number";
     private static final String REGISTERED_PATIENTS_FRIEND_NAME = "Friend_Name";
     private static final String REGISTERED_PATIENTS_FRIEND_RELATION = "Friend_Relation";
     private static final String REGISTERED_PATIENTS_PHONE_NUMBER = "Phone_Number";
@@ -73,7 +74,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         String createPatientTable = "CREATE TABLE " + REGISTERED_PATIENTS_TABLE + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " + REGISTERED_PATIENTS_LASTNAME + " TEXT, " +
                 REGISTERED_PATIENTS_FIRSTNAME + " TEXT, " + REGISTERED_PATIENTS_PIN + " INTEGER, " +
-                REGISTERED_PATIENTS_DOCTOR_NAME + " TEXT, " + REGISTERED_PATIENTS_CLINIC_NAME + " TEXT, " + REGISTERED_PATIENTS_FRIEND_NAME + " TEXT, " + REGISTERED_PATIENTS_FRIEND_RELATION
+                REGISTERED_PATIENTS_DOCTOR_NAME + " TEXT, " + REGISTERED_PATIENTS_CLINIC_NAME + " TEXT, " + REGISTERED_PATIENTS_DOCTOR_OFFICE_NUMBER + " TEXT, " + REGISTERED_PATIENTS_FRIEND_NAME + " TEXT, " + REGISTERED_PATIENTS_FRIEND_RELATION
                 + " TEXT, " + REGISTERED_PATIENTS_PHONE_NUMBER + " TEXT)";
 
         String createSchedulerTable = "CREATE TABLE " + REGISTERED_SCHEDULER_TABLE + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " + REGISTERED_SCHEDULER_LASTNAME + " TEXT, " +
@@ -97,15 +98,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean addNewPatients(Bundle bundle) {
+    public boolean addNewPatients(Bundle bundle) { //for adding new registered patients
         ContentValues contentValues = new ContentValues();
+        contentValues.put(REGISTERED_PATIENTS_LASTNAME, bundle.getString("lname"));
+        contentValues.put(REGISTERED_PATIENTS_FIRSTNAME, bundle.getString("fname"));
+        contentValues.put(REGISTERED_PATIENTS_PIN, bundle.getString("pin"));
+        contentValues.put(REGISTERED_PATIENTS_DOCTOR_NAME, bundle.getString("docName"));
+        contentValues.put(REGISTERED_PATIENTS_FIRSTNAME, bundle.getString("fname"));
+        contentValues.put(REGISTERED_PATIENTS_CLINIC_NAME, bundle.getString("clinicName"));
+        contentValues.put(REGISTERED_PATIENTS_DOCTOR_OFFICE_NUMBER, bundle.getString("offNum"));
+        contentValues.put(REGISTERED_PATIENTS_FRIEND_NAME, bundle.getString("friendName"));
+        contentValues.put(REGISTERED_PATIENTS_FRIEND_RELATION, bundle.getString("relation"));
+        contentValues.put(REGISTERED_PATIENTS_PHONE_NUMBER, bundle.getString("phone"));
 
         long result = db.insert(REGISTERED_PATIENTS_TABLE, null, contentValues);
 
         if (result == -1) {
             return false;
         } else {
-            Log.d("1", "New Schedule inserted!");
+            Log.d("1", "Patient just Registered!");
             return true;
         }
     }

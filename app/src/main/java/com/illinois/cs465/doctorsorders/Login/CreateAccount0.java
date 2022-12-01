@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.illinois.cs465.doctorsorders.Scheduler.DashboardActivity;
 import com.illinois.cs465.doctorsorders.R;
@@ -32,8 +34,33 @@ public class CreateAccount0 extends AppCompatActivity implements View.OnClickLis
         else if(accType == 0) //If Patient Account,
         {
             setContentView(R.layout.activity_create_patient0);
+            Log.d("adsfasdf","asdfasdfasdf");
+            EditText text1 = findViewById(R.id.lname);
+            EditText text2 = findViewById(R.id.fname);
+            EditText text3 = findViewById(R.id.pin);
+            EditText text4 = findViewById(R.id.docName);
+            EditText text5 = findViewById(R.id.clinicName);
+            EditText text6 = findViewById(R.id.offNum);
+
+            Bundle forStep1 = new Bundle();
+
             Button nextCreate = (Button) findViewById(R.id.nextCreate);
-            nextCreate.setOnClickListener(this);
+            nextCreate.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Log.d("asdasd", "asdasda");
+                    forStep1.putString("lname", text1.getText().toString());
+                    forStep1.putString("fname", text2.getText().toString());
+                    forStep1.putString("pin", text3.getText().toString());
+                    forStep1.putString("docName", text4.getText().toString());
+                    forStep1.putString("clinicName", text5.getText().toString());
+                    forStep1.putString("offNum", text6.getText().toString());
+
+                    Intent intent = new Intent(CreateAccount0.this, CreateAccount1.class);
+                    intent.putExtras(forStep1);
+                    startActivity(intent);
+                }
+            });
         }
         else if(accType == 2) //Else if Scheduler Account,
         {
@@ -62,6 +89,7 @@ public class CreateAccount0 extends AppCompatActivity implements View.OnClickLis
         }
         else if (v.getId() == R.id.nextCreate) //Restart activity with Scheduler Create Account.
         {
+            Log.d("in next", "create");
             Intent intent = new Intent(this, CreateAccount1.class);
             startActivity(intent);
         }
