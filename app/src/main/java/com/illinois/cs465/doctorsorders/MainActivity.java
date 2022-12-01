@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 
+import com.illinois.cs465.doctorsorders.Login.LoginDefault;
 import com.illinois.cs465.doctorsorders.Login.LoginLoading;
 import com.illinois.cs465.doctorsorders.Patient.PatientDashboardActivity;
 import com.illinois.cs465.doctorsorders.Scheduler.DashboardActivity;
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         Button loginBtn = findViewById(R.id.loginBtn);
-        loginBtn.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, LoginLoading.class)));
+        loginBtn.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, LoginDefault.class)));
     }
 
     private void insertImages() {

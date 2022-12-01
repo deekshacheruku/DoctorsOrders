@@ -3,13 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center_vertical"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/backgroundTintSecondary">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_margin="20dp">
 
         <TextView
             android:id="@+id/time"
@@ -22,7 +24,7 @@
             android:paddingRight="60dp"
             android:text="@string/wait"
             android:textAlignment="center"
-            android:textSize="30sp" />
+            android:textSize="@dimen/Header1" />
 
         <TextView
             android:id="@+id/display_text"
@@ -32,7 +34,7 @@
             android:gravity="center"
             android:text="@string/displayText"
             android:textAlignment="center"
-            android:textSize="30sp" />
+            android:textSize="@dimen/Header2" />
 
         <TextView
             android:id="@+id/display_medicine"
@@ -42,7 +44,7 @@
             android:gravity="center"
             android:text="@string/displayMedicine"
             android:textAlignment="center"
-            android:textSize="30sp" />
+            android:textSize="@dimen/Header2" />
 
         <TextView
             android:id="@+id/patient_pills"
@@ -52,7 +54,7 @@
             android:gravity="center"
             android:text="@string/patient_pills"
             android:textAlignment="center"
-            android:textSize="30sp" />
+            android:textSize="@dimen/Header2" />
 
         <ImageView
             android:id="@+id/medicine_image"
@@ -67,7 +69,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="@string/patient_medicine_instructions"
-            android:textSize="30sp"
+            android:textSize="@dimen/Header2"
             android:textStyle="bold" />
 
         <LinearLayout

@@ -14,6 +14,6 @@
         android:id="@+id/patientItem"
         android:drawableLeft="@drawable/profile_pic"
         android:drawablePadding="35dp"
-        android:textSize="20dp"
+        android:textSize="@dimen/Normal"
         />
 </LinearLayout>

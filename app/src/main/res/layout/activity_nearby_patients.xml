@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    >
+    android:background="@color/backgroundTintSecondary">
     <TextView
         android:id="@+id/text_title"
         android:layout_width="wrap_content"
@@ -11,13 +11,13 @@
         android:layout_marginLeft="50dp"
         android:layout_marginTop="40dp"
         android:text="Scheduler David Smith"
-        android:textSize="30dp" />
+        android:textSize="@dimen/Header2" />
 
     <View
         android:layout_marginTop="10dp"
         android:layout_width="900dp"
         android:layout_height="1dp"
-        android:background="#000000" />
+        android:background="@color/colorPrimaryVariant" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,6 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_margin="15dp"
+            android:backgroundTint="@color/colorSecondaryVariant"
             android:ems="10"
             android:hint="Search by Last Name"
             android:drawableLeft="@drawable/ic_action_name"
@@ -43,7 +44,7 @@
             android:layout_marginBottom="15dp"
             android:text="Nearby Patients"
             android:textStyle="bold"
-            android:textSize="30dp" />
+            android:textSize="@dimen/Header2" />
         <ListView
             android:layout_width="match_parent"
             android:layout_height="match_parent"

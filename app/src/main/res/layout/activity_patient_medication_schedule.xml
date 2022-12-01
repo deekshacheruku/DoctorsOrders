@@ -4,19 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Scheduler.patient_medication_schedule">
+    tools:context=".Scheduler.patient_medication_schedule"
+    android:background="@color/backgroundTintSecondary">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:id="@+id/name">
+        android:id="@+id/name"
+        android:layout_margin="20dp">
         <TextView
             android:id="@+id/schedule_for"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="70dp"
             android:layout_marginTop="30dp"
-            android:textSize="23dp"/>
+            android:textSize="@dimen/Header2"/>
         <ListView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -27,13 +29,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
             android:layout_marginLeft="70dp"
-            android:textSize="23dp"
+            android:textSize="@dimen/Normal"
             android:text="Last Update: " />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="70dp"
-            android:textSize="23dp"
+            android:textSize="@dimen/Normal"
             android:text="Taken At: 11/16/2022" />
         <LinearLayout
             android:layout_width="match_parent"
@@ -47,14 +49,14 @@
                 android:layout_weight="10"
                 android:text="Back"
                 android:layout_marginLeft="30dp"
-                android:textSize="20dp"
+                android:textSize="@dimen/Checkbox"
                 android:id="@+id/back"/>
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Add"
-                android:textSize="20dp"
+                android:textSize="@dimen/Checkbox"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="30dp"
                 android:layout_weight="10"

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/backgroundTintSecondary">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,7 +17,8 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/app_name"
-            android:textSize="50dp">
+            android:textSize="@dimen/Title"
+            android:layout_marginBottom="20dp">
         </TextView>
 
         <!-- Header -->
@@ -25,65 +27,62 @@
             android:layout_height="wrap_content"
             android:gravity="left|top"
             android:text="@string/patient"
-            android:textSize="20dp">
-            <!--android:textColor="#AA0000"-->
+            android:textSize="@dimen/Header2">
         </TextView>
 
-        <!-- Last Name Text Field -->
-        <LinearLayout
+
+        <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
+            android:columnCount="2"
+            android:rowCount="2"
+            android:layout_marginBottom="10dp">
+<!--Last Name Field-->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_row="0"
+                android:layout_column="0"
                 android:text="Last Name"
-                android:layout_weight="1">
-            </TextView>
+                android:textSize="@dimen/Normal"/>
 
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="10">
-            </EditText>
-
-        </LinearLayout>
-
-        <!-- PIN Entry Field -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
+                android:layout_row="0"
+                android:layout_column="1"
+                android:layout_columnWeight="1"
+                android:backgroundTint="@color/colorSecondaryVariant" />
+<!--PIN # Field-->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_row="1"
+                android:layout_column="0"
                 android:text="PIN #"
-                android:layout_weight="1">
-            </TextView>
+                android:textSize="@dimen/Normal"/>
 
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="10"
-                android:inputType="numberPassword">
-            </EditText>
-
-        </LinearLayout>
+                android:layout_row="1"
+                android:layout_column="1"
+                android:layout_columnWeight="1"
+                android:inputType="numberPassword"
+                android:backgroundTint="@color/colorSecondaryVariant"/>
+        </GridLayout>
 
         <Button
             android:id="@+id/loginPat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="LOGIN">
-            <!--android:backgroundTint="#FFAA0000">-->
         </Button>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:gravity="center"
             android:layout_weight="1">
 
@@ -92,16 +91,15 @@
                 android:layout_height="wrap_content"
                 android:gravity="center|top"
                 android:textSize="@dimen/Header2"
-                android:text="@string/needAccount"
-                android:paddingRight="20dp">
+                android:text="@string/needAccount">
             </TextView>
 
             <Button
                 android:id="@+id/createPat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Click here">
-                <!--android:backgroundTint="#FFAA0000"-->
+                android:text="Click here"
+                android:backgroundTint="@color/colorSecondary">
             </Button>
 
         </LinearLayout>

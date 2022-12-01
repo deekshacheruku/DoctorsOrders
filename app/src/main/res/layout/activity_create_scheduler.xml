@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/backgroundTintSecondary">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,8 +15,8 @@
             android:layout_height="wrap_content"
             android:gravity="left"
             android:text="Create Account: Scheduler"
-            android:textSize="@dimen/Title">
-            <!--android:textColor="#FF0000AA"-->
+            android:textSize="@dimen/Title"
+            android:layout_marginBottom="20dp">
         </TextView>
 
         <GridLayout
@@ -23,62 +24,93 @@
             android:layout_height="wrap_content"
             android:columnCount="2"
             android:rowCount="5"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp">
 
             <!-- Last Name -->
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_column="0"
                 android:layout_row="0"
                 android:text="Last Name"
+                android:textSize="@dimen/Normal"
                 />
             <EditText
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_column="1"
-                android:layout_row="0"/>
+                android:layout_row="0"
+                android:layout_columnWeight="1"
+                android:backgroundTint="@color/colorSecondaryVariant"/>
 
             <!-- First Name -->
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_column="0"
                 android:layout_row="1"
                 android:text="First Name"
+                android:textSize="@dimen/Normal"
                 />
             <EditText
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_column="1"
-                android:layout_row="1"/>
+                android:layout_row="1"
+                android:layout_columnWeight="1"
+                android:backgroundTint="@color/colorSecondaryVariant"/>
 
             <!-- Username -->
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_column="0"
                 android:layout_row="2"
                 android:text="Username"
+                android:textSize="@dimen/Normal"
                 />
             <EditText
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_column="1"
-                android:layout_row="2"/>
+                android:layout_row="2"
+                android:layout_columnWeight="1"
+                android:backgroundTint="@color/colorSecondaryVariant"/>
 
             <!-- Pin & Confirm Pin -->
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_column="0"
                 android:layout_row="3"
                 android:text="Password"
+                android:textSize="@dimen/Normal"
                 />
             <EditText
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_column="1"
-                android:layout_row="3"/>
+                android:layout_row="3"
+                android:layout_columnWeight="1"
+                android:backgroundTint="@color/colorSecondaryVariant"/>
 
             <!-- Names -->
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_column="0"
                 android:layout_row="4"
                 android:text="Confirm Password"
+                android:textSize="@dimen/Normal"
                 />
             <EditText
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_column="1"
-                android:layout_row="4"/>
+                android:layout_row="4"
+                android:layout_columnWeight="1"
+                android:backgroundTint="@color/colorSecondaryVariant"/>
         </GridLayout>
 
         <Button
@@ -87,7 +119,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="Create Account">
-            <!--android:backgroundTint="#FF0000AA"-->
         </Button>
     </LinearLayout>
 

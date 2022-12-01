@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="Title">40dp</dimen>
-    <dimen name="Header1">30dp</dimen>
-    <dimen name="Header2">20dp</dimen>
-    <dimen name="Normal">10dp</dimen>
-
-    <color name="MainColor">#B100FF</color>
-
+    <dimen name="Title">50dp</dimen>
+    <dimen name="Header1">40dp</dimen>
+    <dimen name="Header2">30dp</dimen>
+    <dimen name="Normal">20dp</dimen>
+    <dimen name="Checkbox">15dp</dimen>
 </resources>

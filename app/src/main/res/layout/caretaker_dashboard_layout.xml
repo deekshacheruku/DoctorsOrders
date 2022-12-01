@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    >
+    android:background="@color/backgroundTintSecondary">
     <TextView
         android:id="@+id/text_title"
         android:layout_width="wrap_content"
@@ -11,12 +11,12 @@
         android:layout_marginLeft="50dp"
         android:layout_marginTop="40dp"
         android:text="Scheduler David Smith"
-        android:textSize="30dp" />
+        android:textSize="@dimen/Header2" />
     <View
         android:layout_marginTop="10dp"
         android:layout_width="900dp"
         android:layout_height="1dp"
-        android:background="#000000" />
+        android:background="@color/colorPrimaryVariant" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -40,7 +40,7 @@
             android:layout_marginTop="20dp"
             android:id="@+id/addPatientBtn"
             android:text="+"
-            android:textSize="20dp"/>
+            android:textSize="@dimen/Normal"/>
     </LinearLayout>
 
 

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Scheduler.set_schedule2">
+    tools:context=".Scheduler.set_schedule2"
+    android:background="@color/backgroundTintSecondary">
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -13,7 +14,8 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="20dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -22,7 +24,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="40dp"
             android:text="Set Medication "
-            android:textSize="20dp" />
+            android:textSize="@dimen/Normal" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -35,7 +37,7 @@
                 android:layout_marginLeft="50dp"
                 android:layout_marginTop="10dp"
                 android:text="How often (days): "
-                android:textSize="20dp" />
+                android:textSize="@dimen/Normal" />
 
             <TextView
                 android:id="@+id/daysNum"
@@ -45,7 +47,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
                 android:text="0 "
-                android:textSize="20dp" />
+                android:textSize="@dimen/Normal" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -83,13 +85,14 @@
                 android:layout_marginTop="30dp"
                 android:layout_marginRight="20dp"
                 android:text="Specific Time "
-                android:textSize="20dp" />
+                android:textSize="@dimen/Normal" />
 
             <CheckBox
                 android:id="@+id/breakfast"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Breakfast"
+                android:textSize="@dimen/Checkbox"
                 android:onClick="onCheckboxClicked"
                 />
 
@@ -98,6 +101,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Lunch"
+                android:textSize="@dimen/Checkbox"
                 android:onClick="onCheckboxClicked"
                 />
 
@@ -106,6 +110,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Dinner"
+                android:textSize="@dimen/Checkbox"
                 android:onClick="onCheckboxClicked"
                 />
         </LinearLayout>
@@ -116,6 +121,7 @@
             android:layout_marginLeft="250dp"
             android:layout_marginTop="30dp"
             android:text="Next"
+            android:textSize="@dimen/Checkbox"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
     </LinearLayout>

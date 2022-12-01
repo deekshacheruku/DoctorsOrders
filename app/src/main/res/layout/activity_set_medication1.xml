@@ -4,19 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Scheduler.set_medication_1">
+    tools:context=".Scheduler.set_medication_1"
+    android:background="@color/backgroundTintSecondary">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:gravity="top">
+        android:gravity="top"
+        android:layout_margin="20dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
             android:layout_marginTop="10dp"
             android:text="Set Medication For Colin Zhou"
-            android:textSize="20dp" />
+            android:textSize="@dimen/Normal" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -27,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:layout_marginLeft="50dp"
-                android:textSize="20dp"
+                android:textSize="@dimen/Normal"
                 android:text="Choose Medicine:" />
             <Spinner
                 android:id="@+id/search_view_med"
@@ -45,7 +47,7 @@
             android:layout_marginLeft="50dp"
             android:layout_marginTop="10dp"
             android:text="Medication Name: "
-            android:textSize="20dp" />
+            android:textSize="@dimen/Normal" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -57,7 +59,7 @@
                 android:layout_marginLeft="50dp"
                 android:layout_marginTop="10dp"
                 android:text="# of Pills: "
-                android:textSize="20dp" />
+                android:textSize="@dimen/Normal" />
             <TextView
                 android:id="@+id/doseNum"
                 android:layout_width="wrap_content"
@@ -65,7 +67,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:text="0 "
-                android:textSize="20dp"
+                android:textSize="@dimen/Normal"
                 android:layout_marginRight="20dp"/>
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -110,6 +112,7 @@
                 android:background="@drawable/edit_text_border"
                 android:backgroundTint="#1a1515"
                 android:gravity="top"
+                android:textSize="@dimen/Checkbox"
                 android:inputType="textMultiLine"
                 android:overScrollMode="always"
                 android:padding="15dp"
@@ -120,6 +123,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Next"
+            android:textSize="@dimen/Checkbox"
             android:layout_marginTop="100dp"
             android:layout_marginLeft="250dp"
             android:id="@+id/next_to_schedule"/>

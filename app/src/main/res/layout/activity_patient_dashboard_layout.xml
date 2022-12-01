@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/backgroundTintSecondary">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_margin="20dp">
 
         <TextView
             android:id="@+id/patient_initial_text"
@@ -16,7 +18,7 @@
             android:layout_marginTop="20dp"
             android:gravity="center"
             android:text="@string/patient_initial_message"
-            android:textSize="40sp"
+            android:textSize="@dimen/Header1"
             android:textStyle="bold" />
 
         <TextView
@@ -25,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="@string/patient_medicine"
-            android:textSize="30sp"
+            android:textSize="@dimen/Header2"
             android:textStyle="bold" />
 
         <TextView
@@ -34,7 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="@string/patient_pills"
-            android:textSize="30sp"
+            android:textSize="@dimen/Header2"
             android:textStyle="bold" />
 
         <TextView
@@ -43,7 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="@string/patient_medicine_time"
-            android:textSize="30sp"
+            android:textSize="@dimen/Header2"
             android:textStyle="bold" />
 
         <ImageView
@@ -59,7 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="@string/patient_medicine_instructions"
-            android:textSize="30sp"
+            android:textSize="@dimen/Header2"
             android:textStyle="bold" />
     </LinearLayout>
 

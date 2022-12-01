@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Scheduler.confirm_medication_3">
+    tools:context=".Scheduler.confirm_medication_3"
+    android:background="@color/backgroundTintSecondary">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -13,11 +14,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="120dp"
-            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
             android:layout_marginBottom="40dp"
             android:text="Confirm Schedule"
-            android:textSize="20dp" />
+            android:textSize="@dimen/Header1" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -29,8 +30,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="100dp"
-                android:text="Name"
-                android:textSize="18dp" />
+                android:text="Name:"
+                android:textSize="@dimen/Normal" />
         </LinearLayout>
         <TextView
             android:id="@+id/medication_name"
@@ -38,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="100dp"
             android:text="Medication: "
-            android:textSize="18dp" />
+            android:textSize="@dimen/Normal" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -50,8 +51,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="100dp"
-                android:text="Dose"
-                android:textSize="18dp"
+                android:text="Dose:"
+                android:textSize="@dimen/Normal"
                 />
 <!--            <TextView-->
 <!--                android:layout_width="wrap_content"-->
@@ -72,8 +73,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="100dp"
-                android:text="Instructions"
-                android:textSize="18dp"
+                android:text="Instructions:"
+                android:textSize="@dimen/Normal"
                 android:gravity="center"
                 />
         </LinearLayout>
@@ -84,7 +85,7 @@
             android:text="Every 10 days at"
             android:layout_marginTop="60dp"
             android:layout_marginLeft="100dp"
-            android:textSize="18dp"
+            android:textSize="@dimen/Normal"
             />
         <LinearLayout
             android:layout_width="wrap_content"
@@ -96,6 +97,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Breakfast"
+                android:textSize="@dimen/Checkbox"
                 android:clickable="false"
                 />
 
@@ -104,6 +106,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Lunch"
+                android:textSize="@dimen/Checkbox"
                 android:clickable="false"
                 />
 
@@ -112,6 +115,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Dinner"
+                android:textSize="@dimen/Checkbox"
                 android:clickable="false"
                 />
         </LinearLayout>
