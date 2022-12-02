@@ -9,6 +9,7 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -171,11 +172,13 @@ public class patient_medication_schedule extends AppCompatActivity {
     Log.d("Adding lastTaken:", mostRecent + " " + date);
 
         //Make the notification appear 1 second after press or something.
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent,
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(patient_medication_schedule.this, 0, intent,
                 PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT);
         AlarmManager alarmService = (AlarmManager) getSystemService(ALARM_SERVICE);
-        long time = System.currentTimeMillis() + (3000);
-        alarmService.set(AlarmManager.RTC_WAKEUP, time, pendingIntent);
+//        long time = System.currentTimeMillis() + (3000);
+        long time = SystemClock.elapsedRealtime() + 3;
+
+        alarmService.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, time, pendingIntent);
 
     }
 

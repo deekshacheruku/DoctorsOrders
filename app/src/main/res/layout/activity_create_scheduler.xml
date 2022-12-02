@@ -97,7 +97,9 @@
                 android:layout_row="3"
                 android:layout_column="1"
                 android:layout_columnWeight="1"
-                android:backgroundTint="@color/colorSecondaryVariant" />
+                android:backgroundTint="@color/colorSecondaryVariant"
+                android:inputType="numberPassword"
+                />
 
             <!-- Names -->
             <TextView
@@ -114,7 +116,8 @@
                 android:layout_row="4"
                 android:layout_column="1"
                 android:layout_columnWeight="1"
-                android:backgroundTint="@color/colorSecondaryVariant" />
+                android:backgroundTint="@color/colorSecondaryVariant"
+                android:inputType="numberPassword"/>
         </GridLayout>
 
         <Button

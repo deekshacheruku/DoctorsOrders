@@ -19,7 +19,8 @@
             android:id="@+id/summary_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Send Summary" />
+            android:text="Send Summary"
+            android:layout_marginTop="-60dp"/>
 
         <TextView
             android:id="@+id/schedule_for"
