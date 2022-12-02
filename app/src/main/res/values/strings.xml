@@ -1,7 +1,8 @@
 <resources>
-    <!-- ??? Strings -->
+    <!-- Scheduler Strings -->
     <string name="app_name">Doctors Orders</string>
     <string name="caretaker_dashboard">CareTaker Dashboard</string>
+    <string name="taken_at">Taken At: %s</string>
 
     <!-- Patient's strings -->
     <string name="patient_db">Patient</string>

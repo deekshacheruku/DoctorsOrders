@@ -6,8 +6,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -15,21 +13,28 @@ import android.widget.TextView;
 import com.illinois.cs465.doctorsorders.DatabaseHelper;
 import com.illinois.cs465.doctorsorders.R;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class patient_medication_schedule extends AppCompatActivity {
     ArrayList<String> schedulesList;
-    ListView listView;
     DatabaseHelper databaseHelper;
-    Bundle bundle;
+    SimpleDateFormat dateFormat;
     TextView last_update_view;
-    String mostRecent;
+    Calendar calendar;
+    ListView listView;
+    Bundle bundle;
+
+    String mostRecent = "N/A";
+    String date = "N/A";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_medication_schedule);
         databaseHelper = new DatabaseHelper(this);
+        calendar = Calendar.getInstance();
 
         getMostRecent();
 
@@ -48,21 +53,18 @@ public class patient_medication_schedule extends AppCompatActivity {
         RegisteredSchedulesAdapter adapter = new RegisteredSchedulesAdapter(getApplicationContext(), schedulesList);
         listView.setAdapter(adapter);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Object medName = adapterView.getItemAtPosition(i);
+        listView.setOnItemClickListener((adapterView, view, i, l) -> {
+            Object medName = adapterView.getItemAtPosition(i);
 
-                Bundle bundleForMedicineInfo = new Bundle();
-                bundleForMedicineInfo.putString("medicineName", medName.toString());
-                bundleForMedicineInfo.putString("patientName", bundle.getString("patientName"));
-                bundleForMedicineInfo.putLong("recordId", adapter.getItemId(i));
+            Bundle bundleForMedicineInfo = new Bundle();
+            bundleForMedicineInfo.putString("medicineName", medName.toString());
+            bundleForMedicineInfo.putString("patientName", bundle.getString("patientName"));
+            bundleForMedicineInfo.putLong("recordId", adapter.getItemId(i));
 
-                Intent intent = new Intent(patient_medication_schedule.this, medicine_info.class);
-                intent.putExtras(bundleForMedicineInfo);
+            Intent intent = new Intent(patient_medication_schedule.this, medicine_info.class);
+            intent.putExtras(bundleForMedicineInfo);
 
-                startActivity(intent);
-            }
+            startActivity(intent);
         });
 
         Button backBtn = findViewById(R.id.back);
@@ -72,13 +74,10 @@ public class patient_medication_schedule extends AppCompatActivity {
 
         Intent intent = new Intent(patient_medication_schedule.this, set_medication_1.class);
 
-        addBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Bundle bundleForStep1 = bundle;
-                intent.putExtras(bundleForStep1);
-                startActivity(intent);
-            }
+        addBtn.setOnClickListener(view -> {
+            Bundle bundleForStep1 = bundle;
+            intent.putExtras(bundleForStep1);
+            startActivity(intent);
         });
     }
 
@@ -89,8 +88,8 @@ public class patient_medication_schedule extends AppCompatActivity {
             Integer recordID = data.getInt(0);
             Log.d("id: ", recordID.toString());
             String medName = data.getString(1);
-            String frequency = "" + data.getString(2) + " times per day" ;
-            String finalInfo = "" + recordID.toString() + "" + medName + "       " + frequency;
+            String frequency = "" + data.getString(2) + " times per day";
+            String finalInfo = "" + recordID + "" + medName + "       " + frequency;
             Log.d("finalInfo", finalInfo);
             schedules.add(finalInfo);
         }
@@ -102,9 +101,13 @@ public class patient_medication_schedule extends AppCompatActivity {
         while (data.moveToNext()) {
             mostRecent = data.getString(0);
             Log.d("med name: ", data.getString(0));
+            dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+            date = dateFormat.format(calendar.getTime());
         }
         last_update_view = findViewById(R.id.med_last_update);
-        last_update_view.setText("Last Update: " + mostRecent);
+        TextView takenAt = findViewById(R.id.takenAt);
 
+        last_update_view.setText("Last Update: " + mostRecent);
+        takenAt.setText(getString(R.string.taken_at, date));
     }
 }
