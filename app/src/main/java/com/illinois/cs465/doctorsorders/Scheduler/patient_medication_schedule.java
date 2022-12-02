@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -65,6 +66,14 @@ public class patient_medication_schedule extends AppCompatActivity {
             intent.putExtras(bundleForMedicineInfo);
 
             startActivity(intent);
+        });
+
+        Button sendSummary = findViewById(R.id.summary_btn);
+        sendSummary.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
         });
 
         Button backBtn = findViewById(R.id.back);

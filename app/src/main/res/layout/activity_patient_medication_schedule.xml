@@ -15,6 +15,11 @@
         android:padding="10dp"
         android:gravity="center"
         android:orientation="vertical">
+        <Button
+            android:id="@+id/summary_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Send Summary" />
 
         <TextView
             android:id="@+id/schedule_for"
