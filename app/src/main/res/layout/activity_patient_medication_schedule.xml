@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
     android:alpha="0.8"
+    android:background="@drawable/bg"
     tools:context=".Scheduler.patient_medication_schedule">
 
     <LinearLayout
@@ -12,15 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="10dp"
-        android:padding="10dp"
         android:gravity="center"
         android:orientation="vertical">
-        <Button
-            android:id="@+id/summary_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Send Summary"
-            android:layout_marginTop="-60dp"/>
 
         <TextView
             android:id="@+id/schedule_for"
@@ -34,7 +27,7 @@
             android:id="@+id/medicationList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"/>
+            android:layout_margin="10dp" />
 
         <TextView
             android:id="@+id/med_last_update"
@@ -51,7 +44,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -70,6 +63,18 @@
                 android:layout_margin="30dp"
                 android:text="Add"
                 android:textSize="@dimen/Checkbox" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/summary_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Send Summary" />
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

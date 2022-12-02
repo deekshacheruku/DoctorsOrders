@@ -60,7 +60,7 @@ public class medicine_info extends AppCompatActivity {
         instructionsView.setText("Instructions: " + instructions);
 
         TextView dayFrequencyView = findViewById(R.id.dayFrequency);
-        dayFrequencyView.setText("Every " + dayFrequency + " days at " + specificTime);
+        dayFrequencyView.setText("Every " + dayFrequency + " days ");
 
         TextView specificTimeView = findViewById(R.id.specificTime);
         specificTimeView.setText("When: " + specificTime);
