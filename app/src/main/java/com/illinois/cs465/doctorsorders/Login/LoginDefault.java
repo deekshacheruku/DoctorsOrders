@@ -30,8 +30,8 @@ public class LoginDefault extends AppCompatActivity implements View.OnClickListe
             startActivity(intent);
         }
 
-        patButton = (Button) findViewById(R.id.patientLogin);
-        schButton = (Button) findViewById(R.id.schedulerLogin);
+        patButton = findViewById(R.id.patientLogin);
+        schButton = findViewById(R.id.schedulerLogin);
         //createAcc = (Button) findViewById(R.id.createGen);
 
         patButton.setOnClickListener(this);
@@ -42,16 +42,12 @@ public class LoginDefault extends AppCompatActivity implements View.OnClickListe
     //Go to correct version of Credentials screen based on button pressed.
     //May need to be brute-forced with 3 activities rather than changing layouts based
     //on passed-in data.
-    public void onClick(View v)
-    {
-        if(v.getId() == R.id.patientLogin)
-        {
+    public void onClick(View v) {
+        if (v.getId() == R.id.patientLogin) {
             Intent intent = new Intent(this, LoginCredentials.class);
             intent.putExtra("buttonType", 0);
             startActivity(intent);
-        }
-        else if(v.getId() == R.id.schedulerLogin)
-        {
+        } else if (v.getId() == R.id.schedulerLogin) {
             Intent intent = new Intent(this, LoginCredentials.class);
             intent.putExtra("buttonType", 2);
             startActivity(intent);

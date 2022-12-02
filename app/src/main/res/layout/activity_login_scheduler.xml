@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:columnCount="2"
             android:rowCount="2"
-            android:layout_marginBottom="10dp">
+            android:layout_margin="10dp">
 
             <!--Username Field-->
             <TextView

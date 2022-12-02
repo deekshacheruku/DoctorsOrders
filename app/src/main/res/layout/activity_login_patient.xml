@@ -9,7 +9,8 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="top|center"
-        android:layout_margin="20dp">
+        android:layout_margin="20dp"
+        android:padding="10dp">
 
         <!-- Logo/App Name. Should scale to the screen's size. -->
         <TextView
@@ -36,7 +37,7 @@
             android:layout_height="wrap_content"
             android:columnCount="2"
             android:rowCount="2"
-            android:layout_marginBottom="10dp">
+            android:layout_margin="10dp">
 <!--Last Name Field-->
             <TextView
                 android:layout_width="wrap_content"
