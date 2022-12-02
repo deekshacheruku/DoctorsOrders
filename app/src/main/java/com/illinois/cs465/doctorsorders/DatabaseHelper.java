@@ -153,9 +153,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         long result = db.insert(REGISTERED_PATIENTS_TABLE, null, contentValues);
 
         if (result == -1) {
+            Log.d("addNewPatients", "Failed to add Patient");
             return false;
         } else {
-            Log.d("1", "Patient just Registered!");
+            Log.d("addNewPatients", "Patient just Registered!");
             return true;
         }
     }
@@ -171,9 +172,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         long result = db.insert(REGISTERED_SCHEDULER_TABLE, null, contentValues);
 
         if (result == -1) {
+            Log.d("addNewScheduler", "Failed to add new Scheduler User");
             return false;
         } else {
-            Log.d("1", "New Scheduler inserted!");
+            Log.d("addNewScheduler", "New Scheduler inserted!");
             return true;
         }
     }
@@ -193,9 +195,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         long result = db.insert(SCHEDULES_TABLE, null, contentValues);
 
         if (result == -1) {
+            Log.d("addNewSchedule", "Failed to add new schedule.");
             return false;
         } else {
-            Log.d("1", "New Schedule inserted!");
+            Log.d("addNewSchedule", "New Schedule inserted!");
             return true;
         }
     }
@@ -209,13 +212,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(SCHEDULER_PATIENTS_TABLE_SCHEDULER_NAME, bundle.getString("scheduler_name"));
         contentValues.put(SCHEDULER_PATIENTS_TABLE_PATIENT_NAME, bundle.getString("patient_name"));
 
+
         long result = db.insert(SCHEDULER_PATIENTS_TABLE, null, contentValues);
 
         if (result == -1) {
-            Log.d("-1", "this is false");
+            Log.d("addNearbyPatient", "Successfully added Patient to Scheduler's patient list.");
             return false;
         } else {
-            Log.d("1", "this is true");
+            Log.d("addNearbyPatient", "Failed to add Patient to Scheduler's patient list.");
             return true;
         }
     }

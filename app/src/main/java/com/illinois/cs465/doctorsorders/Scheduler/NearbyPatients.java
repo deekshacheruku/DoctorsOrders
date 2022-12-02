@@ -21,14 +21,14 @@ public class NearbyPatients extends AppCompatActivity {
     String patientName[] = {"Dave Woods", "Cathie Hodges", "Jim Frost", "Timothy Smith"};
     int profilePic[] = {R.drawable.profile_pic};
     DatabaseHelper databaseHelper;
-    Bundle patInfo;
+//    Bundle patInfo;
 
     ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        patInfo = getIntent().getBundleExtra("patInfo");
+//        patInfo = getIntent().getBundleExtra("patInfo");
 
         //Includes: "name", "pin", "docName", "clinicName", "docNum"
         databaseHelper = new DatabaseHelper(this);

@@ -2,6 +2,10 @@ package com.illinois.cs465.doctorsorders.Scheduler;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlarmManager;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -10,15 +14,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import com.illinois.cs465.doctorsorders.DatabaseHelper;
+import com.illinois.cs465.doctorsorders.Patient.ReminderBroadcast;
 import com.illinois.cs465.doctorsorders.R;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
 public class patient_medication_schedule extends AppCompatActivity {
+    String CHANNEL_ID = "123";
     ArrayList<String> schedulesList;
     DatabaseHelper databaseHelper;
     SimpleDateFormat dateFormat;
@@ -71,8 +75,13 @@ public class patient_medication_schedule extends AppCompatActivity {
         Button sendSummary = findViewById(R.id.summary_btn);
         sendSummary.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-
+            public void onClick(View view)
+            {
+    Log.d("Summary Button", "got clicked. Expect notification. I hope");
+                createReportChannel();
+    Log.d("Report Channel", "created. I hope.");
+                createReport();
+    Log.d("Create Report", "Notification got created. I hope.");
             }
         });
 
@@ -119,4 +128,58 @@ public class patient_medication_schedule extends AppCompatActivity {
         last_update_view.setText("Last Update: " + mostRecent);
         takenAt.setText(getString(R.string.taken_at, date));
     }
+
+    //Report Notifications.
+    private void createReportChannel() {
+        CharSequence name = getString(R.string.report_name, bundle.getString("patientName"));
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
+
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+    }
+
+    private void createReport() {
+        Intent intent = new Intent(this, ReportBroadcast.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+        intent.putExtra("patientName", bundle.getString("patientName"));
+    Log.d("Recorded Patient Name:", bundle.getString("patientName"));
+
+        //Get all of the assigned medicines.
+        Bundle medications = new Bundle();
+        Cursor medData = databaseHelper.getAllMedNameFrequencySchedules(bundle.getString("patientName"));
+        int numOfMeds = 0;
+        while (medData.moveToNext())
+        {
+            String medName = medData.getString(1);
+            String frequency = medData.getString(2) + " times per day";
+            medications.putString("medicine"+numOfMeds, medName + "; " + frequency);
+            numOfMeds++;
+    Log.d("Adding Med Entry:", medName + ";" + frequency);
+        }
+        medications.putInt("numOfMeds", numOfMeds);
+        intent.putExtra("medications", medications);
+
+        //Get most recent report.
+        Bundle lastTaken = new Bundle();
+        lastTaken.putString("mostRecent", mostRecent);
+        lastTaken.putString("date", date);
+        intent.putExtra("lastTaken", lastTaken);
+    Log.d("Adding lastTaken:", mostRecent + " " + date);
+
+        //Make the notification appear 1 second after press or something.
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent,
+                PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT);
+        AlarmManager alarmService = (AlarmManager) getSystemService(ALARM_SERVICE);
+        long time = System.currentTimeMillis() + (3000);
+        alarmService.set(AlarmManager.RTC_WAKEUP, time, pendingIntent);
+
+    }
+
+
+
 }
+

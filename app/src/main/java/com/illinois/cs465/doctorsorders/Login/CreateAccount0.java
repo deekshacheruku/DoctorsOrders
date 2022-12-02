@@ -29,6 +29,7 @@ public class CreateAccount0 extends AppCompatActivity implements View.OnClickLis
 
         if (accType == 3) //Generic "Create account" pressed.
         {
+            //DEPRECATED. IGNORE.
             setContentView(R.layout.activity_create_generic);
             //Make buttons to select Patient vs Scheduler.
             Button createPat = findViewById(R.id.createPat);
