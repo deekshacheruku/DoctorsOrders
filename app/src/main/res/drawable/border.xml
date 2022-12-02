@@ -9,5 +9,4 @@
         android:right="1dp"
         android:top="1dp" />
     <corners android:radius="6dp" />
-    <solid android:color="#ffffffff" />
 </shape>

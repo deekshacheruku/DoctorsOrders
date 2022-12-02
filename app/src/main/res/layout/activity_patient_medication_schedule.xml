@@ -3,66 +3,66 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Scheduler.patient_medication_schedule"
-    android:background="@color/backgroundTintSecondary">
+    android:background="@color/backgroundTintSecondary"
+    tools:context=".Scheduler.patient_medication_schedule">
+
     <LinearLayout
+        android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:id="@+id/name"
-        android:layout_margin="20dp">
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
         <TextView
             android:id="@+id/schedule_for"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
             android:layout_gravity="center"
             android:textAlignment="center"
-            android:textSize="@dimen/Header2"/>
+            android:textSize="@dimen/Header2" />
+
         <ListView
+            android:id="@+id/medicationList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/medicationList" />
+            android:layout_margin="10dp"/>
+
         <TextView
             android:id="@+id/med_last_update"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
-            android:layout_marginLeft="70dp"
-            android:textSize="@dimen/Normal"
             android:text="Last Update: " />
+
         <TextView
             android:id="@+id/takenAt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="70dp"
-            android:textSize="@dimen/Normal"
             android:text="@string/taken_at" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="80dp">
+            android:layout_margin="20dp"
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <Button
-                android:layout_width="67dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="10"
-                android:text="Back"
-                android:layout_marginLeft="30dp"
-                android:textSize="@dimen/Checkbox"
-                android:id="@+id/back"/>
-
-            <Button
+                android:id="@+id/back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="30dp"
+                android:text="Back"
+                android:textSize="@dimen/Checkbox" />
+
+            <Button
+                android:id="@+id/add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="30dp"
                 android:text="Add"
-                android:textSize="@dimen/Checkbox"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="30dp"
-                android:layout_weight="10"
-                android:id="@+id/add"/>
+                android:textSize="@dimen/Checkbox" />
         </LinearLayout>
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

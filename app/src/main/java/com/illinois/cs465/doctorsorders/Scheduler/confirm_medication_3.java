@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
@@ -13,11 +12,8 @@ import android.widget.TextView;
 import com.illinois.cs465.doctorsorders.DatabaseHelper;
 import com.illinois.cs465.doctorsorders.R;
 
-import org.w3c.dom.Text;
-
 import java.time.Instant;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class confirm_medication_3 extends AppCompatActivity {
@@ -30,9 +26,9 @@ public class confirm_medication_3 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm_medication3);
 
-        CheckBox breakfastCheckBox = (CheckBox) findViewById(R.id.breakfast);
-        CheckBox lunchCheckBox = (CheckBox) findViewById(R.id.lunch);
-        CheckBox dinnerCheckBox = (CheckBox) findViewById(R.id.dinner);
+        CheckBox breakfastCheckBox = findViewById(R.id.breakfast);
+        CheckBox lunchCheckBox = findViewById(R.id.lunch);
+        CheckBox dinnerCheckBox = findViewById(R.id.dinner);
 
         breakfastCheckBox.setChecked(false);
         lunchCheckBox.setChecked(false);
@@ -40,14 +36,14 @@ public class confirm_medication_3 extends AppCompatActivity {
 
         databaseHelper = new DatabaseHelper(this);
 
-        Button editBtn = (Button) findViewById(R.id.editBtn);
-        Button confirm = (Button) findViewById(R.id.confirm);
+        Button editBtn = findViewById(R.id.editBtn);
+        Button confirm = findViewById(R.id.confirm);
 
         Bundle bundleStep2 = getIntent().getExtras(); // bundle from step 2
 
-        CheckBox breakfastCheck = (CheckBox) findViewById(R.id.breakfast);
-        CheckBox lunchCheck = (CheckBox) findViewById(R.id.lunch);
-        CheckBox dinnerCheck = (CheckBox) findViewById(R.id.dinner);
+        CheckBox breakfastCheck = findViewById(R.id.breakfast);
+        CheckBox lunchCheck = findViewById(R.id.lunch);
+        CheckBox dinnerCheck = findViewById(R.id.dinner);
 
         if (bundleStep2.getString("breakfast").contains("true")) {
             breakfastCheck.setChecked(true);
@@ -72,9 +68,9 @@ public class confirm_medication_3 extends AppCompatActivity {
         TextView confirm_date_view = findViewById(R.id.confirm_date);
 
         nameView.setText("Name: " + bundleStep2.getString("patientName"));
-        medicationNameView.setText("Medication Name: " + bundleStep2.getString("medicationName"));
-        doseView.setText("Pill Number: " + bundleStep2.getString("pillNumber"));
-        instrucView.setText("Instructions: \n" + bundleStep2.getString("instructions").toString());
+        medicationNameView.setText("Medicine: " + bundleStep2.getString("medicationName"));
+        doseView.setText("Pills: " + bundleStep2.getString("pillNumber"));
+        instrucView.setText("Instructions: " + bundleStep2.getString("instructions").toString());
         confirm_date_view.setText("Every " + bundleStep2.getString("days") + " days at");
 
         Bundle finalInfoBundle = new Bundle(bundleStep2); //bundle with information to be submitted to db
@@ -93,27 +89,18 @@ public class confirm_medication_3 extends AppCompatActivity {
 
         Log.d("time", Instant.now().toString());
 
-        confirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (bundleStep2.getLong("recordIdToUpdate") != 0L) { //if this originated from edit page
-//                    Log.d("id: ", "received");
-                    finalInfoBundle.putLong("recordIdToUpdate", bundleStep2.getLong("recordIdToUpdate"));
-                    databaseHelper.updateMedScheduleInformation(finalInfoBundle);
-                    startActivity(intent);
+        confirm.setOnClickListener(view -> {
+            if (bundleStep2.getLong("recordIdToUpdate") != 0L) { //if this originated from edit page
+                finalInfoBundle.putLong("recordIdToUpdate", bundleStep2.getLong("recordIdToUpdate"));
+                databaseHelper.updateMedScheduleInformation(finalInfoBundle);
+                startActivity(intent);
 
-                } else { //if this is not an edit and a first time insert
-                    databaseHelper.addNewSchedule(finalInfoBundle);
-                    startActivity(intent);
-                }
+            } else { //if this is not an edit and a first time insert
+                databaseHelper.addNewSchedule(finalInfoBundle);
+                startActivity(intent);
             }
         });
 
-        editBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(editIntent);
-            }
-        });
+        editBtn.setOnClickListener(view -> startActivity(editIntent));
     }
 }

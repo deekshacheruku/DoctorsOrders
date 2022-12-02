@@ -27,33 +27,27 @@ public class set_medication_1 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_medication1);
 
-        TextView textView = (TextView) findViewById(R.id.doseNum);
+        TextView textView = findViewById(R.id.doseNum);
 
-        ImageButton incrementButton = (ImageButton) findViewById(R.id.increaseBtn);
-        incrementButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dose++;
+        ImageButton incrementButton = findViewById(R.id.increaseBtn);
+        incrementButton.setOnClickListener(view -> {
+            dose++;
+            textView.setText("" + dose);
+        });
+
+        ImageButton decrementButton = findViewById(R.id.decreaseBtn);
+        decrementButton.setOnClickListener(view -> {
+            if (dose > 0) {
+                dose--;
                 textView.setText("" + dose);
             }
         });
 
-        ImageButton decrementButton = (ImageButton) findViewById(R.id.decreaseBtn);
-        decrementButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (dose > 0) {
-                    dose--;
-                    textView.setText("" + dose);
-                }
-            }
-        });
-
-        medTextView = (TextView) findViewById(R.id.medName);
+        medTextView = findViewById(R.id.medName);
 
         Bundle bundle = new Bundle();
 
-        Spinner medDropdown = (Spinner) findViewById(R.id.search_view_med);
+        Spinner medDropdown = findViewById(R.id.search_view_med);
         ArrayAdapter<String> medAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, medications);
         medDropdown.setAdapter(medAdapter);
         medDropdown.setPrompt("Select Medication");
@@ -75,30 +69,27 @@ public class set_medication_1 extends AppCompatActivity {
 
         EditText text = findViewById(R.id.instructions);
 
-        Button button = (Button) findViewById(R.id.next_to_schedule);
+        Button button = findViewById(R.id.next_to_schedule);
 
         Bundle step_one_received_bundle = getIntent().getExtras();
 
         TextView nameView = findViewById(R.id.patient_name);
         nameView.setText("Set Medication For " + step_one_received_bundle.getString("patientName"));
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        button.setOnClickListener(view -> {
 
-                if (step_one_received_bundle.getLong("recordIdToUpdate") != 0L) {
-                    bundle.putLong("recordIdToUpdate", step_one_received_bundle.getLong("recordIdToUpdate"));
-                }
-
-                bundle.putString("patientName", step_one_received_bundle.getString("patientName"));
-                bundle.putString("pillNumber", textView.getText().toString());
-                bundle.putString("instructions", text.getText().toString());
-
-                Intent intent = new Intent(set_medication_1.this, set_schedule2.class);
-                intent.putExtras(bundle);
-
-                startActivity(intent);
+            if (step_one_received_bundle.getLong("recordIdToUpdate") != 0L) {
+                bundle.putLong("recordIdToUpdate", step_one_received_bundle.getLong("recordIdToUpdate"));
             }
+
+            bundle.putString("patientName", step_one_received_bundle.getString("patientName"));
+            bundle.putString("pillNumber", textView.getText().toString());
+            bundle.putString("instructions", text.getText().toString());
+
+            Intent intent = new Intent(set_medication_1.this, set_schedule2.class);
+            intent.putExtras(bundle);
+
+            startActivity(intent);
         });
     }
 }

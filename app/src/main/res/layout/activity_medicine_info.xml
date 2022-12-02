@@ -1,96 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Scheduler.medicine_info"
-    android:background="@color/backgroundTintSecondary">
+    android:background="@color/backgroundTintSecondary"
+    tools:context=".Scheduler.medicine_info">
+
     <LinearLayout
+        android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:gravity="center_horizontal"
         android:orientation="vertical"
-        android:layout_margin="20dp"
-        android:id="@+id/name">
+        android:padding="20dp">
+
         <TextView
             android:id="@+id/medicine_for"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:text="Colin Zhou: Metformin"
             android:textAlignment="center"
-            android:layout_marginTop="30dp"
-            android:textSize="@dimen/Header2"
-            android:text="Colin Zhou:\nMetformin"/>
+            android:textSize="@dimen/Header2" />
+
         <ImageView
             android:id="@+id/med_image"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_gravity="center"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp" />
 
         <TextView
             android:id="@+id/medName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="60dp"
-            android:textSize="@dimen/Normal"
-            android:text="Medicine Name: Metformin" />
+            android:padding="10dp"
+            android:text="Medicine Name: Metformin"
+            android:textSize="@dimen/Normal" />
+
         <TextView
             android:id="@+id/pillNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="100dp"
-            android:textSize="@dimen/Normal"
-            android:text="Dose: 5oz" />
+            android:padding="10dp"
+            android:text="Dose: 5oz"
+            android:textSize="@dimen/Normal" />
+
         <TextView
             android:id="@+id/instructions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="100dp"
-            android:textSize="@dimen/Normal"
-            android:text="Instructions: take during breakfast" />
+            android:text="Instructions: take during breakfast"
+            android:textSize="@dimen/Normal" />
+
         <TextView
             android:id="@+id/dayFrequency"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="100dp"
-            android:textSize="@dimen/Normal"
-            android:text="Every 4 days at Breakfast" />
+            android:padding="10dp"
+            android:text="Every 4 days at Breakfast"
+            android:textSize="@dimen/Normal" />
+
         <TextView
             android:id="@+id/specificTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="100dp"
-            android:textSize="@dimen/Normal"
-            android:text="When: Breakfast" />
+            android:padding="10dp"
+            android:text="When: Breakfast"
+            android:textSize="@dimen/Normal" />
+
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="20dp">
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <Button
-                android:layout_width="67dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="10"
-                android:text="Edit"
-                android:layout_marginLeft="30dp"
-                android:textSize="@dimen/Checkbox"
-                android:id="@+id/edit"/>
-
-            <Button
+                android:id="@+id/back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:text="Back"
-                android:textSize="@dimen/Checkbox"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="30dp"
-                android:layout_weight="10"
-                android:id="@+id/back"/>
+                android:textSize="@dimen/Checkbox" />
+
+            <Button
+                android:id="@+id/edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Edit"
+                android:textSize="@dimen/Checkbox" />
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

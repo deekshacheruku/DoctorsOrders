@@ -4,10 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.database.Cursor;
-import android.media.Image;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -33,7 +30,7 @@ public class medicine_info extends AppCompatActivity {
 
         bundle = getIntent().getExtras();
 
-        ImageView image = (ImageView) findViewById(R.id.med_image);
+        ImageView image = findViewById(R.id.med_image);
 
         databaseHelper = new DatabaseHelper(this);
         populateScheduleInformation();
@@ -69,32 +66,26 @@ public class medicine_info extends AppCompatActivity {
         specificTimeView.setText("When: " + specificTime);
 
         Button backBtn = findViewById(R.id.back);
-        backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Bundle backToScheduleBundle = new Bundle();
-                backToScheduleBundle.putString("patientName", bundle.getString("patientName"));
+        backBtn.setOnClickListener(view -> {
+            Bundle backToScheduleBundle = new Bundle();
+            backToScheduleBundle.putString("patientName", bundle.getString("patientName"));
 
-                Intent intent = new Intent(medicine_info.this, patient_medication_schedule.class);
-                intent.putExtras(backToScheduleBundle);
+            Intent intent = new Intent(medicine_info.this, patient_medication_schedule.class);
+            intent.putExtras(backToScheduleBundle);
 
-                startActivity(intent);
-            }
+            startActivity(intent);
         });
 
         Button editBtn = findViewById(R.id.edit);
-        editBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Bundle recordToUpdateBundle = new Bundle();
-                recordToUpdateBundle.putLong("recordIdToUpdate", recordId);
-                recordToUpdateBundle.putString("patientName", patientName);
+        editBtn.setOnClickListener(view -> {
+            Bundle recordToUpdateBundle = new Bundle();
+            recordToUpdateBundle.putLong("recordIdToUpdate", recordId);
+            recordToUpdateBundle.putString("patientName", patientName);
 
-                Intent intent = new Intent(medicine_info.this, set_medication_1.class);
-                intent.putExtras(recordToUpdateBundle);
+            Intent intent = new Intent(medicine_info.this, set_medication_1.class);
+            intent.putExtras(recordToUpdateBundle);
 
-                startActivity(intent);
-            }
+            startActivity(intent);
         });
 
     }
