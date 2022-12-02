@@ -94,6 +94,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="0dp"
                     android:onClick="onCheckboxClicked"
+                    android:textColor="@color/black"
                     android:text="Breakfast"
                     android:textSize="@dimen/Checkbox" />
 
@@ -103,6 +104,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="0dp"
                     android:onClick="onCheckboxClicked"
+                    android:textColor="@color/black"
                     android:text="Lunch"
                     android:textSize="@dimen/Checkbox" />
 
@@ -111,6 +113,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="onCheckboxClicked"
+                    android:textColor="@color/black"
                     android:text="Dinner"
                     android:textSize="@dimen/Checkbox" />
             </LinearLayout>

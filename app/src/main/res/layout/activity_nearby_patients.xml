@@ -36,6 +36,7 @@
                 android:id="@+id/editMobileNo"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:textColor="@color/black"
                 android:backgroundTint="@color/colorSecondaryVariant"
                 android:drawableStart="@drawable/ic_action_name"
                 android:ems="10"
