@@ -1,10 +1,14 @@
 package com.illinois.cs465.doctorsorders.Scheduler;
 
+import static com.illinois.cs465.doctorsorders.Login.SaveSharedPreference.getUserNameAfterLogin;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.illinois.cs465.doctorsorders.DatabaseHelper;
 import com.illinois.cs465.doctorsorders.R;
@@ -24,13 +28,20 @@ public class NearbyPatients extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         patInfo = getIntent().getBundleExtra("patInfo");
+
         //Includes: "name", "pin", "docName", "clinicName", "docNum"
         databaseHelper = new DatabaseHelper(this);
+
+//        String schedulerName = patInfo.getString("scheduler_name");
+        setContentView(R.layout.activity_nearby_patients);
+
+        String schedulerName = getUserNameAfterLogin(NearbyPatients.this);
+        TextView textTitle = findViewById(R.id.text_title);
+        textTitle.setText(schedulerName);
 
 //        ArrayList<String> patientNames = new ArrayList<>(Arrays.asList(patientName));
 //        patientNames.add(patInfo.getString("name"));
 
-        setContentView(R.layout.activity_nearby_patients);
         listView = findViewById(R.id.patientList);
         ProfileAdapter adapter = new ProfileAdapter(getApplicationContext(), new ArrayList<>(Arrays.asList(patientName)));
         listView.setAdapter(adapter);
@@ -38,9 +49,11 @@ public class NearbyPatients extends AppCompatActivity {
         listView.setOnItemClickListener((adapterView, view, i, l) -> {
             Object clickedName = adapterView.getItemAtPosition(i);
 
+            Log.d("clicked name", clickedName.toString());
+
             Bundle dbInsertBundle = new Bundle();
             dbInsertBundle.putString("patient_name", clickedName.toString());
-            dbInsertBundle.putString("scheduler_name", "David Smith");
+            dbInsertBundle.putString("scheduler_name", schedulerName);
 
             databaseHelper.addNearbyPatient(dbInsertBundle);
 

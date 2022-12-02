@@ -79,7 +79,7 @@ public class CreateAccount0 extends AppCompatActivity implements View.OnClickLis
                 scheduler.putString("password", password.getText().toString());
 
                 helper.addNewScheduler(scheduler);
-                setUserName(this, userName.getText().toString());
+                setUserName(this, firstName.getText().toString() + " " + lastName.getText().toString());
 
                 Intent intent = new Intent(this, DashboardActivity.class);
                 startActivity(intent);

@@ -2,6 +2,7 @@ package com.illinois.cs465.doctorsorders.Login;
 
 import static com.illinois.cs465.doctorsorders.Login.SaveSharedPreference.setPatientName;
 import static com.illinois.cs465.doctorsorders.Login.SaveSharedPreference.setUserName;
+import static com.illinois.cs465.doctorsorders.Login.SaveSharedPreference.setUserNameAfterLogin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -78,6 +79,9 @@ public class LoginCredentials extends AppCompatActivity implements View.OnClickL
                 Log.d("data", "asdasdasd");
             } else {
                 setPatientName(LoginCredentials.this, name.getText().toString());
+                Bundle bundle = new Bundle();
+
+                bundle.putString("patientName", name.getText().toString());
 
                 Intent intent = new Intent(this, PatientDashboardActivity.class);
                 intent.putExtras(login);
@@ -97,23 +101,34 @@ public class LoginCredentials extends AppCompatActivity implements View.OnClickL
             scheduler_password = findViewById(R.id.sche_password);
             helper = new DatabaseHelper(this);
 
+
             Bundle login = new Bundle();
             login.putString("userName", userName.getText().toString());
             login.putString("password", scheduler_password.getText().toString());
+
+            Bundle bundleWithName = new Bundle(); //bundle to pass to dashboard activity if success
 
             Cursor data = helper.loginInfoExistsScheduler(login);
             int iterations = 0;
 
             while (data.moveToNext()) {
                 iterations++;
-                Log.d("data", data.getString(1));
+                bundleWithName.putString("name", data.getString(2) + " " + data.getString(1));
+//                Log.d("last_name", data.getString(1));
+//                Log.d("first_name", data.getString(2));
             }
 
             if (iterations == 0) {
                 Log.d("data", "asdasdasd");
+
             } else {
-                setUserName(LoginCredentials.this, userName.getText().toString());
+                Log.d("name", bundleWithName.getString("name"));
+                setUserName(LoginCredentials.this, bundleWithName.getString("name"));
+//                setUserNameAfterLogin(LoginCredentials.this, bundleWithName.getString("name"));
+
                 Intent intent = new Intent(this, DashboardActivity.class);
+                intent.putExtras(bundleWithName);
+
                 finish();
                 startActivity(intent);
             }

@@ -12,7 +12,7 @@ import java.util.Calendar;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     // If you change the database schema, you must increment the database version.
-    public static final int DATABASE_VERSION = 9;
+    public static final int DATABASE_VERSION = 11;
     public static final String DATABASE_NAME = "DoctorsOrders.db";
 
     private static final String SCHEDULER_PATIENTS_TABLE = "Scheduler_Patients_List";
@@ -201,6 +201,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public boolean addNearbyPatient(Bundle bundle) {
+        Log.d("schedu", bundle.getString("scheduler_name"));
+        Log.d("patient", bundle.getString("patient_name"));
+
+
         ContentValues contentValues = new ContentValues();
         contentValues.put(SCHEDULER_PATIENTS_TABLE_SCHEDULER_NAME, bundle.getString("scheduler_name"));
         contentValues.put(SCHEDULER_PATIENTS_TABLE_PATIENT_NAME, bundle.getString("patient_name"));

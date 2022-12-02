@@ -1,6 +1,8 @@
 package com.illinois.cs465.doctorsorders.Scheduler;
 
 import static com.illinois.cs465.doctorsorders.Login.SaveSharedPreference.clearUserName;
+import static com.illinois.cs465.doctorsorders.Login.SaveSharedPreference.getUserName;
+import static com.illinois.cs465.doctorsorders.Login.SaveSharedPreference.getUserNameAfterLogin;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -9,6 +11,7 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -28,20 +31,31 @@ public class DashboardActivity extends AppCompatActivity implements SearchView.O
     SearchView searchView;
     Bundle patientInfo;
 
+//    String user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         patientInfo = getIntent().getBundleExtra("fromPart0");
         //Includes by keys: "name", "pin", "docName", "clinicName", "docNum"
+
         setContentView(R.layout.caretaker_dashboard_layout);
         databaseHelper = new DatabaseHelper(this);
 
-        if (SaveSharedPreference.getUserName(DashboardActivity.this).length() == 0) {
+        if (getUserName(DashboardActivity.this).length() == 0) {
             Intent intent = new Intent(this, LoginDefault.class);
             startActivity(intent);
         } else {
 
         }
+
+        String schedulerName = getUserName(DashboardActivity.this);
+        Log.d("schedule", schedulerName);
+//        Log.d("patient bundle", patientInfo.getString("pin"));
+//        patientInfo.putString("scheduler_name", schedulerName);
+
+        TextView textTitle = findViewById(R.id.text_title);
+        textTitle.setText(schedulerName);
 
         listView = findViewById(R.id.patientList);
 
@@ -83,7 +97,7 @@ public class DashboardActivity extends AppCompatActivity implements SearchView.O
         ArrayList<String> patients = new ArrayList<>();
         Cursor data = databaseHelper.getAllAssignedPatients();
         while (data.moveToNext()) {
-            String name = data.getString(1);
+            String name = data.getString(2);
             patients.add(name);
         }
         patientList = patients;

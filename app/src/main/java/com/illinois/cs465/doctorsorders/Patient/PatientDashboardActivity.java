@@ -1,6 +1,7 @@
 package com.illinois.cs465.doctorsorders.Patient;
 
 import static com.illinois.cs465.doctorsorders.Login.SaveSharedPreference.clearPatientName;
+import static com.illinois.cs465.doctorsorders.Login.SaveSharedPreference.getPatientName;
 
 import android.app.AlarmManager;
 import android.app.NotificationChannel;
@@ -20,6 +21,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.illinois.cs465.doctorsorders.DatabaseHelper;
 import com.illinois.cs465.doctorsorders.Login.LoginDefault;
+import com.illinois.cs465.doctorsorders.Login.SaveSharedPreference;
 import com.illinois.cs465.doctorsorders.R;
 
 import java.util.ArrayList;
@@ -38,17 +40,20 @@ public class PatientDashboardActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        Bundle patInfo = getIntent().getBundleExtra("fromStep0");
-//        patient = patInfo.getString("name");
         setContentView(R.layout.activity_patient_dashboard_layout);
+
+        Bundle patInfo = getIntent().getBundleExtra("fromStep0");
+        patient = getPatientName(PatientDashboardActivity.this);
+
+//        patient = patInfo.getString("name");
         databaseHelper = new DatabaseHelper(this);
 
-//        if (SaveSharedPreference.getPatientName(PatientDashboardActivity.this).length() == 0) {
-//            Intent intent = new Intent(this, LoginDefault.class);
-//            startActivity(intent);
-//        } else {
-//
-//        }
+        if (SaveSharedPreference.getPatientName(PatientDashboardActivity.this).length() == 0) {
+            Intent intent = new Intent(this, LoginDefault.class);
+            startActivity(intent);
+        } else {
+
+        }
 
         //Should get the patient name from Login Screen in the Format of Full Name "David Woods" or "Jim Frost"
         Log.d("patientName", patient);

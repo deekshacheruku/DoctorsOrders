@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -41,7 +42,11 @@ public class CreateAccount2 extends AppCompatActivity implements View.OnClickLis
             startActivity(intent);
         } else if (v.getId() == R.id.finCreatePat) {
             helper.addNewPatients(fromStep0, allFFEntries);
+
+            Log.d("name", fromStep0.getString("name"));
             setPatientName(CreateAccount2.this, fromStep0.getString("name"));
+
+
             Intent intent = new Intent(this, PatientDashboardActivity.class);
             intent.putExtra("fromStep0", fromStep0);
             startActivity(intent);
