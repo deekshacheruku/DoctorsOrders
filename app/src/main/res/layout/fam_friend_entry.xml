@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
     <GridLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:columnCount="2"
@@ -19,6 +16,7 @@
             android:layout_row="0"
             />
         <EditText
+            android:id="@+id/ffName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_column="1"
@@ -35,6 +33,7 @@
             android:layout_row="1"
             />
         <EditText
+            android:id="@+id/ffRelation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_column="1"
@@ -52,6 +51,7 @@
             android:backgroundTint="@color/colorSecondaryVariant"/>
 
         <EditText
+            android:id="@+id/ffNum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_column="1"
@@ -66,5 +66,3 @@
             android:layout_columnSpan="2">
         </View>
     </GridLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>

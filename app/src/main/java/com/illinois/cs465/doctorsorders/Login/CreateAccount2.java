@@ -13,10 +13,15 @@ import com.illinois.cs465.doctorsorders.R;
 
 public class CreateAccount2 extends AppCompatActivity implements View.OnClickListener {
     DatabaseHelper helper;
+    Bundle fromStep0;
+    Bundle allFFEntries;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        fromStep0 = getIntent().getBundleExtra("fromStep0");
+        allFFEntries = getIntent().getBundleExtra("allFFEntries");
+
         setContentView(R.layout.activity_create_patient2);
         helper = new DatabaseHelper(this);
 
@@ -33,8 +38,7 @@ public class CreateAccount2 extends AppCompatActivity implements View.OnClickLis
             Intent intent = new Intent(this, CreateAccount1.class);
             startActivity(intent);
         } else if (v.getId() == R.id.finCreatePat) {
-            Bundle toBeInserted = getIntent().getExtras();
-            helper.addNewPatients(toBeInserted);
+            helper.addNewPatients(fromStep0, allFFEntries);
 
             Intent intent = new Intent(this, PatientDashboardActivity.class);
             startActivity(intent);

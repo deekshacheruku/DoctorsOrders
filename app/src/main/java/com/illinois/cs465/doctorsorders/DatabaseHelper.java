@@ -12,7 +12,7 @@ import java.util.Calendar;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     // If you change the database schema, you must increment the database version.
-    public static final int DATABASE_VERSION = 7;
+    public static final int DATABASE_VERSION = 8;
     public static final String DATABASE_NAME = "DoctorsOrders.db";
 
     private static final String SCHEDULER_PATIENTS_TABLE = "Scheduler_Patients_List";
@@ -40,9 +40,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String REGISTERED_PATIENTS_DOCTOR_NAME = "Doctor_Name";
     private static final String REGISTERED_PATIENTS_CLINIC_NAME = "Clinic_Name";
     private static final String REGISTERED_PATIENTS_DOCTOR_OFFICE_NUMBER = "Doctor_Office_Number";
-    private static final String REGISTERED_PATIENTS_FRIEND_NAME = "Friend_Name";
-    private static final String REGISTERED_PATIENTS_FRIEND_RELATION = "Friend_Relation";
-    private static final String REGISTERED_PATIENTS_PHONE_NUMBER = "Phone_Number";
+
+    private static final String REGISTERED_PATIENTS_FRIEND_NAME0 = "Friend_Name0";
+    private static final String REGISTERED_PATIENTS_FRIEND_RELATION0 = "Friend_Relation0";
+    private static final String REGISTERED_PATIENTS_PHONE_NUMBER0 = "Phone_Number0";
+    private static final String REGISTERED_PATIENTS_FRIEND_NAME1 = "Friend_Name1";
+    private static final String REGISTERED_PATIENTS_FRIEND_RELATION1 = "Friend_Relation1";
+    private static final String REGISTERED_PATIENTS_PHONE_NUMBER1 = "Phone_Number1";
+    private static final String REGISTERED_PATIENTS_FRIEND_NAME2 = "Friend_Name2";
+    private static final String REGISTERED_PATIENTS_FRIEND_RELATION2 = "Friend_Relation2";
+    private static final String REGISTERED_PATIENTS_PHONE_NUMBER2 = "Phone_Number2";
+    private static final String REGISTERED_PATIENTS_FRIEND_NAME3 = "Friend_Name3";
+    private static final String REGISTERED_PATIENTS_FRIEND_RELATION3 = "Friend_Relation3";
+    private static final String REGISTERED_PATIENTS_PHONE_NUMBER3 = "Phone_Number3";
+    private static final String REGISTERED_PATIENTS_FRIEND_NAME4 = "Friend_Name4";
+    private static final String REGISTERED_PATIENTS_FRIEND_RELATION4 = "Friend_Relation4";
+    private static final String REGISTERED_PATIENTS_PHONE_NUMBER4 = "Phone_Number4";
 
     private static final String REGISTERED_SCHEDULER_TABLE = "Registered_Scheduler";
     private static final String REGISTERED_SCHEDULER_LASTNAME = "Last_Name";
@@ -72,8 +85,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         String createPatientTable = "CREATE TABLE " + REGISTERED_PATIENTS_TABLE + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " + REGISTERED_PATIENTS_LASTNAME + " TEXT, " +
                 REGISTERED_PATIENTS_FIRSTNAME + " TEXT, " + REGISTERED_PATIENTS_PIN + " INTEGER, " +
-                REGISTERED_PATIENTS_DOCTOR_NAME + " TEXT, " + REGISTERED_PATIENTS_CLINIC_NAME + " TEXT, " + REGISTERED_PATIENTS_DOCTOR_OFFICE_NUMBER + " TEXT, " + REGISTERED_PATIENTS_FRIEND_NAME + " TEXT, " + REGISTERED_PATIENTS_FRIEND_RELATION
-                + " TEXT, " + REGISTERED_PATIENTS_PHONE_NUMBER + " TEXT)";
+                REGISTERED_PATIENTS_DOCTOR_NAME + " TEXT, " + REGISTERED_PATIENTS_CLINIC_NAME + " TEXT, " + REGISTERED_PATIENTS_DOCTOR_OFFICE_NUMBER + " TEXT, " +
+                REGISTERED_PATIENTS_FRIEND_NAME0 + " TEXT, " + REGISTERED_PATIENTS_FRIEND_RELATION0 + " TEXT, " + REGISTERED_PATIENTS_PHONE_NUMBER0 + " TEXT, " +
+                REGISTERED_PATIENTS_FRIEND_NAME1 + " TEXT, " + REGISTERED_PATIENTS_FRIEND_RELATION1 + " TEXT, " + REGISTERED_PATIENTS_PHONE_NUMBER1 + " TEXT, " +
+                REGISTERED_PATIENTS_FRIEND_NAME2 + " TEXT, " + REGISTERED_PATIENTS_FRIEND_RELATION2 + " TEXT, " + REGISTERED_PATIENTS_PHONE_NUMBER2 + " TEXT, " +
+                REGISTERED_PATIENTS_FRIEND_NAME3 + " TEXT, " + REGISTERED_PATIENTS_FRIEND_RELATION3 + " TEXT, " + REGISTERED_PATIENTS_PHONE_NUMBER3 + " TEXT, " +
+                REGISTERED_PATIENTS_FRIEND_NAME4 + " TEXT, " + REGISTERED_PATIENTS_FRIEND_RELATION4 + " TEXT, " + REGISTERED_PATIENTS_PHONE_NUMBER4 + " TEXT)";
 
         String createSchedulerTable = "CREATE TABLE " + REGISTERED_SCHEDULER_TABLE + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " + REGISTERED_SCHEDULER_LASTNAME + " TEXT, " +
                 REGISTERED_SCHEDULER_FIRSTNAME + " TEXT, " + REGISTERED_SCHEDULER_USERNAME + " TEXT, " +
@@ -96,19 +113,48 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean addNewPatients(Bundle bundle) { //for adding new registered patients
+    public boolean addNewPatients(Bundle fromPart0, Bundle allFFEntries) { //for adding new registered patients
         ContentValues contentValues = new ContentValues();
 
-        contentValues.put(REGISTERED_PATIENTS_LASTNAME, bundle.getString("lname"));
-        contentValues.put(REGISTERED_PATIENTS_FIRSTNAME, bundle.getString("fname"));
-        contentValues.put(REGISTERED_PATIENTS_PIN, bundle.getString("pin"));
-        contentValues.put(REGISTERED_PATIENTS_DOCTOR_NAME, bundle.getString("docName"));
-        contentValues.put(REGISTERED_PATIENTS_FIRSTNAME, bundle.getString("fname"));
-        contentValues.put(REGISTERED_PATIENTS_CLINIC_NAME, bundle.getString("clinicName"));
-        contentValues.put(REGISTERED_PATIENTS_DOCTOR_OFFICE_NUMBER, bundle.getString("offNum"));
-        contentValues.put(REGISTERED_PATIENTS_FRIEND_NAME, bundle.getString("friendName"));
-        contentValues.put(REGISTERED_PATIENTS_FRIEND_RELATION, bundle.getString("relation"));
-        contentValues.put(REGISTERED_PATIENTS_PHONE_NUMBER, bundle.getString("phone"));
+        contentValues.put(REGISTERED_PATIENTS_LASTNAME, fromPart0.getString("lname"));
+        contentValues.put(REGISTERED_PATIENTS_FIRSTNAME, fromPart0.getString("fname"));
+        contentValues.put(REGISTERED_PATIENTS_PIN, fromPart0.getString("pin"));
+        contentValues.put(REGISTERED_PATIENTS_DOCTOR_NAME, fromPart0.getString("docName"));
+        contentValues.put(REGISTERED_PATIENTS_FIRSTNAME, fromPart0.getString("fname"));
+        contentValues.put(REGISTERED_PATIENTS_CLINIC_NAME, fromPart0.getString("clinicName"));
+        contentValues.put(REGISTERED_PATIENTS_DOCTOR_OFFICE_NUMBER, fromPart0.getString("offNum"));
+
+        for(int i = 0; i < allFFEntries.getInt("numEntries"); i++)
+        {
+            switch(i)
+            {
+                case 0:
+                    contentValues.put(REGISTERED_PATIENTS_FRIEND_NAME0, allFFEntries.getString("ffName"+i));
+                    contentValues.put(REGISTERED_PATIENTS_FRIEND_RELATION0, allFFEntries.getString("ffRelation"+i));
+                    contentValues.put(REGISTERED_PATIENTS_PHONE_NUMBER0, allFFEntries.getString("ffNum"+i));
+                    break;
+                case 1:
+                    contentValues.put(REGISTERED_PATIENTS_FRIEND_NAME1, allFFEntries.getString("ffName"+i));
+                    contentValues.put(REGISTERED_PATIENTS_FRIEND_RELATION1, allFFEntries.getString("ffRelation"+i));
+                    contentValues.put(REGISTERED_PATIENTS_PHONE_NUMBER1, allFFEntries.getString("ffNum"+i));
+                    break;
+                case 2:
+                    contentValues.put(REGISTERED_PATIENTS_FRIEND_NAME2, allFFEntries.getString("ffName"+i));
+                    contentValues.put(REGISTERED_PATIENTS_FRIEND_RELATION2, allFFEntries.getString("ffRelation"+i));
+                    contentValues.put(REGISTERED_PATIENTS_PHONE_NUMBER3, allFFEntries.getString("ffNum"+i));
+                    break;
+                case 3:
+                    contentValues.put(REGISTERED_PATIENTS_FRIEND_NAME3, allFFEntries.getString("ffName"+i));
+                    contentValues.put(REGISTERED_PATIENTS_FRIEND_RELATION3, allFFEntries.getString("ffRelation"+i));
+                    contentValues.put(REGISTERED_PATIENTS_PHONE_NUMBER3, allFFEntries.getString("ffNum"+i));
+                    break;
+                case 4:
+                    contentValues.put(REGISTERED_PATIENTS_FRIEND_NAME4, allFFEntries.getString("ffName"+i));
+                    contentValues.put(REGISTERED_PATIENTS_FRIEND_RELATION4, allFFEntries.getString("ffRelation"+i));
+                    contentValues.put(REGISTERED_PATIENTS_PHONE_NUMBER4, allFFEntries.getString("ffNum"+i));
+                    break;
+            }
+        }
 
         long result = db.insert(REGISTERED_PATIENTS_TABLE, null, contentValues);
 

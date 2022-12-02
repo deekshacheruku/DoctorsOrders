@@ -13,9 +13,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            tools:layout_editor_absoluteX="42dp"
-            tools:layout_editor_absoluteY="16dp">
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -31,7 +29,8 @@
                     android:layout_weight="1"
                     android:layout_marginBottom="20dp"
                     android:text="Friends/Family"
-                    android:textSize="@dimen/Header1"></TextView>
+                    android:textSize="@dimen/Header1">
+                </TextView>
 
                 <Button
                     android:backgroundTint="@color/colorSecondary"
@@ -67,7 +66,7 @@
                         android:textSize="@dimen/Normal"/>
 
                     <EditText
-                        android:id="@+id/friendName"
+                        android:id="@+id/ffName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_row="0"
@@ -84,7 +83,7 @@
                         android:textSize="@dimen/Normal"/>
 
                     <EditText
-                        android:id="@+id/relation"
+                        android:id="@+id/ffRelation"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_row="1"
@@ -101,7 +100,7 @@
                         android:textSize="@dimen/Normal"/>
 
                     <EditText
-                        android:id="@+id/phone"
+                        android:id="@+id/ffNum"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_row="2"

@@ -41,7 +41,8 @@
             <Button
                 android:layout_width="64dp"
                 android:layout_height="64dp"
-                android:layout_gravity="right"
+                android:background="@drawable/circle_button"
+                android:layout_gravity="bottom|right"
                 android:layout_marginTop="20dp"
                 android:id="@+id/addPatientBtn"
                 android:text="+"

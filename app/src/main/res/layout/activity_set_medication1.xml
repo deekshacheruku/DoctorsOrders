@@ -6,128 +6,132 @@
     android:layout_height="match_parent"
     tools:context=".Scheduler.set_medication_1"
     android:background="@color/backgroundTintSecondary">
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="top"
         android:layout_margin="20dp">
-        <TextView
-            android:id="@+id/patient_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="10dp"
-            android:text="Set Medication For "
-            android:textSize="@dimen/Normal" />
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="top">
             <TextView
+                android:id="@+id/patient_name"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="10dp"
+                android:text="Set Medication For "
+                android:textSize="@dimen/Normal" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginLeft="50dp"
+                    android:textSize="@dimen/Normal"
+                    android:text="Choose Medicine:" />
+                <Spinner
+                    android:id="@+id/search_view_med"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="30dp"
+                    android:background="@android:drawable/btn_dropdown"
+                    android:spinnerMode="dropdown"/>
+            </LinearLayout>
+            <TextView
+                android:id="@+id/medName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="10dp"
+                android:text="Medication Name: "
+                android:textSize="@dimen/Normal" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="50dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="10dp"
+                    android:text="# of Pills: "
+                    android:textSize="@dimen/Normal" />
+                <TextView
+                    android:id="@+id/doseNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="0 "
+                    android:textSize="@dimen/Normal"
+                    android:layout_marginRight="20dp"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <ImageButton
+                        android:id="@+id/increaseBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/up_arrow"
+                        android:background="@android:color/darker_gray"
+                        />
+                    <ImageButton
+                        android:id="@+id/decreaseBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/down_arrow"
+                        android:background="@android:color/darker_gray"
+                        android:layout_marginTop="10dp"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:layout_marginLeft="50dp"
-                android:textSize="@dimen/Normal"
-                android:text="Choose Medicine:" />
-            <Spinner
-                android:id="@+id/search_view_med"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="30dp"
-                android:background="@android:drawable/btn_dropdown"
-                android:spinnerMode="dropdown"/>
-        </LinearLayout>
-        <TextView
-            android:id="@+id/medName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="10dp"
-            android:text="Medication Name: "
-            android:textSize="@dimen/Normal" />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="50dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="10dp"
-                android:text="# of Pills: "
-                android:textSize="@dimen/Normal" />
-            <TextView
-                android:id="@+id/doseNum"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:text="0 "
-                android:textSize="@dimen/Normal"
-                android:layout_marginRight="20dp"/>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:orientation="vertical">
-                <ImageButton
-                    android:id="@+id/increaseBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/up_arrow"
-                    android:background="@android:color/darker_gray"
-                    />
-                <ImageButton
-                    android:id="@+id/decreaseBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/down_arrow"
-                    android:background="@android:color/darker_gray"
-                    android:layout_marginTop="10dp"
-                    />
-            </LinearLayout>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:orientation="vertical">
 
-            <com.google.android.material.textfield.TextInputLayout
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    >
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <EditText
+                    android:hint="Type Instructions..."
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:id="@+id/instructions"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/edit_text_border"
+                    android:backgroundTint="#1a1515"
+                    android:gravity="top"
+                    android:textSize="@dimen/Checkbox"
+                    android:inputType="textMultiLine"
+                    android:overScrollMode="always"
+                    android:padding="15dp"
+                    android:scrollbarStyle="insideInset"
+                    android:scrollbars="vertical" />
+            </LinearLayout>
+            <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                >
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <EditText
-                android:hint="Type Instructions..."
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:id="@+id/instructions"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/edit_text_border"
-                android:backgroundTint="#1a1515"
-                android:gravity="top"
+                android:text="Next"
                 android:textSize="@dimen/Checkbox"
-                android:inputType="textMultiLine"
-                android:overScrollMode="always"
-                android:padding="15dp"
-                android:scrollbarStyle="insideInset"
-                android:scrollbars="vertical" />
+                android:layout_marginTop="100dp"
+                android:layout_marginLeft="250dp"
+                android:id="@+id/next_to_schedule"/>
         </LinearLayout>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Next"
-            android:textSize="@dimen/Checkbox"
-            android:layout_marginTop="100dp"
-            android:layout_marginLeft="250dp"
-            android:id="@+id/next_to_schedule"/>
-    </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
