@@ -41,17 +41,21 @@ public class PatientDashboardActivity extends AppCompatActivity {
         Log.d("patientName", patient);
 
         Cursor schedule = databaseHelper.getSchedule(patient);
-        while (schedule.moveToNext()) {
-            medName = schedule.getString(2);
-            pills = schedule.getString(3);
-            instructions = schedule.getString(4);
-            frequency = schedule.getString(5);
-            timeForMedicine = schedule.getString(6);
-        }
+        if (schedule.getCount() == 0) {
+            startActivity(new Intent(this, DefaultPatientScreen.class));
+        } else {
+            while (schedule.moveToNext()) {
+                medName = schedule.getString(2);
+                pills = schedule.getString(3);
+                instructions = schedule.getString(4);
+                frequency = schedule.getString(5);
+                timeForMedicine = schedule.getString(6);
+            }
 
-        setTextViews();
-        createNotificationChannel();
-        createNotificationReminder();
+            setTextViews();
+            createNotificationChannel();
+            createNotificationReminder();
+        }
     }
 
     private void setTextViews() {
