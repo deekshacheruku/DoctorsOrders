@@ -177,9 +177,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-//    public Cursor loginInfoExistsPatient(Bundle bundle) {
-//        String query = "SELECT EXISTS(SELECT 1 FROM " + REGISTERED_PATIENTS_TABLE + " WHERE " u_tag=\"tag\");"
-//    }
+    public Cursor loginInfoExistsPatient(Bundle bundle) {
+        String pin = bundle.getString("password");
+        String lastName = bundle.getString("lastName");
+        String query = "SELECT * FROM " + REGISTERED_PATIENTS_TABLE + " WHERE "
+                + REGISTERED_PATIENTS_PIN + " = \"" + pin + "\"" + " AND " + REGISTERED_PATIENTS_LASTNAME + " = \"" + lastName + "\"";
+        return db.rawQuery(query, null);
+    }
 
     public Cursor getAllAssignedPatients() {
         String query = "SELECT * FROM " + SCHEDULER_PATIENTS_TABLE;

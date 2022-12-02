@@ -3,19 +3,25 @@ package com.illinois.cs465.doctorsorders.Login;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
+import com.illinois.cs465.doctorsorders.DatabaseHelper;
 import com.illinois.cs465.doctorsorders.Patient.PatientDashboardActivity;
 import com.illinois.cs465.doctorsorders.R;
 import com.illinois.cs465.doctorsorders.Scheduler.DashboardActivity;
 
 public class LoginCredentials extends AppCompatActivity implements View.OnClickListener {
+    EditText lastName;
+    EditText password;
+    DatabaseHelper helper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
 
         super.onCreate(savedInstanceState);
         int buttonPress = getIntent().getIntExtra("buttonType", -1);
@@ -46,9 +52,31 @@ public class LoginCredentials extends AppCompatActivity implements View.OnClickL
         }
         else if(v.getId() == R.id.loginPat)
         {
-            finish();
-            Intent intent = new Intent(this, PatientDashboardActivity.class);
-            startActivity(intent);
+            lastName = findViewById(R.id.last_name);
+            password = findViewById(R.id.password);
+            helper = new DatabaseHelper(this);
+
+            Bundle login = new Bundle();
+            login.putString("lastName", lastName.getText().toString());
+            login.putString("password", password.getText().toString());
+
+            Cursor data = helper.loginInfoExistsPatient(login);
+            int iterations = 0;
+
+            while (data.moveToNext()) {
+                iterations++;
+                Log.d("data", data.getString(1));
+            }
+
+            if (iterations == 0) {
+                Log.d("data", "asdasdasd");
+            } else {
+                Intent intent = new Intent(this, PatientDashboardActivity.class);
+                intent.putExtras(login);
+
+                finish();
+                startActivity(intent);
+            }
         }
         else if (v.getId() == R.id.createSch) {
             Intent intent = new Intent(this, CreateAccount0.class);

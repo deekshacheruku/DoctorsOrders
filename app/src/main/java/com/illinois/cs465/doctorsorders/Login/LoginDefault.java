@@ -46,12 +46,5 @@ public class LoginDefault extends AppCompatActivity implements View.OnClickListe
             intent.putExtra("buttonType", 2);
             startActivity(intent);
         }
-        //Removal of General Create Account button.
-//        else if(v.getId() == R.id.createGen)
-//        {
-//            Intent intent = new Intent(this, CreateAccount0.class);
-//            intent.putExtra("accountType", 3);
-//            startActivity(intent);
-//        }
     }
 }
