@@ -1,5 +1,6 @@
 package com.illinois.cs465.doctorsorders.Scheduler;
 
+import static com.illinois.cs465.doctorsorders.Login.SaveSharedPreference.getUserName;
 import static com.illinois.cs465.doctorsorders.Login.SaveSharedPreference.getUserNameAfterLogin;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,7 +36,7 @@ public class NearbyPatients extends AppCompatActivity {
 //        String schedulerName = patInfo.getString("scheduler_name");
         setContentView(R.layout.activity_nearby_patients);
 
-        String schedulerName = getUserNameAfterLogin(NearbyPatients.this);
+        String schedulerName = getUserName(NearbyPatients.this);
         TextView textTitle = findViewById(R.id.text_title);
         textTitle.setText(schedulerName);
 
