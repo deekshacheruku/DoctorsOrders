@@ -60,7 +60,6 @@ public class ProfileAdapter extends BaseAdapter {
         } else {
             nameList.addAll(tempNameList);
         }
-
         notifyDataSetChanged();
     }
 }

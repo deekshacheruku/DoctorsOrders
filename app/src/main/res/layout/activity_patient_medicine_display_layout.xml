@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     android:layout_gravity="center_vertical"
     android:orientation="vertical"
-    android:background="@color/backgroundTintSecondary">
+    android:background="@drawable/bg"
+    android:alpha="0.8">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,19 +29,18 @@
 
         <TextView
             android:id="@+id/display_text"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:gravity="center"
             android:text="@string/displayText"
             android:textAlignment="center"
-            android:textSize="@dimen/Header2" />
+            android:textSize="28sp"
+            android:padding="10dp"/>
 
         <TextView
             android:id="@+id/display_medicine"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:gravity="center"
             android:text="@string/displayMedicine"
             android:textAlignment="center"
@@ -50,48 +50,46 @@
             android:id="@+id/patient_pills"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:gravity="center"
             android:text="@string/patient_pills"
             android:textAlignment="center"
-            android:textSize="@dimen/Header2" />
+            android:textSize="@dimen/Header2"
+            android:padding="10dp"/>
 
         <ImageView
             android:id="@+id/medicine_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:contentDescription="@string/description" />
+            android:contentDescription="@string/description"
+            android:padding="10dp"/>
 
         <TextView
             android:id="@+id/instructions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:text="@string/patient_medicine_instructions"
             android:textSize="@dimen/Header2"
-            android:textStyle="bold" />
+            android:padding="10dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="40dp"
-            android:gravity="center_horizontal"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/yes_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:text="@string/yes" />
 
             <Button
                 android:id="@+id/no_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
+                android:layout_margin="10dp"
                 android:text="@string/no" />
         </LinearLayout>
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

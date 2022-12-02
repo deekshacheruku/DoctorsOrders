@@ -120,34 +120,32 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(REGISTERED_PATIENTS_CLINIC_NAME, fromPart0.getString("clinicName"));
         contentValues.put(REGISTERED_PATIENTS_DOCTOR_OFFICE_NUMBER, fromPart0.getString("offNum"));
 
-        for(int i = 0; i < allFFEntries.getInt("numEntries"); i++)
-        {
-            switch(i)
-            {
+        for (int i = 0; i < allFFEntries.getInt("numEntries"); i++) {
+            switch (i) {
                 case 0:
-                    contentValues.put(REGISTERED_PATIENTS_FRIEND_NAME0, allFFEntries.getString("ffName"+i));
-                    contentValues.put(REGISTERED_PATIENTS_FRIEND_RELATION0, allFFEntries.getString("ffRelation"+i));
-                    contentValues.put(REGISTERED_PATIENTS_PHONE_NUMBER0, allFFEntries.getString("ffNum"+i));
+                    contentValues.put(REGISTERED_PATIENTS_FRIEND_NAME0, allFFEntries.getString("ffName" + i));
+                    contentValues.put(REGISTERED_PATIENTS_FRIEND_RELATION0, allFFEntries.getString("ffRelation" + i));
+                    contentValues.put(REGISTERED_PATIENTS_PHONE_NUMBER0, allFFEntries.getString("ffNum" + i));
                     break;
                 case 1:
-                    contentValues.put(REGISTERED_PATIENTS_FRIEND_NAME1, allFFEntries.getString("ffName"+i));
-                    contentValues.put(REGISTERED_PATIENTS_FRIEND_RELATION1, allFFEntries.getString("ffRelation"+i));
-                    contentValues.put(REGISTERED_PATIENTS_PHONE_NUMBER1, allFFEntries.getString("ffNum"+i));
+                    contentValues.put(REGISTERED_PATIENTS_FRIEND_NAME1, allFFEntries.getString("ffName" + i));
+                    contentValues.put(REGISTERED_PATIENTS_FRIEND_RELATION1, allFFEntries.getString("ffRelation" + i));
+                    contentValues.put(REGISTERED_PATIENTS_PHONE_NUMBER1, allFFEntries.getString("ffNum" + i));
                     break;
                 case 2:
-                    contentValues.put(REGISTERED_PATIENTS_FRIEND_NAME2, allFFEntries.getString("ffName"+i));
-                    contentValues.put(REGISTERED_PATIENTS_FRIEND_RELATION2, allFFEntries.getString("ffRelation"+i));
-                    contentValues.put(REGISTERED_PATIENTS_PHONE_NUMBER3, allFFEntries.getString("ffNum"+i));
+                    contentValues.put(REGISTERED_PATIENTS_FRIEND_NAME2, allFFEntries.getString("ffName" + i));
+                    contentValues.put(REGISTERED_PATIENTS_FRIEND_RELATION2, allFFEntries.getString("ffRelation" + i));
+                    contentValues.put(REGISTERED_PATIENTS_PHONE_NUMBER3, allFFEntries.getString("ffNum" + i));
                     break;
                 case 3:
-                    contentValues.put(REGISTERED_PATIENTS_FRIEND_NAME3, allFFEntries.getString("ffName"+i));
-                    contentValues.put(REGISTERED_PATIENTS_FRIEND_RELATION3, allFFEntries.getString("ffRelation"+i));
-                    contentValues.put(REGISTERED_PATIENTS_PHONE_NUMBER3, allFFEntries.getString("ffNum"+i));
+                    contentValues.put(REGISTERED_PATIENTS_FRIEND_NAME3, allFFEntries.getString("ffName" + i));
+                    contentValues.put(REGISTERED_PATIENTS_FRIEND_RELATION3, allFFEntries.getString("ffRelation" + i));
+                    contentValues.put(REGISTERED_PATIENTS_PHONE_NUMBER3, allFFEntries.getString("ffNum" + i));
                     break;
                 case 4:
-                    contentValues.put(REGISTERED_PATIENTS_FRIEND_NAME4, allFFEntries.getString("ffName"+i));
-                    contentValues.put(REGISTERED_PATIENTS_FRIEND_RELATION4, allFFEntries.getString("ffRelation"+i));
-                    contentValues.put(REGISTERED_PATIENTS_PHONE_NUMBER4, allFFEntries.getString("ffNum"+i));
+                    contentValues.put(REGISTERED_PATIENTS_FRIEND_NAME4, allFFEntries.getString("ffName" + i));
+                    contentValues.put(REGISTERED_PATIENTS_FRIEND_RELATION4, allFFEntries.getString("ffRelation" + i));
+                    contentValues.put(REGISTERED_PATIENTS_PHONE_NUMBER4, allFFEntries.getString("ffNum" + i));
                     break;
             }
         }

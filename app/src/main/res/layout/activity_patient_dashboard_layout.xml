@@ -2,19 +2,29 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundTintSecondary">
+    android:background="@drawable/bg"
+    android:alpha="0.8">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:layout_margin="20dp">
+        android:layout_margin="10dp"
+        android:gravity="end">
+
         <Button
             android:id="@+id/log_out_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Log Out"
-            android:layout_marginLeft="50dp" />
+            android:text="Log Out" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="20dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
         <TextView
             android:id="@+id/patient_initial_text"
             android:layout_width="wrap_content"
@@ -22,8 +32,7 @@
             android:layout_marginTop="20dp"
             android:gravity="center"
             android:text="@string/patient_initial_message"
-            android:textSize="@dimen/Header1"
-            android:textStyle="bold" />
+            android:textSize="@dimen/Header2" />
 
         <TextView
             android:id="@+id/patient_medicine"
@@ -31,8 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="@string/patient_medicine"
-            android:textSize="@dimen/Header2"
-            android:textStyle="bold" />
+            android:textSize="@dimen/Header1" />
 
         <TextView
             android:id="@+id/patient_pills"
@@ -40,8 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="@string/patient_pills"
-            android:textSize="@dimen/Header2"
-            android:textStyle="bold" />
+            android:textSize="@dimen/Header2" />
 
         <TextView
             android:id="@+id/patient_medicine_time"
@@ -49,8 +56,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="@string/patient_medicine_time"
-            android:textSize="@dimen/Header2"
-            android:textStyle="bold" />
+            android:textSize="@dimen/Header2" />
 
         <ImageView
             android:id="@+id/patient_medicine_image"
@@ -65,8 +71,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="@string/patient_medicine_instructions"
-            android:textSize="@dimen/Header2"
-            android:textStyle="bold" />
+            android:textSize="@dimen/Header2" />
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

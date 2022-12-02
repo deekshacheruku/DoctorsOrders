@@ -25,13 +25,10 @@ public class DefaultPatientScreen extends AppCompatActivity {
         }
 
         Button button = findViewById(R.id.log_out_btn);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clearPatientName(DefaultPatientScreen.this);
-                Intent intent = new Intent(DefaultPatientScreen.this, LoginDefault.class);
-                startActivity(intent);
-            }
+        button.setOnClickListener(view -> {
+            clearPatientName(DefaultPatientScreen.this);
+            Intent intent = new Intent(DefaultPatientScreen.this, LoginDefault.class);
+            startActivity(intent);
         });
     }
 }

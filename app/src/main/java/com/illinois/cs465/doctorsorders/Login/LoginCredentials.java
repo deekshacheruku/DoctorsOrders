@@ -35,17 +35,17 @@ public class LoginCredentials extends AppCompatActivity implements View.OnClickL
         if (buttonPress == 0)
         {
             setContentView(R.layout.activity_login_patient);
-            Button createPat = (Button) findViewById(R.id.createPat);
+            Button createPat = findViewById(R.id.createPat);
             createPat.setOnClickListener(this);
-            Button loginPat = (Button) findViewById(R.id.loginPat);
+            Button loginPat = findViewById(R.id.loginPat);
             loginPat.setOnClickListener(this);
         }
         else if (buttonPress == 2)
         {
             setContentView(R.layout.activity_login_scheduler);
-            Button createSch = (Button) findViewById(R.id.createSch);
+            Button createSch = findViewById(R.id.createSch);
             createSch.setOnClickListener(this);
-            Button loginSch = (Button) findViewById(R.id.loginSch);
+            Button loginSch = findViewById(R.id.loginSch);
             loginSch.setOnClickListener(this);
         }
     }
@@ -117,7 +117,6 @@ public class LoginCredentials extends AppCompatActivity implements View.OnClickL
                 finish();
                 startActivity(intent);
             }
-
         }
     }
 }

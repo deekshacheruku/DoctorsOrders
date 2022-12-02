@@ -32,15 +32,15 @@ public class CreateAccount1 extends AppCompatActivity implements View.OnClickLis
 
         allFFEntries = new Bundle();
 
-        Button nextBtn = (Button) findViewById(R.id.nextCreate);
-        Button backBtn = (Button) findViewById(R.id.backCreate);
-        Button addBtn = (Button) findViewById(R.id.addFamFriend);
+        Button nextBtn = findViewById(R.id.nextCreate);
+        Button backBtn = findViewById(R.id.backCreate);
+        Button addBtn = findViewById(R.id.addFamFriend);
 
         nextBtn.setOnClickListener(this);
         backBtn.setOnClickListener(this);
         addBtn.setOnClickListener(this);
 
-        famFriendList = (LinearLayout) findViewById(R.id.famFriendList);
+        famFriendList = findViewById(R.id.famFriendList);
     }
 
     @Override
@@ -75,7 +75,6 @@ public class CreateAccount1 extends AppCompatActivity implements View.OnClickLis
                     addBtn.setText("MAX");
                 }
             }
-
         }
     }
 
@@ -97,5 +96,4 @@ public class CreateAccount1 extends AppCompatActivity implements View.OnClickLis
         }
         allFFEntries.putInt("numEntries", i);
     }
-
 }

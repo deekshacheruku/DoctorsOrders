@@ -4,8 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.illinois.cs465.doctorsorders.DatabaseHelper;
@@ -21,6 +19,7 @@ public class NearbyPatients extends AppCompatActivity {
     Bundle patInfo;
 
     ListView listView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,28 +27,25 @@ public class NearbyPatients extends AppCompatActivity {
         //Includes: "name", "pin", "docName", "clinicName", "docNum"
         databaseHelper = new DatabaseHelper(this);
 
-        ArrayList<String> patientNames = new ArrayList<>(Arrays.asList(patientName));
-        patientNames.add(patInfo.getString("name"));
+//        ArrayList<String> patientNames = new ArrayList<>(Arrays.asList(patientName));
+//        patientNames.add(patInfo.getString("name"));
 
         setContentView(R.layout.activity_nearby_patients);
-        listView = (ListView) findViewById(R.id.patientList);
+        listView = findViewById(R.id.patientList);
         ProfileAdapter adapter = new ProfileAdapter(getApplicationContext(), new ArrayList<>(Arrays.asList(patientName)));
         listView.setAdapter(adapter);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Object clickedName = adapterView.getItemAtPosition(i);
+        listView.setOnItemClickListener((adapterView, view, i, l) -> {
+            Object clickedName = adapterView.getItemAtPosition(i);
 
-                Bundle dbInsertBundle = new Bundle();
-                dbInsertBundle.putString("patient_name", clickedName.toString());
-                dbInsertBundle.putString("scheduler_name", "David Smith");
+            Bundle dbInsertBundle = new Bundle();
+            dbInsertBundle.putString("patient_name", clickedName.toString());
+            dbInsertBundle.putString("scheduler_name", "David Smith");
 
-                databaseHelper.addNearbyPatient(dbInsertBundle);
+            databaseHelper.addNearbyPatient(dbInsertBundle);
 
-                Intent intent = new Intent(NearbyPatients.this, DashboardActivity.class);
-                startActivity(intent);
-            }
+            Intent intent = new Intent(NearbyPatients.this, DashboardActivity.class);
+            startActivity(intent);
         });
     }
 }

@@ -1,156 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Scheduler.confirm_medication_3"
-    android:background="@color/backgroundTintSecondary">
+    android:background="@drawable/bg"
+    android:alpha="0.8"
+    tools:context=".Scheduler.confirm_medication_3">
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        tools:ignore="MissingConstraints">
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="40dp"
+            android:padding="5dp"
             android:text="Confirm Schedule"
-            android:textSize="@dimen/Header1" />
+            android:textSize="@dimen/Header2" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/confirm_patient_name"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
-            <TextView
-                android:id="@+id/confirm_patient_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="100dp"
-                android:text="Name:"
-                android:textSize="@dimen/Normal" />
-        </LinearLayout>
+            android:padding="5dp"
+            android:text="Name:"
+            android:textSize="@dimen/Normal" />
+
         <TextView
             android:id="@+id/medication_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="100dp"
+            android:padding="5dp"
             android:text="Medication: "
             android:textSize="@dimen/Normal" />
-        <LinearLayout
-            android:layout_width="match_parent"
+
+        <TextView
+            android:id="@+id/confirm_dose"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="20dp"
-            >
-            <TextView
-                android:id="@+id/confirm_dose"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="100dp"
-                android:text="Dose:"
-                android:textSize="@dimen/Normal"
-                />
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="10mg"-->
-<!--                android:layout_marginLeft="10dp"-->
-<!--                android:textSize="18dp"/>-->
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
+            android:padding="5dp"
+            android:text="Dose:"
+            android:textSize="@dimen/Normal" />
+
+        <TextView
+            android:id="@+id/confirm_instructions"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="20dp"
-            android:gravity="center_vertical"
-            >
-            <TextView
-                android:id="@+id/confirm_instructions"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="100dp"
-                android:text="Instructions:"
-                android:textSize="@dimen/Normal"
-                android:gravity="center"
-                />
-        </LinearLayout>
+            android:gravity="center"
+            android:text="Instructions:"
+            android:textSize="@dimen/Normal"
+            android:padding="5dp"/>
+
         <TextView
             android:id="@+id/confirm_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Every 10 days at"
-            android:layout_marginTop="60dp"
-            android:layout_marginLeft="100dp"
             android:textSize="@dimen/Normal"
-            />
+            android:padding="5dp"/>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginLeft="100dp">
+            android:orientation="vertical">
+
             <CheckBox
                 android:id="@+id/breakfast"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Breakfast"
-                android:textSize="@dimen/Checkbox"
                 android:clickable="false"
-                />
+                android:text="Breakfast"
+                android:textSize="@dimen/Checkbox" />
 
             <CheckBox
                 android:id="@+id/lunch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lunch"
-                android:textSize="@dimen/Checkbox"
                 android:clickable="false"
-                />
+                android:text="Lunch"
+                android:textSize="@dimen/Checkbox" />
 
             <CheckBox
                 android:id="@+id/dinner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Dinner"
-                android:textSize="@dimen/Checkbox"
                 android:clickable="false"
-                />
+                android:text="Dinner"
+                android:textSize="@dimen/Checkbox" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="60dp">
+            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/editBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="48dp"
-                android:layout_marginLeft="30dp"
+                android:layout_weight="1"
                 android:text="Edit"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_weight="1"/>
+                android:layout_margin="10dp"/>
 
             <Button
                 android:id="@+id/confirm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="30dp"
-                android:layout_marginBottom="48dp"
+                android:layout_weight="1"
                 android:text="Submit"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_weight="1"/>
+                android:layout_margin="10dp"/>
         </LinearLayout>
     </LinearLayout>
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
