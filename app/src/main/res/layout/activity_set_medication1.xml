@@ -123,6 +123,7 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/black"
                     android:background="@drawable/edit_text_border"
                     android:backgroundTint="#1a1515"
                     android:gravity="top"
