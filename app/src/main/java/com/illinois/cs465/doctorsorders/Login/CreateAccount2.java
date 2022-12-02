@@ -41,6 +41,7 @@ public class CreateAccount2 extends AppCompatActivity implements View.OnClickLis
             helper.addNewPatients(fromStep0, allFFEntries);
 
             Intent intent = new Intent(this, PatientDashboardActivity.class);
+            intent.putExtra("fromStep0", fromStep0);
             startActivity(intent);
         }
     }

@@ -18,12 +18,18 @@ public class NearbyPatients extends AppCompatActivity {
     String patientName[] = {"Dave Woods", "Cathie Hodges", "Jim Frost", "Timothy Smith"};
     int profilePic[] = {R.drawable.profile_pic};
     DatabaseHelper databaseHelper;
+    Bundle patInfo;
 
     ListView listView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        patInfo = getIntent().getBundleExtra("patInfo");
+        //Includes: "name", "pin", "docName", "clinicName", "docNum"
         databaseHelper = new DatabaseHelper(this);
+
+        ArrayList<String> patientNames = new ArrayList<>(Arrays.asList(patientName));
+        patientNames.add(patInfo.getString("name"));
 
         setContentView(R.layout.activity_nearby_patients);
         listView = (ListView) findViewById(R.id.patientList);
@@ -34,11 +40,9 @@ public class NearbyPatients extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Object clickedName = adapterView.getItemAtPosition(i);
-                String[] name = clickedName.toString().split("\\s+");
 
                 Bundle dbInsertBundle = new Bundle();
-                dbInsertBundle.putString("patient_first_name", name[0]);
-                dbInsertBundle.putString("patient_last_name", name[1]);
+                dbInsertBundle.putString("patient_name", clickedName.toString());
                 dbInsertBundle.putString("scheduler_name", "David Smith");
 
                 databaseHelper.addNearbyPatient(dbInsertBundle);

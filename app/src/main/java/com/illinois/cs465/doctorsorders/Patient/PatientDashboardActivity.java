@@ -29,11 +29,13 @@ public class PatientDashboardActivity extends AppCompatActivity {
     String medName = "";
     String instructions = "";
     String frequency = "";
-    String patient = "Jim Frost";
+    String patient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Bundle patInfo = getIntent().getBundleExtra("fromStep0");
+        patient = patInfo.getString("name");
         setContentView(R.layout.activity_patient_dashboard_layout);
         databaseHelper = new DatabaseHelper(this);
 

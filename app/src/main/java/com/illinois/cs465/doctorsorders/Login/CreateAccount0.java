@@ -49,7 +49,7 @@ public class CreateAccount0 extends AppCompatActivity implements View.OnClickLis
             Button nextCreate = findViewById(R.id.nextCreate);
 
             nextCreate.setOnClickListener(view -> {
-                forStep1.putString("lname", text1.getText().toString());
+                forStep1.putString("name", text1.getText().toString());
                 forStep1.putString("pin", text3.getText().toString());
                 forStep1.putString("docName", text4.getText().toString());
                 forStep1.putString("clinicName", text5.getText().toString());

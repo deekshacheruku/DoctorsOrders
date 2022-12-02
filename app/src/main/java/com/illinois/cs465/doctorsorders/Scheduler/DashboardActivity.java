@@ -26,10 +26,13 @@ public class DashboardActivity extends AppCompatActivity implements SearchView.O
     ProfileAdapter adapter;
     ListView listView;
     SearchView searchView;
+    Bundle patientInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        patientInfo = getIntent().getBundleExtra("fromPart0");
+        //Includes by keys: "name", "pin", "docName", "clinicName", "docNum"
         setContentView(R.layout.caretaker_dashboard_layout);
         databaseHelper = new DatabaseHelper(this);
 
@@ -63,7 +66,9 @@ public class DashboardActivity extends AppCompatActivity implements SearchView.O
         });
 
         Button addButton = findViewById(R.id.addPatientBtn);
-        addButton.setOnClickListener(view -> startActivity(new Intent(DashboardActivity.this, NearbyPatients.class)));
+        Intent addPats = new Intent(DashboardActivity.this, NearbyPatients.class);
+        addPats.putExtra("patInfo", patientInfo);
+        addButton.setOnClickListener(view -> startActivity(addPats));
     }
 
     private void populatePatientsList() {
@@ -71,10 +76,8 @@ public class DashboardActivity extends AppCompatActivity implements SearchView.O
         ArrayList<String> patients = new ArrayList<>();
         Cursor data = databaseHelper.getAllAssignedPatients();
         while (data.moveToNext()) {
-            String firstName = data.getString(2);
-            String lastName = data.getString(3);
-            String fullName = "" + firstName + " " + lastName;
-            patients.add(fullName);
+            String name = data.getString(1);
+            patients.add(name);
         }
         patientList = patients;
     }

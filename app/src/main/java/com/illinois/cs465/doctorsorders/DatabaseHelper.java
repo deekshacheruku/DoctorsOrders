@@ -17,8 +17,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String SCHEDULER_PATIENTS_TABLE = "Scheduler_Patients_List";
     private static final String SCHEDULER_PATIENTS_TABLE_SCHEDULER_NAME = "Scheduler_Name";
-    private static final String SCHEDULER_PATIENTS_TABLE_PATIENT_FIRST_NAME = "Patient_First_Name";
-    private static final String SCHEDULER_PATIENTS_TABLE_PATIENT_LAST_NAME = "Patient_Last_Name";
+    private static final String SCHEDULER_PATIENTS_TABLE_PATIENT_NAME = "Patient_Name";
 
     private static final String SCHEDULES_TABLE = "Registered_Schedules";
     private static final String SCHEDULES_TABLE_PATIENT_NAME = "Patient_Name";
@@ -72,7 +71,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String createPatientsListTable = "CREATE TABLE " + SCHEDULER_PATIENTS_TABLE + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                SCHEDULER_PATIENTS_TABLE_SCHEDULER_NAME + " TEXT, " + SCHEDULER_PATIENTS_TABLE_PATIENT_FIRST_NAME + " TEXT, " + SCHEDULER_PATIENTS_TABLE_PATIENT_LAST_NAME + " TEXT)";
+                SCHEDULER_PATIENTS_TABLE_SCHEDULER_NAME + " TEXT, " + SCHEDULER_PATIENTS_TABLE_PATIENT_NAME + " TEXT)";
 
         String createMedicineTable = "CREATE TABLE " + MEDICINES_TABLE + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 MEDICINES_TABLE_MED_NAME + " TEXT, " + MEDICINES_TABLE_MED_PICTURE + " BLOB)";
@@ -206,8 +205,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public boolean addNearbyPatient(Bundle bundle) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(SCHEDULER_PATIENTS_TABLE_SCHEDULER_NAME, bundle.getString("scheduler_name"));
-        contentValues.put(SCHEDULER_PATIENTS_TABLE_PATIENT_FIRST_NAME, bundle.getString("patient_first_name"));
-        contentValues.put(SCHEDULER_PATIENTS_TABLE_PATIENT_LAST_NAME, bundle.getString("patient_last_name"));
+        contentValues.put(SCHEDULER_PATIENTS_TABLE_PATIENT_NAME, bundle.getString("patient_name"));
 
         long result = db.insert(SCHEDULER_PATIENTS_TABLE, null, contentValues);
 
