@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.illinois.cs465.doctorsorders.R;
+import com.illinois.cs465.doctorsorders.Scheduler.DashboardActivity;
 
 public class LoginDefault extends AppCompatActivity implements View.OnClickListener {
 
@@ -19,6 +20,13 @@ public class LoginDefault extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_default);
+
+        if (SaveSharedPreference.getUserName(LoginDefault.this).length() != 0) {
+            Intent intent = new Intent(this, DashboardActivity.class);
+            startActivity(intent);
+        } else {
+
+        }
 
         patButton = (Button) findViewById(R.id.patientLogin);
         schButton = (Button) findViewById(R.id.schedulerLogin);

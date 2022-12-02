@@ -13,6 +13,8 @@ import android.widget.SearchView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.illinois.cs465.doctorsorders.DatabaseHelper;
+import com.illinois.cs465.doctorsorders.Login.LoginDefault;
+import com.illinois.cs465.doctorsorders.Login.SaveSharedPreference;
 import com.illinois.cs465.doctorsorders.R;
 
 import java.util.ArrayList;
@@ -30,6 +32,13 @@ public class DashboardActivity extends AppCompatActivity implements SearchView.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.caretaker_dashboard_layout);
         databaseHelper = new DatabaseHelper(this);
+
+        if (SaveSharedPreference.getUserName(DashboardActivity.this).length() == 0) {
+            Intent intent = new Intent(this, LoginDefault.class);
+            startActivity(intent);
+        } else {
+
+        }
 
         listView = (ListView) findViewById(R.id.patientList);
 

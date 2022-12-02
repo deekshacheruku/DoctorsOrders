@@ -1,5 +1,7 @@
 package com.illinois.cs465.doctorsorders.Login;
 
+import static com.illinois.cs465.doctorsorders.Login.SaveSharedPreference.setUserName;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -71,14 +73,14 @@ public class CreateAccount0 extends AppCompatActivity implements View.OnClickLis
             Button finish = findViewById(R.id.finCreateSch);
             finish.setOnClickListener(view -> {
                 scheduler.putString("lastName", lastName.getText().toString());
-                Log.d("lastname", lastName.getText().toString());
                 scheduler.putString("firstName", firstName.getText().toString());
                 scheduler.putString("userName", userName.getText().toString());
-                Log.d("firstname", firstName.getText().toString());
 
                 scheduler.putString("password", password.getText().toString());
 
                 helper.addNewScheduler(scheduler);
+                setUserName(this, userName.getText().toString());
+
                 Intent intent = new Intent(this, DashboardActivity.class);
                 startActivity(intent);
             });
