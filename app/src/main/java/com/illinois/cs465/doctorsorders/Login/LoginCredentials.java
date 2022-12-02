@@ -57,7 +57,7 @@ public class LoginCredentials extends AppCompatActivity implements View.OnClickL
             helper = new DatabaseHelper(this);
 
             Bundle login = new Bundle();
-            login.putString("lastName", lastName.getText().toString());
+            login.putString("name", lastName.getText().toString());
             login.putString("password", password.getText().toString());
 
             Cursor data = helper.loginInfoExistsPatient(login);

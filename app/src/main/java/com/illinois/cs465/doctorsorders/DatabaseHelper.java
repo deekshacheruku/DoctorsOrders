@@ -12,7 +12,7 @@ import java.util.Calendar;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     // If you change the database schema, you must increment the database version.
-    public static final int DATABASE_VERSION = 8;
+    public static final int DATABASE_VERSION = 9;
     public static final String DATABASE_NAME = "DoctorsOrders.db";
 
     private static final String SCHEDULER_PATIENTS_TABLE = "Scheduler_Patients_List";
@@ -34,8 +34,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String MEDICINES_TABLE_MED_PICTURE = "Medicine_Picture";
 
     private static final String REGISTERED_PATIENTS_TABLE = "Registered_Patients";
-    private static final String REGISTERED_PATIENTS_LASTNAME = "Last_Name";
-    private static final String REGISTERED_PATIENTS_FIRSTNAME = "First_Name";
+    private static final String REGISTERED_PATIENTS_NAME = "Name";
     private static final String REGISTERED_PATIENTS_PIN = "Pin_Num";
     private static final String REGISTERED_PATIENTS_DOCTOR_NAME = "Doctor_Name";
     private static final String REGISTERED_PATIENTS_CLINIC_NAME = "Clinic_Name";
@@ -83,8 +82,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 SCHEDULES_TABLE_INSTRUCTIONS + " TEXT, " + SCHEDULES_TABLE_DAY_FREQUENCY + " INTEGER, " + SCHEDULES_TABLE_SPECIFIC_TIME + " TEXT, " + SCHEDULES_TABLE_TIMESTAMP
                 + " TEXT)";
 
-        String createPatientTable = "CREATE TABLE " + REGISTERED_PATIENTS_TABLE + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " + REGISTERED_PATIENTS_LASTNAME + " TEXT, " +
-                REGISTERED_PATIENTS_FIRSTNAME + " TEXT, " + REGISTERED_PATIENTS_PIN + " INTEGER, " +
+        String createPatientTable = "CREATE TABLE " + REGISTERED_PATIENTS_TABLE + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                REGISTERED_PATIENTS_NAME + " TEXT, " + REGISTERED_PATIENTS_PIN + " INTEGER, " +
                 REGISTERED_PATIENTS_DOCTOR_NAME + " TEXT, " + REGISTERED_PATIENTS_CLINIC_NAME + " TEXT, " + REGISTERED_PATIENTS_DOCTOR_OFFICE_NUMBER + " TEXT, " +
                 REGISTERED_PATIENTS_FRIEND_NAME0 + " TEXT, " + REGISTERED_PATIENTS_FRIEND_RELATION0 + " TEXT, " + REGISTERED_PATIENTS_PHONE_NUMBER0 + " TEXT, " +
                 REGISTERED_PATIENTS_FRIEND_NAME1 + " TEXT, " + REGISTERED_PATIENTS_FRIEND_RELATION1 + " TEXT, " + REGISTERED_PATIENTS_PHONE_NUMBER1 + " TEXT, " +
@@ -116,11 +115,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public boolean addNewPatients(Bundle fromPart0, Bundle allFFEntries) { //for adding new registered patients
         ContentValues contentValues = new ContentValues();
 
-        contentValues.put(REGISTERED_PATIENTS_LASTNAME, fromPart0.getString("lname"));
-        contentValues.put(REGISTERED_PATIENTS_FIRSTNAME, fromPart0.getString("fname"));
+        contentValues.put(REGISTERED_PATIENTS_NAME, fromPart0.getString("name"));
         contentValues.put(REGISTERED_PATIENTS_PIN, fromPart0.getString("pin"));
         contentValues.put(REGISTERED_PATIENTS_DOCTOR_NAME, fromPart0.getString("docName"));
-        contentValues.put(REGISTERED_PATIENTS_FIRSTNAME, fromPart0.getString("fname"));
         contentValues.put(REGISTERED_PATIENTS_CLINIC_NAME, fromPart0.getString("clinicName"));
         contentValues.put(REGISTERED_PATIENTS_DOCTOR_OFFICE_NUMBER, fromPart0.getString("offNum"));
 
@@ -225,9 +222,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public Cursor loginInfoExistsPatient(Bundle bundle) {
         String pin = bundle.getString("password");
-        String lastName = bundle.getString("lastName");
+        String lastName = bundle.getString("name");
         String query = "SELECT * FROM " + REGISTERED_PATIENTS_TABLE + " WHERE "
-                + REGISTERED_PATIENTS_PIN + " = \"" + pin + "\"" + " AND " + REGISTERED_PATIENTS_LASTNAME + " = \"" + lastName + "\"";
+                + REGISTERED_PATIENTS_PIN + " = \"" + pin + "\"" + " AND " + REGISTERED_PATIENTS_NAME + " = \"" + lastName + "\"";
         return db.rawQuery(query, null);
     }
 

@@ -35,8 +35,7 @@ public class CreateAccount0 extends AppCompatActivity implements View.OnClickLis
         } else if (accType == 0) //If Patient Account,
         {
             setContentView(R.layout.activity_create_patient0);
-            EditText text1 = findViewById(R.id.lname);
-            EditText text2 = findViewById(R.id.fname);
+            EditText text1 = findViewById(R.id.name);
             EditText text3 = findViewById(R.id.pin);
             EditText text4 = findViewById(R.id.docName);
             EditText text5 = findViewById(R.id.clinicName);
@@ -47,7 +46,6 @@ public class CreateAccount0 extends AppCompatActivity implements View.OnClickLis
             Button nextCreate = findViewById(R.id.nextCreate);
             nextCreate.setOnClickListener(view -> {
                 forStep1.putString("lname", text1.getText().toString());
-                forStep1.putString("fname", text2.getText().toString());
                 forStep1.putString("pin", text3.getText().toString());
                 forStep1.putString("docName", text4.getText().toString());
                 forStep1.putString("clinicName", text5.getText().toString());
