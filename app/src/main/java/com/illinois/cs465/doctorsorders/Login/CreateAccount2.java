@@ -1,5 +1,7 @@
 package com.illinois.cs465.doctorsorders.Login;
 
+import static com.illinois.cs465.doctorsorders.Login.SaveSharedPreference.setPatientName;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -39,7 +41,7 @@ public class CreateAccount2 extends AppCompatActivity implements View.OnClickLis
             startActivity(intent);
         } else if (v.getId() == R.id.finCreatePat) {
             helper.addNewPatients(fromStep0, allFFEntries);
-
+            setPatientName(CreateAccount2.this, fromStep0.getString("name"));
             Intent intent = new Intent(this, PatientDashboardActivity.class);
             intent.putExtra("fromStep0", fromStep0);
             startActivity(intent);

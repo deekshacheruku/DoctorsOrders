@@ -1,5 +1,8 @@
 package com.illinois.cs465.doctorsorders.Login;
 
+import static com.illinois.cs465.doctorsorders.Login.SaveSharedPreference.setPatientName;
+import static com.illinois.cs465.doctorsorders.Login.SaveSharedPreference.setUserName;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -16,7 +19,7 @@ import com.illinois.cs465.doctorsorders.R;
 import com.illinois.cs465.doctorsorders.Scheduler.DashboardActivity;
 
 public class LoginCredentials extends AppCompatActivity implements View.OnClickListener {
-    EditText lastName;
+    EditText name;
     EditText password;
 
     EditText userName;
@@ -55,12 +58,12 @@ public class LoginCredentials extends AppCompatActivity implements View.OnClickL
         }
         else if(v.getId() == R.id.loginPat)
         {
-            lastName = findViewById(R.id.last_name);
+            name = findViewById(R.id.name);
             password = findViewById(R.id.password);
             helper = new DatabaseHelper(this);
 
             Bundle login = new Bundle();
-            login.putString("name", lastName.getText().toString());
+            login.putString("name", name.getText().toString());
             login.putString("password", password.getText().toString());
 
             Cursor data = helper.loginInfoExistsPatient(login);
@@ -74,6 +77,8 @@ public class LoginCredentials extends AppCompatActivity implements View.OnClickL
             if (iterations == 0) {
                 Log.d("data", "asdasdasd");
             } else {
+                setPatientName(LoginCredentials.this, name.getText().toString());
+
                 Intent intent = new Intent(this, PatientDashboardActivity.class);
                 intent.putExtras(login);
 
@@ -107,6 +112,7 @@ public class LoginCredentials extends AppCompatActivity implements View.OnClickL
             if (iterations == 0) {
                 Log.d("data", "asdasdasd");
             } else {
+                setUserName(LoginCredentials.this, userName.getText().toString());
                 Intent intent = new Intent(this, DashboardActivity.class);
                 finish();
                 startActivity(intent);

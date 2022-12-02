@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.illinois.cs465.doctorsorders.Patient.PatientDashboardActivity;
 import com.illinois.cs465.doctorsorders.R;
 import com.illinois.cs465.doctorsorders.Scheduler.DashboardActivity;
 
@@ -24,8 +25,9 @@ public class LoginDefault extends AppCompatActivity implements View.OnClickListe
         if (SaveSharedPreference.getUserName(LoginDefault.this).length() != 0) {
             Intent intent = new Intent(this, DashboardActivity.class);
             startActivity(intent);
-        } else {
-
+        } else if (SaveSharedPreference.getPatientName(LoginDefault.this).length() != 0) {
+            Intent intent = new Intent(this, PatientDashboardActivity.class);
+            startActivity(intent);
         }
 
         patButton = (Button) findViewById(R.id.patientLogin);

@@ -1,5 +1,7 @@
 package com.illinois.cs465.doctorsorders.Scheduler;
 
+import static com.illinois.cs465.doctorsorders.Login.SaveSharedPreference.clearUserName;
+
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -69,6 +71,19 @@ public class DashboardActivity extends AppCompatActivity implements SearchView.O
         Intent addPats = new Intent(DashboardActivity.this, NearbyPatients.class);
         addPats.putExtra("patInfo", patientInfo);
         addButton.setOnClickListener(view -> startActivity(addPats));
+        addButton.setOnClickListener(view -> startActivity(new Intent(DashboardActivity.this, NearbyPatients.class)));
+
+        Button logOutButton = findViewById(R.id.log_out_btn);
+        logOutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clearUserName(DashboardActivity.this);
+                Intent intent = new Intent(DashboardActivity.this, LoginDefault.class);
+                startActivity(intent);
+            }
+        });
+//        logOutButton.setOnClickListener(view -> startActivity(new Intent(DashboardActivity.this, LoginDefault.class)));
+
     }
 
     private void populatePatientsList() {

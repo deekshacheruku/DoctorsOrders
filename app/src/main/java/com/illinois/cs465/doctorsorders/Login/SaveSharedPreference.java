@@ -7,6 +7,7 @@ import android.preference.PreferenceManager;
 public class SaveSharedPreference
 {
     static final String PREF_USER_NAME= "username";
+    static final String PREF_PATIENT_NAME = "patient_name";
 
     static SharedPreferences getSharedPreferences(Context ctx) {
         return PreferenceManager.getDefaultSharedPreferences(ctx);
@@ -19,8 +20,34 @@ public class SaveSharedPreference
         editor.commit();
     }
 
+    public static void setPatientName(Context ctx, String userName)
+    {
+        SharedPreferences.Editor editor = getSharedPreferences(ctx).edit();
+        editor.putString(PREF_PATIENT_NAME, userName);
+        editor.commit();
+    }
+
     public static String getUserName(Context ctx)
     {
         return getSharedPreferences(ctx).getString(PREF_USER_NAME, "");
+    }
+
+    public static String getPatientName(Context ctx)
+    {
+        return getSharedPreferences(ctx).getString(PREF_PATIENT_NAME, "");
+    }
+
+    public static void clearUserName(Context ctx)
+    {
+        SharedPreferences.Editor editor = getSharedPreferences(ctx).edit();
+        editor.clear(); //clear all stored data
+        editor.commit();
+    }
+
+    public static void clearPatientName(Context ctx)
+    {
+        SharedPreferences.Editor editor = getSharedPreferences(ctx).edit();
+        editor.clear(); //clear all stored data
+        editor.commit();
     }
 }

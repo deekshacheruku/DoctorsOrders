@@ -1,5 +1,7 @@
 package com.illinois.cs465.doctorsorders.Patient;
 
+import static com.illinois.cs465.doctorsorders.Login.SaveSharedPreference.clearPatientName;
+
 import android.app.AlarmManager;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -10,13 +12,18 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.illinois.cs465.doctorsorders.DatabaseHelper;
+import com.illinois.cs465.doctorsorders.Login.LoginDefault;
+import com.illinois.cs465.doctorsorders.Login.SaveSharedPreference;
 import com.illinois.cs465.doctorsorders.R;
+import com.illinois.cs465.doctorsorders.Scheduler.DashboardActivity;
 
 import java.util.ArrayList;
 
@@ -34,30 +41,47 @@ public class PatientDashboardActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Bundle patInfo = getIntent().getBundleExtra("fromStep0");
-        patient = patInfo.getString("name");
+//        Bundle patInfo = getIntent().getBundleExtra("fromStep0");
+//        patient = patInfo.getString("name");
         setContentView(R.layout.activity_patient_dashboard_layout);
         databaseHelper = new DatabaseHelper(this);
 
+//        if (SaveSharedPreference.getPatientName(PatientDashboardActivity.this).length() == 0) {
+//            Intent intent = new Intent(this, LoginDefault.class);
+//            startActivity(intent);
+//        } else {
+//
+//        }
+
         //Should get the patient name from Login Screen in the Format of Full Name "David Woods" or "Jim Frost"
-        Log.d("patientName", patient);
+//        Log.d("patientName", patient);
 
-        Cursor schedule = databaseHelper.getSchedule(patient);
-        if (schedule.getCount() == 0) {
-            startActivity(new Intent(this, DefaultPatientScreen.class));
-        } else {
-            while (schedule.moveToNext()) {
-                medName = schedule.getString(2);
-                pills = schedule.getString(3);
-                instructions = schedule.getString(4);
-                frequency = schedule.getString(5);
-                timeForMedicine = schedule.getString(6);
+//        Cursor schedule = databaseHelper.getSchedule(patient);
+//        if (schedule.getCount() == 0) {
+//            startActivity(new Intent(this, DefaultPatientScreen.class));
+//        } else {
+//            while (schedule.moveToNext()) {
+//                medName = schedule.getString(2);
+//                pills = schedule.getString(3);
+//                instructions = schedule.getString(4);
+//                frequency = schedule.getString(5);
+//                timeForMedicine = schedule.getString(6);
+//            }
+//
+//            setTextViews();
+//            createNotificationChannel();
+//            createNotificationReminder();
+//        }
+
+        Button button = findViewById(R.id.log_out_btn);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clearPatientName(PatientDashboardActivity.this);
+                Intent intent = new Intent(PatientDashboardActivity.this, LoginDefault.class);
+                startActivity(intent);
             }
-
-            setTextViews();
-            createNotificationChannel();
-            createNotificationReminder();
-        }
+        });
     }
 
     private void setTextViews() {
