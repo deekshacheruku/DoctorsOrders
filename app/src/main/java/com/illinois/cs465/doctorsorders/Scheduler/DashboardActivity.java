@@ -45,26 +45,23 @@ public class DashboardActivity extends AppCompatActivity implements SearchView.O
 
         }
 
-        listView = (ListView) findViewById(R.id.patientList);
+        listView = findViewById(R.id.patientList);
 
         populatePatientsList();
 
         adapter = new ProfileAdapter(getApplicationContext(), patientList);
         listView.setAdapter(adapter);
 
-        searchView = (SearchView) findViewById(R.id.search_view);
+        searchView = findViewById(R.id.search_view);
         searchView.setOnQueryTextListener(this);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String name = adapterView.getItemAtPosition(i).toString();
-                Intent intent = new Intent(DashboardActivity.this, patient_medication_schedule.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("patientName", name);
-                intent.putExtras(bundle);
-                startActivity(intent);
-            }
+        listView.setOnItemClickListener((adapterView, view, i, l) -> {
+            String name = adapterView.getItemAtPosition(i).toString();
+            Intent intent = new Intent(DashboardActivity.this, patient_medication_schedule.class);
+            Bundle bundle = new Bundle();
+            bundle.putString("patientName", name);
+            intent.putExtras(bundle);
+            startActivity(intent);
         });
 
         Button addButton = findViewById(R.id.addPatientBtn);
@@ -74,13 +71,10 @@ public class DashboardActivity extends AppCompatActivity implements SearchView.O
         addButton.setOnClickListener(view -> startActivity(new Intent(DashboardActivity.this, NearbyPatients.class)));
 
         Button logOutButton = findViewById(R.id.log_out_btn);
-        logOutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clearUserName(DashboardActivity.this);
-                Intent intent = new Intent(DashboardActivity.this, LoginDefault.class);
-                startActivity(intent);
-            }
+        logOutButton.setOnClickListener(view -> {
+            clearUserName(DashboardActivity.this);
+            Intent intent = new Intent(DashboardActivity.this, LoginDefault.class);
+            startActivity(intent);
         });
 //        logOutButton.setOnClickListener(view -> startActivity(new Intent(DashboardActivity.this, LoginDefault.class)));
 
