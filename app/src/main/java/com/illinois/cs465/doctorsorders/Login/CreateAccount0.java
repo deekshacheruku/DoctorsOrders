@@ -17,6 +17,7 @@ public class CreateAccount0 extends AppCompatActivity implements View.OnClickLis
 
     private int accType;
     DatabaseHelper helper;
+    Bundle scheduler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,7 @@ public class CreateAccount0 extends AppCompatActivity implements View.OnClickLis
             Bundle forStep1 = new Bundle();
 
             Button nextCreate = findViewById(R.id.nextCreate);
+
             nextCreate.setOnClickListener(view -> {
                 forStep1.putString("lname", text1.getText().toString());
                 forStep1.putString("pin", text3.getText().toString());
@@ -55,25 +57,33 @@ public class CreateAccount0 extends AppCompatActivity implements View.OnClickLis
                 intent.putExtras(forStep1);
                 startActivity(intent);
             });
+
         } else if (accType == 2) //Else if Scheduler Account,
         {
             setContentView(R.layout.activity_create_scheduler);
-            Bundle scheduler = new Bundle();
+            scheduler = new Bundle();
 
             EditText lastName = findViewById(R.id.lastName);
             EditText firstName = findViewById(R.id.firstName);
             EditText userName = findViewById(R.id.userName);
             EditText password = findViewById(R.id.password);
 
-            scheduler.putString("lastName", lastName.getText().toString());
-            scheduler.putString("firstName", firstName.getText().toString());
-            scheduler.putString("userName", userName.getText().toString());
-            scheduler.putString("password", password.getText().toString());
-
-            helper.addNewScheduler(scheduler);
-
             Button finish = findViewById(R.id.finCreateSch);
-            finish.setOnClickListener(this);
+            finish.setOnClickListener(view -> {
+                scheduler.putString("lastName", lastName.getText().toString());
+                Log.d("lastname", lastName.getText().toString());
+                scheduler.putString("firstName", firstName.getText().toString());
+                scheduler.putString("userName", userName.getText().toString());
+                Log.d("firstname", firstName.getText().toString());
+
+                scheduler.putString("password", password.getText().toString());
+
+                helper.addNewScheduler(scheduler);
+                Intent intent = new Intent(this, DashboardActivity.class);
+                startActivity(intent);
+            });
+
+//            finish.setOnClickListener(this);
         }
     }
 
@@ -97,8 +107,9 @@ public class CreateAccount0 extends AppCompatActivity implements View.OnClickLis
             startActivity(intent);
         } else if (v.getId() == R.id.finCreateSch) //Restart activity with Scheduler Create Account.
         {
-            Intent intent = new Intent(this, DashboardActivity.class);
-            startActivity(intent);
+//            helper.addNewScheduler(scheduler);
+//            Intent intent = new Intent(this, DashboardActivity.class);
+//            startActivity(intent);
         }
     }
 }

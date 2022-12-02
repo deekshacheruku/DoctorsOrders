@@ -18,6 +18,9 @@ import com.illinois.cs465.doctorsorders.Scheduler.DashboardActivity;
 public class LoginCredentials extends AppCompatActivity implements View.OnClickListener {
     EditText lastName;
     EditText password;
+
+    EditText userName;
+    EditText scheduler_password;
     DatabaseHelper helper;
 
     @Override
@@ -85,9 +88,30 @@ public class LoginCredentials extends AppCompatActivity implements View.OnClickL
         }
         else if(v.getId() == R.id.loginSch)
         {
-            finish();
-            Intent intent = new Intent(this, DashboardActivity.class);
-            startActivity(intent);
+            userName = findViewById(R.id.user_name);
+            scheduler_password = findViewById(R.id.sche_password);
+            helper = new DatabaseHelper(this);
+
+            Bundle login = new Bundle();
+            login.putString("userName", userName.getText().toString());
+            login.putString("password", scheduler_password.getText().toString());
+
+            Cursor data = helper.loginInfoExistsScheduler(login);
+            int iterations = 0;
+
+            while (data.moveToNext()) {
+                iterations++;
+                Log.d("data", data.getString(1));
+            }
+
+            if (iterations == 0) {
+                Log.d("data", "asdasdasd");
+            } else {
+                Intent intent = new Intent(this, DashboardActivity.class);
+                finish();
+                startActivity(intent);
+            }
+
         }
     }
 }

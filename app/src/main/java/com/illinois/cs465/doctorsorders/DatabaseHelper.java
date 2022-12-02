@@ -168,7 +168,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         contentValues.put(REGISTERED_SCHEDULER_LASTNAME, bundle.getString("lastName"));
         contentValues.put(REGISTERED_SCHEDULER_FIRSTNAME, bundle.getString("firstName"));
-        contentValues.put(REGISTERED_SCHEDULER_USERNAME, bundle.getString("username"));
+        contentValues.put(REGISTERED_SCHEDULER_USERNAME, bundle.getString("userName"));
         contentValues.put(REGISTERED_SCHEDULER_PASSWORD, bundle.getString("password"));
 
         long result = db.insert(REGISTERED_SCHEDULER_TABLE, null, contentValues);
@@ -176,7 +176,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (result == -1) {
             return false;
         } else {
-            Log.d("1", "New Schedule inserted!");
+            Log.d("1", "New Scheduler inserted!");
             return true;
         }
     }
@@ -225,6 +225,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String lastName = bundle.getString("name");
         String query = "SELECT * FROM " + REGISTERED_PATIENTS_TABLE + " WHERE "
                 + REGISTERED_PATIENTS_PIN + " = \"" + pin + "\"" + " AND " + REGISTERED_PATIENTS_NAME + " = \"" + lastName + "\"";
+        return db.rawQuery(query, null);
+    }
+
+    public Cursor loginInfoExistsScheduler(Bundle bundle) {
+        String password = bundle.getString("password");
+        String userName = bundle.getString("userName");
+        String query = "SELECT * FROM " + REGISTERED_SCHEDULER_TABLE + " WHERE "
+                + REGISTERED_SCHEDULER_USERNAME + " = \"" + userName + "\"" + " AND " + REGISTERED_SCHEDULER_PASSWORD + " = \"" + password + "\"";
         return db.rawQuery(query, null);
     }
 
